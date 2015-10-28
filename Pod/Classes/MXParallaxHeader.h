@@ -25,7 +25,8 @@
 typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
     MXParallaxHeaderModeCenter = 0,
     MXParallaxHeaderModeFill,
-    MXParallaxHeaderModeTop
+    MXParallaxHeaderModeTop,
+    MXParallaxHeaderModeBottom
 };
 
 @interface MXParallaxHeader : NSObject
@@ -33,6 +34,8 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 @property (nonatomic,strong,nullable) UIView *view;
 
 @property (nonatomic) CGFloat height;
+
+@property (nonatomic) CGFloat minimumHeight;
 
 @property (nonatomic) MXParallaxHeaderMode mode;
 

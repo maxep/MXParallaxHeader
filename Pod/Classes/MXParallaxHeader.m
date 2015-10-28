@@ -25,7 +25,7 @@
 
 @interface MXParallaxHeader ()
 @property (nonatomic,strong) UIView *contentView;
-@property (nonatomic,strong) UIScrollView *scrollView;
+@property (nonatomic,weak) UIScrollView *scrollView;
 @end
 
 @implementation MXParallaxHeader {
@@ -75,7 +75,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         _height = height;
         [self updateConstraints];
+        [self layoutContentView];
     }
+}
+
+- (void)setMinimumHeight:(CGFloat)minimumHeight {
+    _minimumHeight = minimumHeight;
+    [self layoutContentView];
 }
 
 - (void)setScrollView:(UIScrollView *)scrollView {
@@ -85,7 +91,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         _scrollView = scrollView;
         
         //Adjust content inset
-        UIEdgeInsets inset = self.scrollView.contentInset;
+        UIEdgeInsets inset = scrollView.contentInset;
         inset.top += self.height;
         scrollView.contentInset = inset;
         
@@ -126,6 +132,10 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
             
         case MXParallaxHeaderModeTop:
             [self setTopModeConstraints];
+            break;
+            
+        case MXParallaxHeaderModeBottom:
+            [self setBottomModeConstraints];
             break;
             
         default:
@@ -183,6 +193,27 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
                                                                   constant:self.height]];
 }
 
+- (void) setBottomModeConstraints {
+    NSDictionary *binding  = @{@"v" : self.view};
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1
+                                                                  constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+                                                                 attribute:NSLayoutAttributeHeight
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:nil
+                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                multiplier:1
+                                                                  constant:self.height]];
+}
+
 #pragma mark Private Methods
 
 - (void) setScrollViewContentTopInset:(CGFloat)top {
@@ -202,6 +233,19 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     _isObserving = YES;
 }
 
+- (void) layoutContentView {
+    CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
+    
+    CGRect frame = self.contentView.frame;
+    frame.origin = CGPointMake(0, self.scrollView.contentOffset.y);
+    if (self.scrollView.contentOffset.y < -minimumHeight) {
+        frame.size.height = -self.scrollView.contentOffset.y;
+    } else {
+        frame.size.height = minimumHeight;
+    }
+    self.contentView.frame = frame;
+}
+
 #pragma mark KVO
 
 //This is where the magic happens...
@@ -210,15 +254,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     if (context == kMXParallaxHeaderKVOContext) {
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
-
-            if (self.scrollView.contentOffset.y < 0) {
-                
-                //Layout content view
-                CGRect frame = self.contentView.frame;
-                frame.origin = CGPointMake(0, self.scrollView.contentOffset.y);
-                frame.size.height = -self.scrollView.contentOffset.y;
-                self.contentView.frame = frame;
-            }
+            [self layoutContentView];
         }
         else if (_isObserving && [keyPath isEqualToString:NSStringFromSelector(@selector(contentInset))]) {
             UIEdgeInsets old = [[change objectForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
@@ -236,6 +272,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void) removeObservers {
     [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
     [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
+    
+    //Adjust content inset
+    UIEdgeInsets inset = self.scrollView.contentInset;
+    inset.top -= self.height;
+    self.scrollView.contentInset = inset;
 }
 
 - (void)dealloc {

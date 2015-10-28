@@ -21,6 +21,8 @@
     [super viewDidLoad];
 	
     // Parallax Header
+    self.header = [[MXParallaxHeader alloc] initWithView:[MXRefreshHeaderView instantiateFromNib] height:150 mode:MXParallaxHeaderModeFill];
+    self.header.minimumHeight = 20;
     self.tableView.parallaxHeader = self.header;
 }
 
@@ -30,21 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Properties
-
-- (MXParallaxHeader *)header {
-    if (!_header) {
-        _header = [[MXParallaxHeader alloc] initWithView:[MXRefreshHeaderView instantiateFromNib] height:150 mode:MXParallaxHeaderModeFill];
-    }
-    return _header;
-}
-
 #pragma mark <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.header.height = indexPath.row * 10;
 }
-
 
 #pragma mark <UITableViewDataSource>
 
@@ -54,7 +46,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"row %ld", (long)indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Height %ld", (long)indexPath.row * 10];
     return cell;
 }
 
