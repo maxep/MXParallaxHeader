@@ -24,7 +24,6 @@
 #import "MXParallaxHeader.h"
 
 @interface MXParallaxHeader ()
-@property (nonatomic,strong) UIView *contentView;
 @property (nonatomic,weak) UIScrollView *scrollView;
 @end
 
@@ -32,6 +31,7 @@
     BOOL _isObserving;
 }
 
+@synthesize contentView = _contentView;
 static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOContext;
 
 - (instancetype)initWithView:(UIView *)view height:(CGFloat)height mode:(MXParallaxHeaderMode)mode {
@@ -80,7 +80,9 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void)setMinimumHeight:(CGFloat)minimumHeight {
+    [self willChangeValueForKey:NSStringFromSelector(@selector(minimumHeight))];
     _minimumHeight = minimumHeight;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(minimumHeight))];
     [self layoutContentView];
 }
 
@@ -97,7 +99,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         //Layout content view
         [scrollView addSubview:self.contentView];
-        self.contentView.frame = CGRectMake(0, -self.height, scrollView.frame.size.width, self.height);
+        [self layoutContentView];
         
         [scrollView addObserver:self
                      forKeyPath:NSStringFromSelector(@selector(contentOffset))
@@ -236,14 +238,12 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void) layoutContentView {
     CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
     
-    CGRect frame = self.contentView.frame;
-    frame.origin = CGPointMake(0, self.scrollView.contentOffset.y);
-    if (self.scrollView.contentOffset.y < -minimumHeight) {
-        frame.size.height = -self.scrollView.contentOffset.y;
-    } else {
-        frame.size.height = minimumHeight;
-    }
-    self.contentView.frame = frame;
+    self.contentView.frame = (CGRect){
+        .origin.x       = 0,
+        .origin.y       = self.scrollView.contentOffset.y,
+        .size.width     = self.scrollView.frame.size.width,
+        .size.height    = MAX(-self.scrollView.contentOffset.y, minimumHeight)
+    };
 }
 
 #pragma mark KVO
@@ -270,13 +270,16 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void) removeObservers {
-    [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
-    [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
     
-    //Adjust content inset
-    UIEdgeInsets inset = self.scrollView.contentInset;
-    inset.top -= self.height;
-    self.scrollView.contentInset = inset;
+    if (self.scrollView) {
+        [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
+        [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
+        
+        //Adjust content inset
+        UIEdgeInsets inset = self.scrollView.contentInset;
+        inset.top -= self.height;
+        self.scrollView.contentInset = inset;
+    }
 }
 
 - (void)dealloc {
@@ -288,12 +291,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 @implementation UIScrollView (MXParallaxHeader)
 
 - (MXParallaxHeader *)parallaxHeader {
-    return objc_getAssociatedObject(self, @selector(parallaxHeader));
-}
-
-- (void)setParallaxHeader:(MXParallaxHeader *)parallaxHeader {
-    parallaxHeader.scrollView = self;
-    objc_setAssociatedObject(self, @selector(parallaxHeader), parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    MXParallaxHeader *parallaxHeader = objc_getAssociatedObject(self, @selector(parallaxHeader));
+    if (!parallaxHeader) {
+        parallaxHeader = [MXParallaxHeader new];
+        parallaxHeader.scrollView = self;
+        objc_setAssociatedObject(self, @selector(parallaxHeader), parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return parallaxHeader;
 }
 
 @end

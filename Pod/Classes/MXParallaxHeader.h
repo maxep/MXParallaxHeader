@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 
 @interface MXParallaxHeader : NSObject
 
+@property (nonatomic,strong,readonly,nonnull) UIView *contentView;
+
 @property (nonatomic,strong,nullable) UIView *view;
 
 @property (nonatomic) CGFloat height;
@@ -45,6 +47,6 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 
 @interface UIScrollView (MXParallaxHeader)
 
-@property (nonatomic,strong,nullable) MXParallaxHeader *parallaxHeader;
+@property (nonatomic,strong,readonly, nonnull) MXParallaxHeader *parallaxHeader;
 
 @end
