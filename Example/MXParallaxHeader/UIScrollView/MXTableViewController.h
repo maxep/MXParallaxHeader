@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface MXViewController : UITableViewController
+@interface MXTableViewController : UITableViewController
 
 @end

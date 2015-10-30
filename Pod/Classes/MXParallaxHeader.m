@@ -80,9 +80,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void)setMinimumHeight:(CGFloat)minimumHeight {
-    [self willChangeValueForKey:NSStringFromSelector(@selector(minimumHeight))];
     _minimumHeight = minimumHeight;
-    [self didChangeValueForKey:NSStringFromSelector(@selector(minimumHeight))];
     [self layoutContentView];
 }
 
@@ -237,12 +235,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void) layoutContentView {
     CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
+    CGFloat relativeYOffset = self.height - self.scrollView.contentOffset.y - self.scrollView.contentInset.top;
     
     self.contentView.frame = (CGRect){
         .origin.x       = 0,
-        .origin.y       = self.scrollView.contentOffset.y,
+        .origin.y       = -relativeYOffset,
         .size.width     = self.scrollView.frame.size.width,
-        .size.height    = MAX(-self.scrollView.contentOffset.y, minimumHeight)
+        .size.height    = MAX(relativeYOffset, minimumHeight)
     };
 }
 
@@ -257,11 +256,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
             [self layoutContentView];
         }
         else if (_isObserving && [keyPath isEqualToString:NSStringFromSelector(@selector(contentInset))]) {
-            UIEdgeInsets old = [[change objectForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
-            UIEdgeInsets new = [[change objectForKey:NSKeyValueChangeOldKey] UIEdgeInsetsValue];
+            UIEdgeInsets old = [[change objectForKey:NSKeyValueChangeOldKey] UIEdgeInsetsValue];
+            UIEdgeInsets new = [[change objectForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
             
             //Adjust content inset
-            [self setScrollViewContentTopInset:(new.top - old.top + self.height)];
+            [self setScrollViewContentTopInset:(fabs(new.top - old.top) + self.height)];
         }
     }
     else {

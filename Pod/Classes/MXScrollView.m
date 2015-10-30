@@ -22,7 +22,12 @@
 
 #import "MXScrollView.h"
 
-@interface MXScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface MXScrollViewDelegateForwarder : NSObject <MXScrollViewDelegate>
+@property (nonatomic,weak) id<MXScrollViewDelegate> delegate;
+@end
+
+@interface MXScrollView () <UIGestureRecognizerDelegate>
+@property (nonatomic, strong) MXScrollViewDelegateForwarder *delegateForwarder;
 @property (nonatomic, strong) NSMutableArray *observedViews;
 @end
 
@@ -41,7 +46,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        super.delegate = self;
+        super.delegate = self.delegateForwarder;
         self.showsVerticalScrollIndicator = NO;
         self.directionalLockEnabled = YES;
         self.bounces = YES;
@@ -72,6 +77,25 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
         }
         @catch (NSException *exception) {}
     }
+}
+
+- (MXScrollViewDelegateForwarder *)delegateForwarder {
+    if (!_delegateForwarder) {
+        _delegateForwarder = [MXScrollViewDelegateForwarder new];
+    }
+    return _delegateForwarder;
+}
+
+- (void)setDelegate:(id<MXScrollViewDelegate>)delegate {
+    self.delegateForwarder.delegate = delegate;
+    // Scroll view delegate caches whether the delegate responds to some of the delegate
+    // methods, so we need to force it to re-evaluate if the delegate responds to them
+    super.delegate = nil;
+    super.delegate = self.delegateForwarder;
+}
+
+- (id<MXScrollViewDelegate>)delegate {
+    return self.delegateForwarder.delegate;
 }
 
 #pragma mark <UIGestureRecognizerDelegate>
@@ -138,6 +162,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
         if (diff == 0 || !_isObserving) return;
         
         if (object == self) {
+            
             //Adjust self scroll offset when scroll down
             if (diff > 0 && _lock) {
                 [self scrollView:self setContentOffset:old];
@@ -195,90 +220,44 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
 #pragma mark <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     if ((self.contentOffset.y >= -self.parallaxHeader.minimumHeight)) {
         self.contentOffset = CGPointMake(self.contentOffset.x, -self.parallaxHeader.minimumHeight);
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        [self.delegate scrollViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     _lock = NO;
     [self removeObservedViews];
-    
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+}
+
+@end
+
+@implementation MXScrollViewDelegateForwarder
+
+- (BOOL)respondsToSelector:(SEL)selector {
+    return [self.delegate respondsToSelector:selector] || [super respondsToSelector:selector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)invocation {
+    // This should only ever be called from `UITextField`, after it has verified
+    // that `_userDelegate` responds to the selector by sending me
+    // `respondsToSelector:`.  So I don't need to check again here.
+    [invocation invokeWithTarget:self.delegate];
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [(MXScrollView*)scrollView scrollViewDidScroll:scrollView];
+    if ([self.delegate respondsToSelector:_cmd]) {
+        [self.delegate scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [(MXScrollView*)scrollView scrollViewDidEndDecelerating:scrollView];
+    if ([self.delegate respondsToSelector:_cmd]) {
         [self.delegate scrollViewDidEndDecelerating:scrollView];
-    }
-}
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidZoom:)]) {
-        [self.delegate scrollViewDidZoom:scrollView];
-    }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
-        [self.delegate scrollViewWillBeginDragging:scrollView];
-    }
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    if ([self.delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
-        [self.delegate scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
-        [self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-    }
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
-        [self.delegate scrollViewWillBeginDecelerating:scrollView];
-    }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
-        [self.delegate scrollViewDidEndScrollingAnimation:scrollView];
-    }
-}
-
-- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(viewForZoomingInScrollView:)]) {
-        return [self.delegate viewForZoomingInScrollView:scrollView];
-    }
-    return nil;
-}
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view {
-    if ([self.delegate respondsToSelector:@selector(scrollViewWillBeginZooming:withView:)]) {
-        [self.delegate scrollViewWillBeginZooming:scrollView withView:view];
-    }
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale {
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidEndZooming:withView:atScale:)]) {
-        [self.delegate scrollViewDidEndZooming:scrollView withView:view atScale:scale];
-    }
-}
-
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
-        return [self.delegate scrollViewShouldScrollToTop:scrollView];
-    }
-    return YES;
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
-        [self.delegate scrollViewDidScrollToTop:scrollView];
     }
 }
 
