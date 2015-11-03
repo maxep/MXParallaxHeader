@@ -22,31 +22,79 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ The parallac header mode.
+ */
 typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
+    /**
+     The option to center the content in the header’s bounds, keeping the proportions the same.
+     */
     MXParallaxHeaderModeCenter = 0,
+    /**
+     The option to scale the content to fill the size of the header. Some portion of the content may be clipped to fill the header’s bounds.
+     */
     MXParallaxHeaderModeFill,
+    /**
+     The option to center the content aligned at the top in the header's bounds.
+     */
     MXParallaxHeaderModeTop,
+    /**
+     The option to center the content aligned at the bottom in the header’s bounds.
+     */
     MXParallaxHeaderModeBottom
 };
 
+/**
+ The MXParallaxHeader class represents a parallax header for UIScrollView.
+ */
 @interface MXParallaxHeader : NSObject
 
+/**
+ The content view on top of the UIScrollView's content.
+ */
 @property (nonatomic,strong,readonly,nonnull) UIView *contentView;
 
+/**
+ The header's view.
+ */
 @property (nonatomic,strong,nullable) UIView *view;
 
+/**
+ The header's default height. 0 0 by default.
+ */
 @property (nonatomic) CGFloat height;
 
+/**
+ The header's minimum height while scrolling up. 0 by default.
+ */
 @property (nonatomic) CGFloat minimumHeight;
 
+/**
+ The parallax header behavior mode.
+ */
 @property (nonatomic) MXParallaxHeaderMode mode;
 
+/**
+ Initializes a `MXParallaxHeader` object.
+ 
+ @param view   The view to be set in the header.
+ @param height The header height.
+ @param mode   The behavior mode.
+ 
+ @return The initialized MXParallaxHeader object.
+ */
 - (nullable instancetype)initWithView:(nonnull UIView *)view height:(CGFloat)height mode:(MXParallaxHeaderMode)mode;
 
 @end
 
+/**
+ A UIScrollView category with a MXParallaxHeader.
+ */
 @interface UIScrollView (MXParallaxHeader)
 
+/**
+ The parallax header.
+ */
 @property (nonatomic,strong,readonly, nonnull) MXParallaxHeader *parallaxHeader;
 
 @end

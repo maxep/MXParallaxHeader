@@ -32,12 +32,14 @@
 
 static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewControllerKVOContext;
 
-- (void)loadView {
-    self.view = self.scrollView;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;    
+    [self.view addSubview:self.scrollView];
+    NSDictionary *binding  = @{@"v" : self.scrollView};
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +52,6 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 - (MXScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[MXScrollView alloc] init];
-        _scrollView.delegate = self;
         
         [_scrollView.parallaxHeader addObserver:self
                                      forKeyPath:NSStringFromSelector(@selector(minimumHeight))
@@ -60,27 +61,23 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     return _scrollView;
 }
 
-- (void)setViewController:(UIViewController *)viewController {
-    if (_viewController == viewController) {
-        return;
-    }
-    
-    [_viewController.view removeFromSuperview];
-    [_viewController removeFromParentViewController];
-    
-    if (viewController) {
-        [self addChildViewController:viewController];
-        [viewController didMoveToParentViewController:self];
+- (void)setChildViewController:(UIViewController<MXScrollViewDelegate> *)childViewController {
+    if (childViewController && _childViewController != childViewController) {
         
-        [self.scrollView addSubview:viewController.view];
-        self.scrollView.contentSize = self.viewController.view.frame.size;
+        [self addChildViewController:childViewController];
+        [childViewController didMoveToParentViewController:self];
         
-        viewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-        NSDictionary *binding  = @{@"v" : viewController.view};
+        self.scrollView.delegate = childViewController;
+        
+        [self.scrollView addSubview:childViewController.view];
+        self.scrollView.contentSize = self.childViewController.view.frame.size;
+        
+        childViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+        NSDictionary *binding  = @{@"v" : childViewController.view};
         [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
         [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
         
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:viewController.view
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:childViewController.view
                                                                     attribute:NSLayoutAttributeCenterX
                                                                     relatedBy:NSLayoutRelationEqual
                                                                        toItem:self.scrollView
@@ -88,7 +85,7 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
                                                                    multiplier:1
                                                                      constant:0]];
         
-        self.heightConstraint = [NSLayoutConstraint constraintWithItem:viewController.view
+        self.heightConstraint = [NSLayoutConstraint constraintWithItem:childViewController.view
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:self.scrollView
@@ -98,7 +95,10 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         
         [self.scrollView addConstraint:self.heightConstraint];
     }
-    _viewController = viewController;
+    
+    [_childViewController.view removeFromSuperview];
+    [_childViewController removeFromParentViewController];
+    _childViewController = childViewController;
 }
 
 #pragma mark KVO
@@ -130,7 +130,7 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 - (void)perform {
     if ([self.sourceViewController isKindOfClass:[MXScrollViewController class]]) {
         MXScrollViewController *svc = self.sourceViewController;
-        svc.viewController = self.destinationViewController;
+        svc.childViewController = self.destinationViewController;
     }
 }
 

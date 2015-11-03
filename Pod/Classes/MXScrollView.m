@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "MXScrollView.h"
+#import "UIPanGestureRecognizer+Direction.h"
 
 @interface MXScrollViewDelegateForwarder : NSObject <MXScrollViewDelegate>
 @property (nonatomic,weak) id<MXScrollViewDelegate> delegate;
@@ -38,8 +39,6 @@
 
 static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
-static NSString* const kContentOffsetKeyPath = @"contentOffset";
-
 @synthesize delegate = _delegate;
 @synthesize bounces = _bounces;
 
@@ -50,6 +49,10 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
         self.showsVerticalScrollIndicator = NO;
         self.directionalLockEnabled = YES;
         self.bounces = YES;
+        
+        [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                  context:kMXScrollViewKVOContext];
     }
     return self;
 }
@@ -61,22 +64,6 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
         _observedViews = [NSMutableArray array];
     }
     return _observedViews;
-}
-
-- (void)setScrollEnabled:(BOOL)scrollEnabled {
-    [super setScrollEnabled:scrollEnabled];
-    
-    if (scrollEnabled) {
-        [self addObserver:self forKeyPath:kContentOffsetKeyPath
-                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                  context:kMXScrollViewKVOContext];
-    }
-    else {
-        @try {
-            [self removeObserver:self forKeyPath:kContentOffsetKeyPath];
-        }
-        @catch (NSException *exception) {}
-    }
 }
 
 - (MXScrollViewDelegateForwarder *)delegateForwarder {
@@ -132,7 +119,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
     _isObserving = NO;
     if ([view isKindOfClass:[UIScrollView class]]) {
         [view addObserver:self
-               forKeyPath:kContentOffsetKeyPath
+               forKeyPath:NSStringFromSelector(@selector(contentOffset))
                   options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
                   context:kMXScrollViewKVOContext];
     }
@@ -143,7 +130,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
     @try {
         if ([view isKindOfClass:[UIScrollView class]]) {
             [view removeObserver:self
-                      forKeyPath:kContentOffsetKeyPath
+                      forKeyPath:NSStringFromSelector(@selector(contentOffset))
                          context:kMXScrollViewKVOContext];
         }
     }
@@ -153,18 +140,18 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
 //This is where the magic happens...
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
-    if (context == kMXScrollViewKVOContext && [keyPath isEqualToString:kContentOffsetKeyPath]) {
+    if (context == kMXScrollViewKVOContext && [keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
         
         CGPoint new = [[change objectForKey:NSKeyValueChangeNewKey] CGPointValue];
         CGPoint old = [[change objectForKey:NSKeyValueChangeOldKey] CGPointValue];
         CGFloat diff = old.y - new.y;
         
-        if (diff == 0 || !_isObserving) return;
+        if (diff == .0 || !_isObserving) return;
         
         if (object == self) {
             
             //Adjust self scroll offset when scroll down
-            if (diff > 0 && _lock) {
+            if (diff > .0 && _lock) {
                 [self scrollView:self setContentOffset:old];
             }
             else if (((self.contentOffset.y < -self.contentInset.top) && !self.bounces)) {
@@ -177,7 +164,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
             _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
             
             //Manage scroll up
-            if (self.contentOffset.y < -self.parallaxHeader.minimumHeight && _lock && diff < 0) {
+            if (self.contentOffset.y < -self.parallaxHeader.minimumHeight && _lock && diff < .0) {
                 [self scrollView:scrollView setContentOffset:old];
             }
             //Disable bouncing when scroll down
@@ -214,7 +201,8 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXScrollViewKVOContext];
+    [self removeObservedViews];
 }
 
 #pragma mark <UIScrollViewDelegate>
@@ -259,24 +247,6 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
     if ([self.delegate respondsToSelector:_cmd]) {
         [self.delegate scrollViewDidEndDecelerating:scrollView];
     }
-}
-
-@end
-
-@implementation UIPanGestureRecognizer (Direction)
-
-- (MXPanGestureDirection) directionInView:(UIView *)view {
-    CGPoint velocity = [self velocityInView:view];
-    CGFloat absX = fabs(velocity.x);
-    CGFloat absY = fabs(velocity.y);
-    
-    if (absX > absY) {
-        return (velocity.x > 0)? MXPanGestureDirectionRight : MXPanGestureDirectionLeft;
-    }
-    else if (absX < absY) {
-        return (velocity.y > 0)? MXPanGestureDirectionDown : MXPanGestureDirectionUp;
-    }
-    return MXPanGestureDirectionNone;
 }
 
 @end

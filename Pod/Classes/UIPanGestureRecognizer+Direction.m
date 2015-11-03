@@ -1,4 +1,4 @@
-// MXScrollViewController.h
+// UIPanGestureRecognizer+Direction.m
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -20,28 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MXScrollView.h"
+#import "UIPanGestureRecognizer+Direction.h"
 
-/**
- The MXScrollViewController class.
- */
-@interface MXScrollViewController : UIViewController
+@implementation UIPanGestureRecognizer (Direction)
 
-/**
- The scroll view container.
- */
-@property (nonatomic, strong, readonly, nonnull) MXScrollView *scrollView;
-
-/**
- The child view controller to be added to the scroll view.
- */
-@property (nonatomic, strong, nullable) UIViewController<MXScrollViewDelegate> *childViewController;
-
-@end
-
-/**
- The MXScrollViewControllerSegue class creates a segue object to get the child view controller from storyboard.
- */
-@interface MXScrollViewControllerSegue : UIStoryboardSegue
+- (MXPanGestureDirection) directionInView:(UIView *)view {
+    CGPoint velocity = [self velocityInView:view];
+    CGFloat absX = fabs(velocity.x);
+    CGFloat absY = fabs(velocity.y);
+    
+    if (absX > absY) {
+        return (velocity.x > 0)? MXPanGestureDirectionRight : MXPanGestureDirectionLeft;
+    }
+    else if (absX < absY) {
+        return (velocity.y > 0)? MXPanGestureDirectionDown : MXPanGestureDirectionUp;
+    }
+    return MXPanGestureDirectionNone;
+}
 
 @end

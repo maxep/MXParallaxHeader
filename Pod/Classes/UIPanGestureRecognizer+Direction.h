@@ -1,4 +1,4 @@
-// MXScrollViewController.h
+// UIPanGestureRecognizer+Direction.h
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -20,28 +20,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MXScrollView.h"
+#import <UIKit/UIKit.h>
 
 /**
- The MXScrollViewController class.
+ UIPanGestureRecognizer direction enumeration.
  */
-@interface MXScrollViewController : UIViewController
+typedef NS_ENUM(NSInteger, MXPanGestureDirection){
+    /** No direction. */
+    MXPanGestureDirectionNone  = 1 << 0,
+    /** Right direction. */
+    MXPanGestureDirectionRight = 1 << 1,
+    /** Left direction. */
+    MXPanGestureDirectionLeft  = 1 << 2,
+    /** Up direction. */
+    MXPanGestureDirectionUp    = 1 << 3,
+    /** Down direction. */
+    MXPanGestureDirectionDown  = 1 << 4
+};
 
 /**
- The scroll view container.
+ UIPanGestureRecognizer category with direction getter.
  */
-@property (nonatomic, strong, readonly, nonnull) MXScrollView *scrollView;
+@interface UIPanGestureRecognizer (Direction)
 
 /**
- The child view controller to be added to the scroll view.
+ Gets the pan gesture direction of the specified view.
+ 
+ @param view The view
+ 
+ @return The pan gesture direction.
  */
-@property (nonatomic, strong, nullable) UIViewController<MXScrollViewDelegate> *childViewController;
-
-@end
-
-/**
- The MXScrollViewControllerSegue class creates a segue object to get the child view controller from storyboard.
- */
-@interface MXScrollViewControllerSegue : UIStoryboardSegue
+- (MXPanGestureDirection) directionInView:(nullable __kindof UIView *)view;
 
 @end
