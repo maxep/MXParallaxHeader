@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Maxime Epain. All rights reserved.
 //
 
-#import "MXTableViewController.h"
+#import "UIScrollViewExample.h"
 #import <MXParallaxHeader/MXParallaxHeader.h>
 #import "MXRefreshHeaderView.h"
 
-@interface MXTableViewController ()
+@interface UIScrollViewExample ()
 @end
 
-@implementation MXTableViewController
+@implementation UIScrollViewExample
 
 - (void)viewDidLoad
 {

@@ -1,24 +1,24 @@
 //
-//  MXViewController.m
-//  MXParallaxHeader
+//  MXTwitterViewController.m
+//  MXSegmentedPager
 //
-//  Created by Maxime Epain on 29/10/2015.
+//  Created by Maxime Epain on 26/10/2015.
 //  Copyright © 2015 Maxime Epain. All rights reserved.
 //
 
-#import "MXViewController.h"
+#import "MXScrollViewControllerExample.h"
 #import "MXRefreshHeaderView.h"
 
-@interface MXViewController ()
+@interface MXScrollViewControllerExample ()
 
 @end
 
-@implementation MXViewController
+@implementation MXScrollViewControllerExample
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self performSegueWithIdentifier:@"mx_scroll_view_controller" sender:self];
+    [self performSegueWithIdentifier:@"XLPagerTabStrip" sender:self];
     
     // Parallax Header
     self.scrollView.parallaxHeader.view = [MXRefreshHeaderView instantiateFromNib];

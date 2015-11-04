@@ -8,6 +8,6 @@
 
 #import <MXParallaxHeader/MXScrollViewController.h>
 
-@interface MXViewController : MXScrollViewController
+@interface MXScrollViewExample : UIViewController
 
 @end

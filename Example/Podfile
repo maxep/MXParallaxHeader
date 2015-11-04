@@ -4,6 +4,7 @@ use_frameworks!
 target 'MXParallaxHeader_Example', :exclusive => true do
   pod "MXParallaxHeader", :path => "../"
   pod 'M13ProgressSuite', '~> 1.2.7'
+  pod 'XLPagerTabStrip', '~> 2.0.0'
 end
 
 target 'MXParallaxHeader_Tests', :exclusive => true do

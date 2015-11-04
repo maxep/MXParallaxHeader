@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface MXTableViewController : UITableViewController
+@interface UIScrollViewExample : UITableViewController
 
 @end

@@ -13,7 +13,6 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* MXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* MXAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* MXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* MXViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,9 +21,18 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		CF94D03AF68F5A649243DF81 /* Pods_MXParallaxHeader_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583A3DD73356BC6401BC8A74 /* Pods_MXParallaxHeader_Tests.framework */; };
-		D0C04B741BE11C78005153AF /* MXRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C04B721BE11C78005153AF /* MXRefreshHeaderView.m */; };
-		D0C04B751BE11C78005153AF /* MXRefreshHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C04B731BE11C78005153AF /* MXRefreshHeaderView.xib */; };
 		D0C04B771BE121D7005153AF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C04B761BE121D7005153AF /* Launch Screen.storyboard */; };
+		D0D1A4EC1BE909200048B16D /* MXRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A4E21BE909200048B16D /* MXRefreshHeaderView.m */; };
+		D0D1A4ED1BE909200048B16D /* MXRefreshHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D1A4E31BE909200048B16D /* MXRefreshHeaderView.xib */; };
+		D0D1A4EF1BE909200048B16D /* MXScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A4E81BE909200048B16D /* MXScrollViewExample.m */; };
+		D0D1A4F01BE909200048B16D /* UIScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A4EB1BE909200048B16D /* UIScrollViewExample.m */; };
+		D0D1A51C1BEA099C0048B16D /* ChildExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A50D1BEA099C0048B16D /* ChildExampleViewController.m */; };
+		D0D1A51D1BEA099C0048B16D /* TableChildExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A50F1BEA099C0048B16D /* TableChildExampleViewController.m */; };
+		D0D1A51E1BEA099C0048B16D /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A5121BEA099C0048B16D /* PostCell.m */; };
+		D0D1A51F1BEA099C0048B16D /* ReloadExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A5151BEA099C0048B16D /* ReloadExampleViewController.m */; };
+		D0D1A5201BEA099C0048B16D /* XLJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A5171BEA099C0048B16D /* XLJSONSerialization.m */; };
+		D0D1A5211BEA099C0048B16D /* MXScrollViewControllerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A5191BEA099C0048B16D /* MXScrollViewControllerExample.m */; };
+		D0D1A5221BEA099C0048B16D /* TwitterExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A51B1BEA099C0048B16D /* TwitterExampleViewController.m */; };
 		F01087557CAA14795E47C395 /* Pods_MXParallaxHeader_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940FC0591827E5C240C2CC34 /* Pods_MXParallaxHeader_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +59,6 @@
 		6003F59B195388D20070C39A /* MXParallaxHeader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MXParallaxHeader-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* MXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* MXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* MXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* MXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* MXParallaxHeader_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MXParallaxHeader_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -66,10 +72,28 @@
 		9EF7B01F68ACD96021C7D864 /* Pods-MXParallaxHeader_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD24A01FE66A5E4FBFE1ADDC /* Pods-MXParallaxHeader_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BD8D3AED003B13E4D0723C90 /* Pods-MXParallaxHeader_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Example/Pods-MXParallaxHeader_Example.release.xcconfig"; sourceTree = "<group>"; };
-		D0C04B711BE11C78005153AF /* MXRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXRefreshHeaderView.h; sourceTree = "<group>"; };
-		D0C04B721BE11C78005153AF /* MXRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXRefreshHeaderView.m; sourceTree = "<group>"; };
-		D0C04B731BE11C78005153AF /* MXRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXRefreshHeaderView.xib; sourceTree = "<group>"; };
 		D0C04B761BE121D7005153AF /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D0D1A4E11BE909200048B16D /* MXRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXRefreshHeaderView.h; sourceTree = "<group>"; };
+		D0D1A4E21BE909200048B16D /* MXRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXRefreshHeaderView.m; sourceTree = "<group>"; };
+		D0D1A4E31BE909200048B16D /* MXRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXRefreshHeaderView.xib; sourceTree = "<group>"; };
+		D0D1A4E71BE909200048B16D /* MXScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewExample.h; sourceTree = "<group>"; };
+		D0D1A4E81BE909200048B16D /* MXScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewExample.m; sourceTree = "<group>"; };
+		D0D1A4EA1BE909200048B16D /* UIScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScrollViewExample.h; sourceTree = "<group>"; };
+		D0D1A4EB1BE909200048B16D /* UIScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewExample.m; sourceTree = "<group>"; };
+		D0D1A50C1BEA099C0048B16D /* ChildExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildExampleViewController.h; sourceTree = "<group>"; };
+		D0D1A50D1BEA099C0048B16D /* ChildExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildExampleViewController.m; sourceTree = "<group>"; };
+		D0D1A50E1BEA099C0048B16D /* TableChildExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableChildExampleViewController.h; sourceTree = "<group>"; };
+		D0D1A50F1BEA099C0048B16D /* TableChildExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableChildExampleViewController.m; sourceTree = "<group>"; };
+		D0D1A5111BEA099C0048B16D /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		D0D1A5121BEA099C0048B16D /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		D0D1A5141BEA099C0048B16D /* ReloadExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReloadExampleViewController.h; sourceTree = "<group>"; };
+		D0D1A5151BEA099C0048B16D /* ReloadExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReloadExampleViewController.m; sourceTree = "<group>"; };
+		D0D1A5161BEA099C0048B16D /* XLJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLJSONSerialization.h; sourceTree = "<group>"; };
+		D0D1A5171BEA099C0048B16D /* XLJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLJSONSerialization.m; sourceTree = "<group>"; };
+		D0D1A5181BEA099C0048B16D /* MXScrollViewControllerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewControllerExample.h; sourceTree = "<group>"; };
+		D0D1A5191BEA099C0048B16D /* MXScrollViewControllerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewControllerExample.m; sourceTree = "<group>"; };
+		D0D1A51A1BEA099C0048B16D /* TwitterExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterExampleViewController.h; sourceTree = "<group>"; };
+		D0D1A51B1BEA099C0048B16D /* TwitterExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterExampleViewController.m; sourceTree = "<group>"; };
 		D8A5CC3A58C88674FE006F63 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F1FE27068929B549C4AE788C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,12 +164,11 @@
 				6003F59C195388D20070C39A /* MXAppDelegate.h */,
 				6003F59D195388D20070C39A /* MXAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* MXViewController.h */,
-				6003F5A6195388D20070C39A /* MXViewController.m */,
-				D0C04B711BE11C78005153AF /* MXRefreshHeaderView.h */,
-				D0C04B721BE11C78005153AF /* MXRefreshHeaderView.m */,
-				D0C04B731BE11C78005153AF /* MXRefreshHeaderView.xib */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				D0D1A4E01BE909200048B16D /* Header */,
+				D0D1A4E91BE909200048B16D /* UIScrollView */,
+				D0D1A4E41BE909200048B16D /* MXScrollView */,
+				D0D1A50A1BEA099C0048B16D /* UIScrollViewController */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				D0C04B761BE121D7005153AF /* Launch Screen.storyboard */,
 			);
@@ -202,6 +225,79 @@
 				BD24A01FE66A5E4FBFE1ADDC /* Pods-MXParallaxHeader_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0D1A4E01BE909200048B16D /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A4E11BE909200048B16D /* MXRefreshHeaderView.h */,
+				D0D1A4E21BE909200048B16D /* MXRefreshHeaderView.m */,
+				D0D1A4E31BE909200048B16D /* MXRefreshHeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		D0D1A4E41BE909200048B16D /* MXScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A4E71BE909200048B16D /* MXScrollViewExample.h */,
+				D0D1A4E81BE909200048B16D /* MXScrollViewExample.m */,
+			);
+			path = MXScrollView;
+			sourceTree = "<group>";
+		};
+		D0D1A4E91BE909200048B16D /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A4EA1BE909200048B16D /* UIScrollViewExample.h */,
+				D0D1A4EB1BE909200048B16D /* UIScrollViewExample.m */,
+			);
+			path = UIScrollView;
+			sourceTree = "<group>";
+		};
+		D0D1A50A1BEA099C0048B16D /* UIScrollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A50B1BEA099C0048B16D /* ChildViewController */,
+				D0D1A5131BEA099C0048B16D /* Helpers */,
+				D0D1A5181BEA099C0048B16D /* MXScrollViewControllerExample.h */,
+				D0D1A5191BEA099C0048B16D /* MXScrollViewControllerExample.m */,
+				D0D1A51A1BEA099C0048B16D /* TwitterExampleViewController.h */,
+				D0D1A51B1BEA099C0048B16D /* TwitterExampleViewController.m */,
+			);
+			path = UIScrollViewController;
+			sourceTree = "<group>";
+		};
+		D0D1A50B1BEA099C0048B16D /* ChildViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A50C1BEA099C0048B16D /* ChildExampleViewController.h */,
+				D0D1A50D1BEA099C0048B16D /* ChildExampleViewController.m */,
+				D0D1A50E1BEA099C0048B16D /* TableChildExampleViewController.h */,
+				D0D1A50F1BEA099C0048B16D /* TableChildExampleViewController.m */,
+				D0D1A5101BEA099C0048B16D /* Views */,
+			);
+			path = ChildViewController;
+			sourceTree = "<group>";
+		};
+		D0D1A5101BEA099C0048B16D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A5111BEA099C0048B16D /* PostCell.h */,
+				D0D1A5121BEA099C0048B16D /* PostCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0D1A5131BEA099C0048B16D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1A5141BEA099C0048B16D /* ReloadExampleViewController.h */,
+				D0D1A5151BEA099C0048B16D /* ReloadExampleViewController.m */,
+				D0D1A5161BEA099C0048B16D /* XLJSONSerialization.h */,
+				D0D1A5171BEA099C0048B16D /* XLJSONSerialization.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +383,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C04B751BE11C78005153AF /* MXRefreshHeaderView.xib in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				D0D1A4ED1BE909200048B16D /* MXRefreshHeaderView.xib in Resources */,
 				D0C04B771BE121D7005153AF /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -403,10 +499,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C04B741BE11C78005153AF /* MXRefreshHeaderView.m in Sources */,
+				D0D1A4EF1BE909200048B16D /* MXScrollViewExample.m in Sources */,
+				D0D1A51D1BEA099C0048B16D /* TableChildExampleViewController.m in Sources */,
+				D0D1A5201BEA099C0048B16D /* XLJSONSerialization.m in Sources */,
+				D0D1A5211BEA099C0048B16D /* MXScrollViewControllerExample.m in Sources */,
 				6003F59E195388D20070C39A /* MXAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* MXViewController.m in Sources */,
+				D0D1A51C1BEA099C0048B16D /* ChildExampleViewController.m in Sources */,
+				D0D1A4F01BE909200048B16D /* UIScrollViewExample.m in Sources */,
+				D0D1A51E1BEA099C0048B16D /* PostCell.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				D0D1A51F1BEA099C0048B16D /* ReloadExampleViewController.m in Sources */,
+				D0D1A5221BEA099C0048B16D /* TwitterExampleViewController.m in Sources */,
+				D0D1A4EC1BE909200048B16D /* MXRefreshHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
