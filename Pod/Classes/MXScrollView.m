@@ -101,16 +101,16 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    BOOL shouldScroll = YES;
+    _lock = YES;
     
     if ([self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
-        shouldScroll = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
+        _lock = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
     }
     
-    if (shouldScroll) {
+    if (_lock) {
         [self addObservedView:otherGestureRecognizer.view];
     }
-    return shouldScroll;
+    return _lock;
 }
 
 #pragma mark KVO
@@ -146,12 +146,12 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
         CGPoint old = [[change objectForKey:NSKeyValueChangeOldKey] CGPointValue];
         CGFloat diff = old.y - new.y;
         
-        if (diff == .0 || !_isObserving) return;
+        if (diff == 0.0 || !_isObserving) return;
         
         if (object == self) {
             
             //Adjust self scroll offset when scroll down
-            if (diff > .0 && _lock) {
+            if (diff > 0 && _lock) {
                 [self scrollView:self setContentOffset:old];
             }
             else if (((self.contentOffset.y < -self.contentInset.top) && !self.bounces)) {
@@ -164,7 +164,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
             _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
             
             //Manage scroll up
-            if (self.contentOffset.y < -self.parallaxHeader.minimumHeight && _lock && diff < .0) {
+            if (self.contentOffset.y < -self.parallaxHeader.minimumHeight && _lock && diff < 0) {
                 [self scrollView:scrollView setContentOffset:old];
             }
             //Disable bouncing when scroll down
