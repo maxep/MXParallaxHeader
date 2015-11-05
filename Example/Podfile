@@ -1,6 +1,8 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
+platform :ios, '8.0'
+
 target 'MXParallaxHeader_Example', :exclusive => true do
   pod "MXParallaxHeader", :path => "../"
   pod 'M13ProgressSuite', '~> 1.2.7'
