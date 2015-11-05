@@ -1,6 +1,6 @@
 # MXParallaxHeader
 
-[![CI Status](http://img.shields.io/travis/Maxime Epain/MXParallaxHeader.svg?style=flat)](https://travis-ci.org/Maxime Epain/MXParallaxHeader)
+[![CI Status](http://img.shields.io/travis/maxep/MXParallaxHeader.svg?style=flat)](https://travis-ci.org/maxep/MXParallaxHeader)
 [![Version](https://img.shields.io/cocoapods/v/MXParallaxHeader.svg?style=flat)](http://cocoapods.org/pods/MXParallaxHeader)
 [![License](https://img.shields.io/cocoapods/l/MXParallaxHeader.svg?style=flat)](http://cocoapods.org/pods/MXParallaxHeader)
 [![Platform](https://img.shields.io/cocoapods/p/MXParallaxHeader.svg?style=flat)](http://cocoapods.org/pods/MXParallaxHeader)
