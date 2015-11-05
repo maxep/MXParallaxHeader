@@ -120,9 +120,9 @@
 }
 
 #pragma mark <MXScrollViewDelegate>
-//
-//- (BOOL)scrollView:(MXScrollView *)scrollView shouldScrollWithSubView:(UIView *)subView {
-//    return (subView == self.table1);
-//}
+
+- (BOOL)scrollView:(MXScrollView *)scrollView shouldScrollWithSubView:(UIView *)subView {
+    return [subView isDescendantOfView:self.table1];
+}
 
 @end

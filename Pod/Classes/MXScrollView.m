@@ -101,9 +101,10 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    _lock = YES;
     
-    if ([self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
+    _lock = (otherGestureRecognizer.view != self) && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];
+    
+    if (_lock && [self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
         _lock = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
     }
     
@@ -208,8 +209,8 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 #pragma mark <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ((self.contentOffset.y >= -self.parallaxHeader.minimumHeight)) {
-        self.contentOffset = CGPointMake(self.contentOffset.x, -self.parallaxHeader.minimumHeight);
+    if (self.contentOffset.y > -self.parallaxHeader.minimumHeight) {
+        [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, -self.parallaxHeader.minimumHeight)];
     }
 }
 
