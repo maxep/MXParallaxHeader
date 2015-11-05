@@ -12,5 +12,5 @@ before_install:
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- set -o pipefail && xcodebuild -workspace Example/MXParallaxHeader.xcworkspace -scheme MXParallaxHeader-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- set -o pipefail && xcodebuild -workspace Example/MXParallaxHeader.xcworkspace -scheme MXParallaxHeader-Example -sdk iphonesimulator -configuration Release -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
 - pod lib lint --quick
