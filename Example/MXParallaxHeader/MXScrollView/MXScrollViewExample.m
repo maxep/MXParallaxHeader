@@ -31,32 +31,30 @@
     
     [self.view addSubview:scrollView];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary *binding  = @{@"scrollView" : scrollView};
+    NSDictionary *binding = NSDictionaryOfVariableBindings(scrollView);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:binding]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:nil views:binding]];
     
-    //Add table views
-    [scrollView addSubview:self.table1];
-    [scrollView addSubview:self.table2];
+    //Add content view
+    UIView *contentView = [UIView new];
+    [scrollView addSubview:contentView];
     
-    self.table1.translatesAutoresizingMaskIntoConstraints = NO;
-    self.table2.translatesAutoresizingMaskIntoConstraints = NO;
-    binding  = @{@"table1" : self.table1, @"table2" : self.table2};
-    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[table1][table2]|" options:0 metrics:nil views:binding]];
-    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[table1]|" options:0 metrics:nil views:binding]];
-    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[table2]|" options:0 metrics:nil views:binding]];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    binding = NSDictionaryOfVariableBindings(contentView);
     
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:binding]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:binding]];
     
     //Setting constraints using the minimum header height
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.table1
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:contentView
                                                                 attribute:NSLayoutAttributeWidth
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:self.view
                                                                 attribute:NSLayoutAttributeWidth
-                                                               multiplier:0.5
+                                                               multiplier:1
                                                                  constant:0]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.table1
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:contentView
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
@@ -64,21 +62,16 @@
                                                          multiplier:1
                                                            constant:-minimumHeight]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.table2
-                                                          attribute:NSLayoutAttributeWidth
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeWidth
-                                                         multiplier:0.5
-                                                           constant:0]];
+    //Add table views
+    [contentView addSubview:self.table1];
+    [contentView addSubview:self.table2];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.table2
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeHeight
-                                                         multiplier:1
-                                                           constant:-minimumHeight]];
+    self.table1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.table2.translatesAutoresizingMaskIntoConstraints = NO;
+    binding = @{ @"table1" : self.table1 , @"table2" : self.table2};
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[table1][table2(==table1)]|" options:0 metrics:nil views:binding]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[table1]|" options:0 metrics:nil views:binding]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[table2]|" options:0 metrics:nil views:binding]];
 }
 
 #pragma mark Properties
