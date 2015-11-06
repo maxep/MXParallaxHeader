@@ -8,7 +8,6 @@
 
 #import "UIScrollViewExample.h"
 #import <MXParallaxHeader/MXParallaxHeader.h>
-#import "MXRefreshHeaderView.h"
 
 @interface UIScrollViewExample ()
 @end
@@ -20,7 +19,11 @@
     [super viewDidLoad];
 	
     // Parallax Header
-    self.tableView.parallaxHeader.view = [MXRefreshHeaderView instantiateFromNib];
+    UIImageView *header = [UIImageView new];
+    header.image = [UIImage imageNamed:@"success-baby"];
+    header.contentMode = UIViewContentModeScaleAspectFill;
+    
+    self.tableView.parallaxHeader.view = header;
     self.tableView.parallaxHeader.height = 150;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = 20;

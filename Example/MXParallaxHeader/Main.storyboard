@@ -60,7 +60,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="MXScrollViewController" image="List" id="VMe-5K-ZsF"/>
                     <connections>
-                        <segue destination="ot0-WQ-HY6" kind="custom" identifier="XLPagerTabStrip" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
+                        <segue destination="ot0-WQ-HY6" kind="custom" identifier="Photo" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIQ-29-SGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -94,48 +94,49 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkj-dI-Sjd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="KYM-tI-eGU" kind="relationship" relationship="rootViewController" id="F16-mn-3Np"/>
+                        <segue destination="erx-Ha-mfa" kind="relationship" relationship="rootViewController" id="cfo-sY-2Xy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7am-yE-9BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1207" y="434"/>
         </scene>
-        <!--Twitter Example View Controller-->
-        <scene sceneID="DON-ic-2Rz">
+        <!--Image Picker Controller-->
+        <scene sceneID="e88-UT-JKL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="KYM-tI-eGU" customClass="TwitterExampleViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="erx-Ha-mfa" customClass="MXImagePickerController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Mew-6n-qNQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="B2C-BA-w01"/>
+                        <viewControllerLayoutGuide type="top" id="Ibh-Rs-DgU"/>
+                        <viewControllerLayoutGuide type="bottom" id="fqw-FA-q91"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="W2R-Yw-s5g">
+                    <view key="view" contentMode="scaleToFill" id="vPo-vc-HEb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odE-Ly-UrG">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="odE-Ly-UrG" firstAttribute="bottom" secondItem="B2C-BA-w01" secondAttribute="top" id="3Pr-k8-8Tx"/>
-                            <constraint firstItem="odE-Ly-UrG" firstAttribute="top" secondItem="Mew-6n-qNQ" secondAttribute="bottom" id="6dg-Zr-8CW"/>
-                            <constraint firstAttribute="trailing" secondItem="odE-Ly-UrG" secondAttribute="trailing" id="Dhw-nB-W0e"/>
-                            <constraint firstItem="odE-Ly-UrG" firstAttribute="leading" secondItem="W2R-Yw-s5g" secondAttribute="leading" id="ROa-MW-aFs"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zRJ-YR-X4v"/>
-                    <connections>
-                        <outlet property="containerView" destination="odE-Ly-UrG" id="c6V-jd-Z6g"/>
-                    </connections>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" id="c1x-8E-IRo">
+                        <barButtonItem key="leftBarButtonItem" title="-" id="zla-xd-vuq">
+                            <connections>
+                                <action selector="reduceHeader:" destination="erx-Ha-mfa" id="4qG-hQ-X5X"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="Et1-sd-6I2">
+                            <connections>
+                                <action selector="extendHeader:" destination="erx-Ha-mfa" id="9eS-l8-fSY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="94h-RF-8ut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKB-N1-q2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1906" y="434"/>
+            <point key="canvasLocation" x="1926" y="434"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6l6-DX-DzO">
@@ -157,6 +158,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="List" width="30" height="30"/>
+        <image name="List" width="20" height="20"/>
     </resources>
 </document>

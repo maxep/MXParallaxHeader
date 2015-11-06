@@ -7,7 +7,6 @@
 //
 
 #import "MXScrollViewExample.h"
-#import "MXRefreshHeaderView.h"
 
 @interface MXScrollViewExample () <MXScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) MXScrollView *scrollView;
@@ -20,8 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Add MXScrollView
-    self.scrollView.parallaxHeader.view = [MXRefreshHeaderView instantiateFromNib];
+    // Parallax Header
+    UIImageView *header = [UIImageView new];
+    header.image = [UIImage imageNamed:@"success-baby"];
+    header.contentMode = UIViewContentModeScaleAspectFill;
+    
+    self.scrollView.parallaxHeader.view = header;
     self.scrollView.parallaxHeader.height = 150;
     self.scrollView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.scrollView.parallaxHeader.minimumHeight = 20;
