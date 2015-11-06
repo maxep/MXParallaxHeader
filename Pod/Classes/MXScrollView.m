@@ -53,6 +53,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
         [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
                   options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
                   context:kMXScrollViewKVOContext];
+        _isObserving = YES;
     }
     return self;
 }
@@ -117,14 +118,12 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 #pragma mark KVO
 
 - (void) addObserverToView:(UIView *)view {
-    _isObserving = NO;
     if ([view isKindOfClass:[UIScrollView class]]) {
         [view addObserver:self
                forKeyPath:NSStringFromSelector(@selector(contentOffset))
                   options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
                   context:kMXScrollViewKVOContext];
     }
-    _isObserving = YES;
 }
 
 - (void) removeObserverFromView:(UIView *)view {
