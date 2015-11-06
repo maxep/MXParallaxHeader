@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <objc/runtime.h>
 #import "MXScrollViewController.h"
 
 @interface MXScrollViewController ()
@@ -94,6 +95,9 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
                                                               constant:-self.scrollView.parallaxHeader.minimumHeight];
         
         [self.scrollView addConstraint:self.heightConstraint];
+        
+        //Set UIViewController's parallaxHeader property
+        objc_setAssociatedObject(childViewController, @selector(parallaxHeader), self.scrollView.parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
     [_childViewController.view removeFromSuperview];
@@ -123,7 +127,21 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 
 @end
 
-#pragma mark MXSegmentedPagerControllerPageSegue class
+#pragma mark UIViewController category
+
+@implementation UIViewController (MXParallaxHeader)
+
+- (MXParallaxHeader *)parallaxHeader {
+    MXParallaxHeader *parallaxHeader = objc_getAssociatedObject(self, @selector(parallaxHeader));
+    if (!parallaxHeader && self.parentViewController) {
+        return self.parentViewController.parallaxHeader;
+    }
+    return parallaxHeader;
+}
+
+@end
+
+#pragma mark MXScrollViewControllerSegue class
 
 @implementation MXScrollViewControllerSegue
 

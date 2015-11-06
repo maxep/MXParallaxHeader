@@ -40,6 +40,18 @@
 @end
 
 /**
+ UIViewController category to let childViewControllers easily access their parallax header.
+ */
+@interface UIViewController (MXParallaxHeader)
+
+/**
+ The parallax header.
+ */
+@property (nonatomic, strong, nullable, readonly) MXParallaxHeader *parallaxHeader;
+
+@end
+
+/**
  The MXScrollViewControllerSegue class creates a segue object to get the child view controller from storyboard.
  */
 @interface MXScrollViewControllerSegue : UIStoryboardSegue

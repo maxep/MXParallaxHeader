@@ -102,16 +102,16 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
-    _lock = (otherGestureRecognizer.view != self) && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];
+    BOOL shouldScroll = otherGestureRecognizer.view != self;
     
-    if (_lock && [self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
-        _lock = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
+    if (shouldScroll && [self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
+        shouldScroll = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
     }
     
-    if (_lock) {
+    if (shouldScroll) {
         [self addObservedView:otherGestureRecognizer.view];
     }
-    return _lock;
+    return shouldScroll;
 }
 
 #pragma mark KVO
