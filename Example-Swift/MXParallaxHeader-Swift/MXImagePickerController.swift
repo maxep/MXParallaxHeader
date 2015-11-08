@@ -23,7 +23,14 @@
 import UIKit
 import MXParallaxHeader
 
-class MXImagePickerController: UIImagePickerController {
+class MXImagePickerController: UIImagePickerController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+        self.delegate = self;
+    }
     
     @IBAction func reduceHeader(sender: AnyObject) {
         self.parallaxHeader!.height -= 10;
@@ -31,5 +38,13 @@ class MXImagePickerController: UIImagePickerController {
     
     @IBAction func extendHeader(sender: AnyObject) {
         self.parallaxHeader!.height += 10;
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let imageView = self.parallaxHeader?.view as! UIImageView
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
 }

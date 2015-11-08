@@ -52,6 +52,8 @@ class UIScrollViewExample: UITableViewController {
         return cell
     }
     
+    // MARK: - Table view delegate
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.parallaxHeader.height = CGFloat(indexPath.row * 10)
     }

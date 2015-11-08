@@ -23,7 +23,7 @@
 import UIKit
 import MXParallaxHeader
 
-class MXScrollViewControllerExample: MXScrollViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MXScrollViewControllerExample: MXScrollViewController {
     
     var header: UIImageView!
 
@@ -42,28 +42,13 @@ class MXScrollViewControllerExample: MXScrollViewController, UINavigationControl
         
         self.performSegueWithIdentifier("Photo", sender: self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if (segue.identifier == "Photo") {
             let nav = segue.destinationViewController as! UINavigationController;
-            var controller = nav.topViewController as! UIImagePickerController;
-            controller = controller.dynamicType.init()
-            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-            controller.delegate = self;
+            (nav.topViewController as! MXImagePickerController).dynamicType.init();
         }
-    }
-    
-
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        self.header.image = info[UIImagePickerControllerOriginalImage] as? UIImage;
     }
 }
