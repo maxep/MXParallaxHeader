@@ -61,7 +61,7 @@
 #pragma mark <UIImagePickerControllerDelegate>
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    self.header.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.header.image = info[UIImagePickerControllerOriginalImage];
 }
 
 @end

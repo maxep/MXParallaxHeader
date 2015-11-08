@@ -248,7 +248,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void) progress {
     if (self.progressBlock) {
         CGFloat progress = 1 - (self.height / self.contentView.frame.size.height);
-        self.progressBlock(progress);
+        self.progressBlock(progress * 2);
     }
 }
 
