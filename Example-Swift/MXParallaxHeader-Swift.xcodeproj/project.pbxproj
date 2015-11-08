@@ -11,13 +11,13 @@
 		D049AD7C1BEF8DD100C1165A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049AD7B1BEF8DD100C1165A /* AppDelegate.swift */; };
 		D049AD831BEF8DD100C1165A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D049AD811BEF8DD100C1165A /* Main.storyboard */; };
 		D049AD851BEF8DD100C1165A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D049AD841BEF8DD100C1165A /* Assets.xcassets */; };
-		D049AD881BEF8DD100C1165A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D049AD861BEF8DD100C1165A /* LaunchScreen.storyboard */; };
 		D049ADB01BEF8E6300C1165A /* MXParallaxHeader.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D049ADAD1BEF8E6300C1165A /* MXParallaxHeader.podspec */; };
 		D049ADB11BEF8E6300C1165A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D049ADAE1BEF8E6300C1165A /* LICENSE */; };
 		D049ADB31BEF959200C1165A /* UIScrollViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB21BEF959200C1165A /* UIScrollViewExample.swift */; };
 		D049ADB51BEF9A9500C1165A /* MXScrollViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB41BEF9A9500C1165A /* MXScrollViewExample.swift */; };
 		D049ADB71BEFA0D600C1165A /* MXScrollViewControllerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB61BEFA0D600C1165A /* MXScrollViewControllerExample.swift */; };
 		D049ADB91BEFA11600C1165A /* MXImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */; };
+		D049ADBB1BEFB54E00C1165A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D049ADBA1BEFB54E00C1165A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,6 @@
 		D049AD7B1BEF8DD100C1165A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D049AD821BEF8DD100C1165A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D049AD841BEF8DD100C1165A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D049AD871BEF8DD100C1165A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D049AD891BEF8DD100C1165A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D049ADAC1BEF8E6300C1165A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D049ADAD1BEF8E6300C1165A /* MXParallaxHeader.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MXParallaxHeader.podspec; path = ../MXParallaxHeader.podspec; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		D049ADB41BEF9A9500C1165A /* MXScrollViewExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXScrollViewExample.swift; sourceTree = "<group>"; };
 		D049ADB61BEFA0D600C1165A /* MXScrollViewControllerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXScrollViewControllerExample.swift; sourceTree = "<group>"; };
 		D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXImagePickerController.swift; sourceTree = "<group>"; };
+		D049ADBA1BEFB54E00C1165A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E33C58B45A8DA2B4732535F9 /* Pods-MXParallaxHeader-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader-Swift/Pods-MXParallaxHeader-Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,8 +97,8 @@
 				D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */,
 				D049AD811BEF8DD100C1165A /* Main.storyboard */,
 				D049AD841BEF8DD100C1165A /* Assets.xcassets */,
-				D049AD861BEF8DD100C1165A /* LaunchScreen.storyboard */,
 				D049AD891BEF8DD100C1165A /* Info.plist */,
+				D049ADBA1BEFB54E00C1165A /* Launch Screen.storyboard */,
 			);
 			path = "MXParallaxHeader-Swift";
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049AD881BEF8DD100C1165A /* LaunchScreen.storyboard in Resources */,
+				D049ADBB1BEFB54E00C1165A /* Launch Screen.storyboard in Resources */,
 				D049AD851BEF8DD100C1165A /* Assets.xcassets in Resources */,
 				D049AD831BEF8DD100C1165A /* Main.storyboard in Resources */,
 				D049ADB01BEF8E6300C1165A /* MXParallaxHeader.podspec in Resources */,
@@ -254,14 +254,6 @@
 				D049AD821BEF8DD100C1165A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D049AD861BEF8DD100C1165A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D049AD871BEF8DD100C1165A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
