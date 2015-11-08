@@ -119,10 +119,14 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 - (void) addObserverToView:(UIView *)view {
     if ([view isKindOfClass:[UIScrollView class]]) {
-        [view addObserver:self
-               forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                  options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
-                  context:kMXScrollViewKVOContext];
+        UIScrollView *scrollView = (id)view;
+        
+        [scrollView addObserver:self
+                     forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+                        context:kMXScrollViewKVOContext];
+        
+        _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
     }
 }
 
