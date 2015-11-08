@@ -32,3 +32,6 @@ Carthage
 #
 # Pods/
 Example/MXParallaxHeader.xcworkspace
+*.
+*.
+Example-Swift/MXParallaxHeader-Swift.xcworkspace
