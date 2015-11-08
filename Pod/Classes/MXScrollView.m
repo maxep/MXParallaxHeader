@@ -45,17 +45,29 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        super.delegate = self.delegateForwarder;
-        self.showsVerticalScrollIndicator = NO;
-        self.directionalLockEnabled = YES;
-        self.bounces = YES;
-        
-        [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                  context:kMXScrollViewKVOContext];
-        _isObserving = YES;
+        [self initialize];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void) initialize {
+    super.delegate = self.delegateForwarder;
+    self.showsVerticalScrollIndicator = NO;
+    self.directionalLockEnabled = YES;
+    self.bounces = YES;
+    
+    [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
+              options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+              context:kMXScrollViewKVOContext];
+    _isObserving = YES;
 }
 
 #pragma mark Properties
