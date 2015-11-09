@@ -33,19 +33,8 @@
 
 static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewControllerKVOContext;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-   
-    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;    
-    [self.view addSubview:self.scrollView];
-    NSDictionary *binding  = @{@"v" : self.scrollView};
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadView {
+    self.view = self.scrollView;
 }
 
 #pragma mark Properties
