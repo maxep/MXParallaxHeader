@@ -8,16 +8,13 @@
 
 Pod::Spec.new do |s|
   s.name             = "MXParallaxHeader"
-  s.version          = "0.2.0"
+  s.version          = "0.3.0"
   s.summary          = "Simple parallax header for UIScrollView."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-  							MXParallaxHeader allows to add a parallax header view to any kind of UIScrollView.
+  							MXParallaxHeader is a simple header class for UIScrolView.
+
+							In addition, MXScrollView is a UIScrollView subclass with the ability to hook the vertical scroll from its subviews, this can be used to add a parallax header to complex view hierachy.
+							Moreover, MXScrollViewController allows you to add a MXParallaxHeader to any kind of UIViewController.
                        DESC
 
   s.homepage         = "https://github.com/maxep/MXParallaxHeader"
