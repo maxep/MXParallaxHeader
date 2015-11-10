@@ -23,18 +23,26 @@
 #import <objc/runtime.h>
 #import "MXScrollViewController.h"
 
-@interface MXScrollViewController ()
-@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
-@end
-
 @implementation MXScrollViewController
 
-@synthesize  scrollView = _scrollView;
-
 static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewControllerKVOContext;
+@synthesize scrollView = _scrollView;
 
 - (void)loadView {
     self.view = self.scrollView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.scrollView.contentSize = self.scrollView.frame.size;
+    [self layoutChildViewController];
+}
+
+- (void) layoutChildViewController {
+    CGRect frame = self.scrollView.frame;
+    frame.origin = CGPointZero;
+    frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;
+    self.childViewController.view.frame = frame;
 }
 
 #pragma mark Properties
@@ -58,32 +66,7 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         [childViewController didMoveToParentViewController:self];
         
         self.scrollView.delegate = childViewController;
-        
         [self.scrollView addSubview:childViewController.view];
-        self.scrollView.contentSize = self.childViewController.view.frame.size;
-        
-        childViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-        NSDictionary *binding  = @{@"v" : childViewController.view};
-        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
-        
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:childViewController.view
-                                                                    attribute:NSLayoutAttributeCenterX
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.scrollView
-                                                                    attribute:NSLayoutAttributeCenterX
-                                                                   multiplier:1
-                                                                     constant:0]];
-        
-        self.heightConstraint = [NSLayoutConstraint constraintWithItem:childViewController.view
-                                                             attribute:NSLayoutAttributeHeight
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.scrollView
-                                                             attribute:NSLayoutAttributeHeight
-                                                            multiplier:1
-                                                              constant:-self.scrollView.parallaxHeader.minimumHeight];
-        
-        [self.scrollView addConstraint:self.heightConstraint];
         
         //Set UIViewController's parallaxHeader property
         objc_setAssociatedObject(childViewController, @selector(parallaxHeader), self.scrollView.parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -100,9 +83,8 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     
     if (context == kMXScrollViewControllerKVOContext) {
         
-        if (self.heightConstraint && [keyPath isEqualToString:NSStringFromSelector(@selector(minimumHeight))]) {
-            self.heightConstraint.constant = -self.scrollView.parallaxHeader.minimumHeight;
-            [self.scrollView setNeedsLayout];
+        if (self.childViewController && [keyPath isEqualToString:NSStringFromSelector(@selector(minimumHeight))]) {
+            [self layoutChildViewController];
         }
     }
     else {

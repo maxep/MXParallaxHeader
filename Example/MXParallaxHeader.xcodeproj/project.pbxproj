@@ -247,6 +247,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				8BCF57581E293F035A2122E3 /* Copy Pods Resources */,
+				6A8120B3555F79F799CDE276 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,6 +267,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				3BD86D57FAD6F0A602132C94 /* Copy Pods Resources */,
+				39E6C7BC8C13EB2ADF08BE6F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -334,6 +336,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39E6C7BC8C13EB2ADF08BE6F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3BD86D57FAD6F0A602132C94 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,6 +364,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A8120B3555F79F799CDE276 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MXParallaxHeader_Example/Pods-MXParallaxHeader_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BCF57581E293F035A2122E3 /* Copy Pods Resources */ = {

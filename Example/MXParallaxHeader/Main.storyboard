@@ -53,11 +53,10 @@
                         <viewControllerLayoutGuide type="bottom" id="hyE-Vu-GXR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jJk-lh-dPo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="MXScrollViewController" image="List" id="VMe-5K-ZsF"/>
                     <connections>
                         <segue destination="ot0-WQ-HY6" kind="custom" identifier="Photo" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
@@ -120,7 +119,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="c1x-8E-IRo">
                         <barButtonItem key="leftBarButtonItem" title="-" id="zla-xd-vuq">
                             <connections>
