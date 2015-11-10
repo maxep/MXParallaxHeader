@@ -60,7 +60,10 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 }
 
 - (void)setChildViewController:(UIViewController<MXScrollViewDelegate> *)childViewController {
-    if (childViewController && _childViewController != childViewController) {
+    [_childViewController.view removeFromSuperview];
+    [_childViewController removeFromParentViewController];
+    
+    if (childViewController) {
         
         [self addChildViewController:childViewController];
         [childViewController didMoveToParentViewController:self];
@@ -72,8 +75,6 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         objc_setAssociatedObject(childViewController, @selector(parallaxHeader), self.scrollView.parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
-    [_childViewController.view removeFromSuperview];
-    [_childViewController removeFromParentViewController];
     _childViewController = childViewController;
 }
 
