@@ -38,7 +38,7 @@
  
  @return YES to allow scrollview and subview to scroll together. YES by default.
  */
-- (BOOL) scrollView:(nullable MXScrollView *)scrollView shouldScrollWithSubView:(nullable UIView *)subView;
+- (BOOL) scrollView:(nullable MXScrollView *)scrollView shouldScrollWithSubView:(nullable UIScrollView *)subView;
 
 @end
 

@@ -23,7 +23,25 @@
 #import <MXParallaxHeader/MXScrollViewController.h>
 #import "MXImagePickerController.h"
 
+@interface MXImagePickerController ()
+@property (nonatomic,strong) UIImageView *header;
+@end
+
 @implementation MXImagePickerController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Parallax Header
+    self.header = [UIImageView new];
+    self.header.image = [UIImage imageNamed:@"success-baby"];
+    self.header.contentMode = UIViewContentModeScaleAspectFill;
+    
+    self.parallaxHeader.view = self.header;
+    self.parallaxHeader.height = 150;
+    self.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    self.parallaxHeader.minimumHeight = 20;
+}
 
 - (IBAction)reduceHeader:(id)sender {
     self.parallaxHeader.height -= 10;
@@ -31,6 +49,12 @@
 
 - (IBAction)extendHeader:(id)sender {
     self.parallaxHeader.height += 10;
+}
+
+#pragma mark <UIImagePickerControllerDelegate>
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    self.header.image = info[UIImagePickerControllerOriginalImage];
 }
 
 @end

@@ -147,7 +147,7 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				D0D1A4E91BE909200048B16D /* UIScrollView */,
 				D0D1A4E41BE909200048B16D /* MXScrollView */,
-				D0D1A50A1BEA099C0048B16D /* UIScrollViewController */,
+				D0D1A50A1BEA099C0048B16D /* MXScrollViewController */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				D0C04B761BE121D7005153AF /* Launch Screen.storyboard */,
 			);
@@ -224,7 +224,7 @@
 			path = UIScrollView;
 			sourceTree = "<group>";
 		};
-		D0D1A50A1BEA099C0048B16D /* UIScrollViewController */ = {
+		D0D1A50A1BEA099C0048B16D /* MXScrollViewController */ = {
 			isa = PBXGroup;
 			children = (
 				D0D1A5181BEA099C0048B16D /* MXScrollViewControllerExample.h */,
@@ -232,6 +232,7 @@
 				D0D1A5231BECDD0F0048B16D /* MXImagePickerController.h */,
 				D0D1A5241BECDD0F0048B16D /* MXImagePickerController.m */,
 			);
+			name = MXScrollViewController;
 			path = UIScrollViewController;
 			sourceTree = "<group>";
 		};

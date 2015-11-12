@@ -29,7 +29,7 @@
 
 @interface MXScrollView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) MXScrollViewDelegateForwarder *delegateForwarder;
-@property (nonatomic, strong) NSMutableArray *observedViews;
+@property (nonatomic, strong) NSMutableArray<UIScrollView *> *observedViews;
 @end
 
 @implementation MXScrollView {
@@ -114,41 +114,36 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    UIScrollView *scrollView = (id)otherGestureRecognizer.view;
     
-    BOOL shouldScroll = otherGestureRecognizer.view != self;
+    BOOL shouldScroll = scrollView != self && [scrollView isKindOfClass:[UIScrollView class]];
     
     if (shouldScroll && [self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
-        shouldScroll = [self.delegate scrollView:self shouldScrollWithSubView:otherGestureRecognizer.view];;
+        shouldScroll = [self.delegate scrollView:self shouldScrollWithSubView:scrollView];;
     }
     
     if (shouldScroll) {
-        [self addObservedView:otherGestureRecognizer.view];
+        [self addObservedView:scrollView];
     }
     return shouldScroll;
 }
 
 #pragma mark KVO
 
-- (void) addObserverToView:(UIView *)view {
-    if ([view isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scrollView = (id)view;
-        
-        [scrollView addObserver:self
-                     forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
-                        context:kMXScrollViewKVOContext];
-        
-        _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
-    }
+- (void) addObserverToView:(UIScrollView *)scrollView {
+    [scrollView addObserver:self
+           forKeyPath:NSStringFromSelector(@selector(contentOffset))
+              options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+              context:kMXScrollViewKVOContext];
+    
+    _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
 }
 
-- (void) removeObserverFromView:(UIView *)view {
+- (void) removeObserverFromView:(UIScrollView *)scrollView {
     @try {
-        if ([view isKindOfClass:[UIScrollView class]]) {
-            [view removeObserver:self
-                      forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                         context:kMXScrollViewKVOContext];
-        }
+        [scrollView removeObserver:self
+                  forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                     context:kMXScrollViewKVOContext];
     }
     @catch (NSException *exception) {}
 }
@@ -196,16 +191,16 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 #pragma mark Scrolling views handlers
 
-- (void) addObservedView:(UIView *)view {
-    if (![self.observedViews containsObject:view]) {
-        [self.observedViews addObject:view];
-        [self addObserverToView:view];
+- (void) addObservedView:(UIScrollView *)scrollView {
+    if (![self.observedViews containsObject:scrollView]) {
+        [self.observedViews addObject:scrollView];
+        [self addObserverToView:scrollView];
     }
 }
 
 - (void) removeObservedViews {
-    for (UIView *view in self.observedViews) {
-        [self removeObserverFromView:view];
+    for (UIScrollView *scrollView in self.observedViews) {
+        [self removeObserverFromView:scrollView];
     }
     [self.observedViews removeAllObjects];
 }

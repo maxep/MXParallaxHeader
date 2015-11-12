@@ -32,6 +32,24 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     self.view = self.scrollView;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //Hack to perform MXScrollViewControllerSegue on load
+    @try {
+        NSArray *templates = [self valueForKey:@"storyboardSegueTemplates"];
+        for (id template in templates) {
+            NSString *segueClasseName = [template valueForKey:@"_segueClassName"];
+            if ([segueClasseName isEqualToString:NSStringFromClass(MXScrollViewControllerSegue.class)]) {
+                NSString *identifier = [template valueForKey:@"identifier"];
+                [self performSegueWithIdentifier:identifier sender:self];
+                break;
+            }
+        }
+    }
+    @catch(NSException *exception) {}
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.scrollView.contentSize = self.scrollView.frame.size;
