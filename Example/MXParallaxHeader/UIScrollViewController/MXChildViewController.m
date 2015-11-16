@@ -20,14 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <MXParallaxHeader/MXScrollViewController.h>
-#import "MXImagePickerController.h"
+#import "MXChildViewController.h"
 
-@interface MXImagePickerController ()
+@interface MXChildViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic,strong) UIImageView *header;
 @end
 
-@implementation MXImagePickerController
+@implementation MXChildViewController
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.delegate = self;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,8 +60,14 @@
 
 #pragma mark <UIImagePickerControllerDelegate>
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     self.header.image = info[UIImagePickerControllerOriginalImage];
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"progress %f", scrollView.parallaxHeader.progress);
 }
 
 @end

@@ -19,8 +19,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import <UIKit/UIKit.h>
 
-@interface MXImagePickerController : UIImagePickerController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+#import <MXParallaxHeader/MXScrollViewController.h>
+
+@interface MXChildViewController : UIImagePickerController <MXScrollViewDelegate>
 
 @end

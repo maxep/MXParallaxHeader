@@ -21,16 +21,14 @@
 // THE SOFTWARE.
 
 #import "MXScrollViewControllerExample.h"
-#import "MXImagePickerController.h"
+#import "MXChildViewController.h"
 
 @implementation MXScrollViewControllerExample
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Photo"]) {
         UINavigationController *nav = segue.destinationViewController;
-        MXImagePickerController *controller = (id)[nav.topViewController init];
-        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        controller.delegate = controller;
+        self.scrollView.delegate = (MXChildViewController *)[nav.topViewController init];
     }
 }
 

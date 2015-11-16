@@ -86,7 +86,6 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         [self addChildViewController:childViewController];
         [childViewController didMoveToParentViewController:self];
         
-        self.scrollView.delegate = childViewController;
         [self.scrollView addSubview:childViewController.view];
         
         //Set UIViewController's parallaxHeader property
@@ -99,7 +98,6 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 #pragma mark KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
     if (context == kMXScrollViewControllerKVOContext) {
         
         if (self.childViewController && [keyPath isEqualToString:NSStringFromSelector(@selector(minimumHeight))]) {

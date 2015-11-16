@@ -45,13 +45,6 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 };
 
 /**
- MXProgressBlock type definition.
- 
- @param progress The scroll progress.
- */
-typedef void (^MXProgressBlock) (CGFloat progress);
-
-/**
  The MXParallaxHeader class represents a parallax header for UIScrollView.
  */
 @interface MXParallaxHeader : NSObject
@@ -82,20 +75,9 @@ typedef void (^MXProgressBlock) (CGFloat progress);
 @property (nonatomic) MXParallaxHeaderMode mode;
 
 /**
- The progress block called when scroll is progressing.
+ The parallax header progress value.
  */
-@property (nonatomic, strong, nullable) MXProgressBlock progressBlock;
-
-/**
- Initializes a `MXParallaxHeader` object.
- 
- @param view   The view to be set in the header.
- @param height The header height.
- @param mode   The behavior mode.
- 
- @return The initialized MXParallaxHeader object.
- */
-- (nullable instancetype)initWithView:(nonnull UIView *)view height:(CGFloat)height mode:(MXParallaxHeaderMode)mode;
+@property (nonatomic,readonly) CGFloat progress;
 
 @end
 
@@ -107,6 +89,6 @@ typedef void (^MXProgressBlock) (CGFloat progress);
 /**
  The parallax header.
  */
-@property (nonatomic,strong,readonly, nonnull) MXParallaxHeader *parallaxHeader;
+@property (nonatomic,strong,readonly,nonnull) MXParallaxHeader *parallaxHeader;
 
 @end

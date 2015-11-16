@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gJ1-TG-u0D">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
@@ -106,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="1207" y="434"/>
         </scene>
-        <!--Image Picker Controller-->
+        <!--Child View Controller-->
         <scene sceneID="e88-UT-JKL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="erx-Ha-mfa" customClass="MXImagePickerController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="erx-Ha-mfa" customClass="MXChildViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ibh-Rs-DgU"/>
                         <viewControllerLayoutGuide type="bottom" id="fqw-FA-q91"/>

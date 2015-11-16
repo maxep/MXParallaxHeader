@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <MXParallaxHeader/MXScrollView.h>
 #import "MXScrollViewExample.h"
 
 @interface MXScrollViewExample () <MXScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -32,6 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.table1];
+    [self.scrollView addSubview:self.table2];
     
     // Parallax Header
     UIImageView *header = [UIImageView new];
@@ -46,16 +51,18 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    
     CGRect frame = self.view.frame;
     
+    //Update scroll view frame and content size
     self.scrollView.frame = frame;
     self.scrollView.contentSize = frame.size;
     
+    //Update table 1 frame
     frame.size.width /= 2;
     frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;
     self.table1.frame = frame;
     
+    //Update table 2 frame
     frame.origin.x = frame.size.width;
     self.table2.frame = frame;
 }
@@ -66,7 +73,6 @@
     if(!_scrollView) {
         _scrollView = [[MXScrollView alloc] init];
         _scrollView.delegate = self;
-        [self.view addSubview:_scrollView];
     }
     return _scrollView;
 }
@@ -76,7 +82,6 @@
         _table1 = [[UITableView alloc] init];
         _table1.delegate    = self;
         _table1.dataSource  = self;
-        [self.scrollView addSubview:_table1];
     }
     return _table1;
 }
@@ -86,9 +91,16 @@
         _table2 = [[UITableView alloc] init];
         _table2.delegate    = self;
         _table2.dataSource  = self;
-        [self.scrollView addSubview:_table2];
     }
     return _table2;
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.scrollView) {
+        NSLog(@"progress %f", scrollView.parallaxHeader.progress);
+    }
 }
 
 #pragma mark <UITableViewDataSource>

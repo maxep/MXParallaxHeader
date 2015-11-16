@@ -31,18 +31,9 @@
     BOOL _isObserving;
 }
 
-@synthesize contentView = _contentView;
 static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOContext;
 
-- (instancetype)initWithView:(UIView *)view height:(CGFloat)height mode:(MXParallaxHeaderMode)mode {
-    if (self = [super init]) {
-        _view = view;
-        _height = height;
-        _mode = mode;
-        [self updateConstraints];
-    }
-    return self;
-}
+@synthesize contentView = _contentView;
 
 #pragma mark Properties
 
@@ -111,6 +102,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         _isObserving = YES;
     }
+}
+
+- (CGFloat)progress {
+    CGFloat x = self.height? (1/self.height) * self.contentView.frame.size.height : 1;
+    return x - 1;
 }
 
 #pragma mark Constraints
@@ -245,13 +241,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     };
 }
 
-- (void) progress {
-    if (self.progressBlock) {
-        CGFloat progress = 1 - (self.height / self.contentView.frame.size.height);
-        self.progressBlock(progress * 2);
-    }
-}
-
 #pragma mark KVO
 
 //This is where the magic happens...
@@ -261,7 +250,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
-            [self progress];
         }
         else if (_isObserving && [keyPath isEqualToString:NSStringFromSelector(@selector(contentInset))]) {
             UIEdgeInsets old = [[change objectForKey:NSKeyValueChangeOldKey] UIEdgeInsetsValue];
@@ -269,7 +257,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
             
             //Adjust content inset
             [self setScrollViewContentTopInset:(fabs(new.top - old.top) + self.height)];
-            
         }
     }
     else {
