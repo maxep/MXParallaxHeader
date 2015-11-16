@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7AC856A8C1B06D8F750E9BA4 /* Pods_MXParallaxHeader_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BB80D6172F52D7DEE79C58 /* Pods_MXParallaxHeader_Swift.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7AC856A8C1B06D8F750E9BA4 /* Pods_MXParallaxHeader_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BB80D6172F52D7DEE79C58 /* Pods_MXParallaxHeader_Swift.framework */; };
 		D049AD7C1BEF8DD100C1165A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049AD7B1BEF8DD100C1165A /* AppDelegate.swift */; };
 		D049AD831BEF8DD100C1165A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D049AD811BEF8DD100C1165A /* Main.storyboard */; };
 		D049AD851BEF8DD100C1165A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D049AD841BEF8DD100C1165A /* Assets.xcassets */; };
@@ -16,7 +16,7 @@
 		D049ADB31BEF959200C1165A /* UIScrollViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB21BEF959200C1165A /* UIScrollViewExample.swift */; };
 		D049ADB51BEF9A9500C1165A /* MXScrollViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB41BEF9A9500C1165A /* MXScrollViewExample.swift */; };
 		D049ADB71BEFA0D600C1165A /* MXScrollViewControllerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB61BEFA0D600C1165A /* MXScrollViewControllerExample.swift */; };
-		D049ADB91BEFA11600C1165A /* MXImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */; };
+		D049ADB91BEFA11600C1165A /* MXChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D049ADB81BEFA11600C1165A /* MXChildViewController.swift */; };
 		D049ADBB1BEFB54E00C1165A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D049ADBA1BEFB54E00C1165A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		D049ADB21BEF959200C1165A /* UIScrollViewExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExample.swift; sourceTree = "<group>"; };
 		D049ADB41BEF9A9500C1165A /* MXScrollViewExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXScrollViewExample.swift; sourceTree = "<group>"; };
 		D049ADB61BEFA0D600C1165A /* MXScrollViewControllerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXScrollViewControllerExample.swift; sourceTree = "<group>"; };
-		D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXImagePickerController.swift; sourceTree = "<group>"; };
+		D049ADB81BEFA11600C1165A /* MXChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXChildViewController.swift; sourceTree = "<group>"; };
 		D049ADBA1BEFB54E00C1165A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E33C58B45A8DA2B4732535F9 /* Pods-MXParallaxHeader-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader-Swift/Pods-MXParallaxHeader-Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +94,7 @@
 				D049ADB21BEF959200C1165A /* UIScrollViewExample.swift */,
 				D049ADB41BEF9A9500C1165A /* MXScrollViewExample.swift */,
 				D049ADB61BEFA0D600C1165A /* MXScrollViewControllerExample.swift */,
-				D049ADB81BEFA11600C1165A /* MXImagePickerController.swift */,
+				D049ADB81BEFA11600C1165A /* MXChildViewController.swift */,
 				D049AD811BEF8DD100C1165A /* Main.storyboard */,
 				D049AD841BEF8DD100C1165A /* Assets.xcassets */,
 				D049AD891BEF8DD100C1165A /* Info.plist */,
@@ -237,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049ADB91BEFA11600C1165A /* MXImagePickerController.swift in Sources */,
+				D049ADB91BEFA11600C1165A /* MXChildViewController.swift in Sources */,
 				D049ADB31BEF959200C1165A /* UIScrollViewExample.swift in Sources */,
 				D049ADB71BEFA0D600C1165A /* MXScrollViewControllerExample.swift in Sources */,
 				D049AD7C1BEF8DD100C1165A /* AppDelegate.swift in Sources */,

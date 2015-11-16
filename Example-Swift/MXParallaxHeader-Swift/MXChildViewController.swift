@@ -1,4 +1,4 @@
-// MXImagePickerController.swift
+// MXChildViewController.swift
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -23,28 +23,38 @@
 import UIKit
 import MXParallaxHeader
 
-class MXImagePickerController: UIImagePickerController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MXChildViewController: UIImagePickerController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var header: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-        self.delegate = self;
+        
+        self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.delegate = self
+        
+        // Parallax Header
+        self.header = UIImageView()
+        self.header.image = UIImage(named:"success-baby")
+        self.header.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        self.parallaxHeader!.view = header
+        self.parallaxHeader!.height = 150
+        self.parallaxHeader!.mode = MXParallaxHeaderMode.Fill
+        self.parallaxHeader!.minimumHeight = 20
     }
     
     @IBAction func reduceHeader(sender: AnyObject) {
-        self.parallaxHeader!.height -= 10;
+        self.parallaxHeader!.height -= 10
     }
     
     @IBAction func extendHeader(sender: AnyObject) {
-        self.parallaxHeader!.height += 10;
+        self.parallaxHeader!.height += 10
     }
     
     // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        let imageView = self.parallaxHeader?.view as! UIImageView
-        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.header.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
 }

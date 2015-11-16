@@ -3,6 +3,6 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-target 'MXParallaxHeadr-Swift', :exclusive => true do
+target 'MXParallaxHeader-Swift', :exclusive => true do
   pod "MXParallaxHeader", :path => "../"
 end

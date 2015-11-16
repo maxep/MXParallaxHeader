@@ -44,7 +44,6 @@ class UIScrollViewExample: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 50
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
@@ -57,5 +56,10 @@ class UIScrollViewExample: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.parallaxHeader.height = CGFloat(indexPath.row * 10)
     }
-
+    
+    // MARK: - Scroll view delegate
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        NSLog("progress %f", scrollView.parallaxHeader.progress)
+    }
 }

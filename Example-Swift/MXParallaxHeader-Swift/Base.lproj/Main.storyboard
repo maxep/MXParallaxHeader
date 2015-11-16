@@ -58,6 +58,9 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgA-VH-6fk" customClass="MXScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <connections>
+                                    <outlet property="delegate" destination="q0v-UC-9Kr" id="Ibq-lk-oVR"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,7 +84,6 @@
         <!--Item-->
         <scene sceneID="IMu-mj-hM8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="adH-EF-TQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="gvd-k2-IMH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PyV-tx-FPY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1bH-1I-ISC">
@@ -95,6 +97,7 @@
                         <segue destination="2pn-sn-43d" kind="relationship" relationship="rootViewController" id="fmr-XP-sAA"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adH-EF-TQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1553" y="1122"/>
         </scene>
@@ -121,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="789" y="1122"/>
         </scene>
-        <!--Image Picker Controller-->
+        <!--Child View Controller-->
         <scene sceneID="z5E-DN-iy9">
             <objects>
-                <viewController id="2pn-sn-43d" customClass="MXImagePickerController" customModule="MXParallaxHeader_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2pn-sn-43d" customClass="MXChildViewController" customModule="MXParallaxHeader_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4k-kJ-uN0"/>
                         <viewControllerLayoutGuide type="bottom" id="F3X-hX-up6"/>

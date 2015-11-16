@@ -55,17 +55,17 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var frame = self.view.frame;
+        var frame = self.view.frame
         
-        self.scrollView.frame = frame;
-        self.scrollView.contentSize = frame.size;
+        self.scrollView.frame = frame
+        self.scrollView.contentSize = frame.size
         
-        frame.size.width /= 2;
-        frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;
-        self.table1.frame = frame;
+        frame.size.width /= 2
+        frame.size.height -= self.scrollView.parallaxHeader.minimumHeight
+        self.table1.frame = frame
         
-        frame.origin.x = frame.size.width;
-        self.table2.frame = frame;
+        frame.origin.x = frame.size.width
+        self.table2.frame = frame
     }
     
     // MARK: - Table view data source
@@ -74,16 +74,20 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
         return 50
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let CellIdentifier = "Cell";
+        let CellIdentifier = "Cell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier);
+        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
         }
         cell!.textLabel!.text = String(format: "Row %ld", indexPath.row * 10)
         return cell!
     }
-
+    
+    // MARK: - Scroll view delegate
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        NSLog("progress %f", scrollView.parallaxHeader.progress)
+    }
 }

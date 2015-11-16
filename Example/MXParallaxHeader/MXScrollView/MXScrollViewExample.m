@@ -80,7 +80,6 @@
 - (UITableView *)table1 {
     if (!_table1) {
         _table1 = [[UITableView alloc] init];
-        _table1.delegate    = self;
         _table1.dataSource  = self;
     }
     return _table1;
@@ -89,7 +88,6 @@
 - (UITableView *)table2 {
     if (!_table2) {
         _table2 = [[UITableView alloc] init];
-        _table2.delegate    = self;
         _table2.dataSource  = self;
     }
     return _table2;
@@ -98,9 +96,7 @@
 #pragma mark <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.scrollView) {
-        NSLog(@"progress %f", scrollView.parallaxHeader.progress);
-    }
+    NSLog(@"progress %f", self.scrollView.parallaxHeader.progress);
 }
 
 #pragma mark <UITableViewDataSource>

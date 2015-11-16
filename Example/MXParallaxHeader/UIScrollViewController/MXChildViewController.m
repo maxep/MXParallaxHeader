@@ -28,16 +28,11 @@
 
 @implementation MXChildViewController
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        self.delegate = self;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.delegate = self;
     
     // Parallax Header
     self.header = [UIImageView new];
@@ -60,14 +55,8 @@
 
 #pragma mark <UIImagePickerControllerDelegate>
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.header.image = info[UIImagePickerControllerOriginalImage];
-}
-
-#pragma mark <UIScrollViewDelegate>
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"progress %f", scrollView.parallaxHeader.progress);
 }
 
 @end

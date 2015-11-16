@@ -23,13 +23,27 @@
 #import "MXScrollViewControllerExample.h"
 #import "MXChildViewController.h"
 
+@interface MXScrollViewControllerExample () <MXScrollViewDelegate>
+
+@end
+
 @implementation MXScrollViewControllerExample
+
+#pragma mark Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Photo"]) {
         UINavigationController *nav = segue.destinationViewController;
-        self.scrollView.delegate = (MXChildViewController *)[nav.topViewController init];
+        (void)[nav.topViewController init];
+        
+        self.scrollView.delegate = self;
     }
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"progress %f", self.scrollView.parallaxHeader.progress);
 }
 
 @end

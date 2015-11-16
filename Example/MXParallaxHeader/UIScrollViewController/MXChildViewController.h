@@ -22,6 +22,6 @@
 
 #import <MXParallaxHeader/MXScrollViewController.h>
 
-@interface MXChildViewController : UIImagePickerController <MXScrollViewDelegate>
+@interface MXChildViewController : UIImagePickerController
 
 @end

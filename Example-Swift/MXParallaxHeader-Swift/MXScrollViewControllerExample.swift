@@ -23,32 +23,22 @@
 import UIKit
 import MXParallaxHeader
 
-class MXScrollViewControllerExample: MXScrollViewController {
+class MXScrollViewControllerExample: MXScrollViewController, MXScrollViewDelegate {
+
+    // MARK: - Navigation
     
-    var header: UIImageView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Parallax Header
-        self.header = UIImageView()
-        self.header.image = UIImage(named:"success-baby")
-        self.header.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        self.scrollView.parallaxHeader.view = header
-        self.scrollView.parallaxHeader.height = 150
-        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
-        self.scrollView.parallaxHeader.minimumHeight = 20
-        
-        self.performSegueWithIdentifier("Photo", sender: self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "Photo") {
+            let nav = segue.destinationViewController as! UINavigationController
+            (nav.topViewController as! MXChildViewController).dynamicType.init()
+            
+            self.scrollView.delegate = self
+        }
     }
     
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if (segue.identifier == "Photo") {
-            let nav = segue.destinationViewController as! UINavigationController;
-            (nav.topViewController as! MXImagePickerController).dynamicType.init();
-        }
+    // MARK: - Scroll view delegate
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        NSLog("progress %f", scrollView.parallaxHeader.progress)
     }
 }
