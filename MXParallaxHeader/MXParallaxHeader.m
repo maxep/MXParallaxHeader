@@ -24,7 +24,7 @@
 #import "MXParallaxHeader.h"
 
 @interface MXParallaxHeader ()
-@property (nonatomic,weak) UIScrollView *scrollView;
+@property (nonatomic,strong) UIScrollView *scrollView;
 @end
 
 @implementation MXParallaxHeader {
