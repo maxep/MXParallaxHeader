@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 #import "MXScrollView.h"
-#import "UIPanGestureRecognizer+Direction.h"
 
 @interface MXScrollViewDelegateForwarder : NSObject <MXScrollViewDelegate>
 @property (nonatomic,weak) id<MXScrollViewDelegate> delegate;
@@ -103,10 +102,10 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-        MXPanGestureDirection direction = [(UIPanGestureRecognizer*)gestureRecognizer directionInView:self];
+        CGPoint velocity = [(UIPanGestureRecognizer*)gestureRecognizer velocityInView:self];
         
         //Lock horizontal pan gesture.
-        if (direction == MXPanGestureDirectionLeft || direction == MXPanGestureDirectionRight) {
+        if (fabs(velocity.x) > fabs(velocity.y)) {
             return NO;
         }
     }
