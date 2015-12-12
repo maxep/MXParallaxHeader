@@ -45,7 +45,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     return _contentView;
 }
 
-- (void)setView:(UIView<MXParallaxHeader> *)view {
+- (void)setView:(UIView *)view {
     if (view != _view) {
         _view = view;
         [self updateConstraints];
@@ -251,8 +251,8 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
             
-            if ([self.view respondsToSelector:@selector(scrollView:didScrollWithParallaxHeader:)]) {
-                [self.view scrollView:self.scrollView didScrollWithParallaxHeader:self];
+            if ([self.view respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
+                [(id<MXParallaxHeader>)self.view parallaxHeaderDidScroll:self];
             }
         }
         else if (_isObserving && [keyPath isEqualToString:NSStringFromSelector(@selector(contentInset))]) {

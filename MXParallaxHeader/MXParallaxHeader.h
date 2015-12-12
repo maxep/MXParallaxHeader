@@ -22,8 +22,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol MXParallaxHeader;
-
 /**
  The parallac header mode.
  */
@@ -59,7 +57,7 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 /**
  The header's view.
  */
-@property (nonatomic,strong,nullable) UIView<MXParallaxHeader> *view;
+@property (nonatomic,strong,nullable) UIView *view;
 
 /**
  The header's default height. 0 0 by default.
@@ -86,7 +84,7 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 @protocol MXParallaxHeader <NSObject>
 
 @optional
-- (void) scrollView:(nonnull __kindof UIScrollView *)scrollView didScrollWithParallaxHeader:(nonnull MXParallaxHeader *)parallaxHeader;
+- (void) parallaxHeaderDidScroll:(nonnull MXParallaxHeader *)parallaxHeader;
 
 @end
 
