@@ -1,4 +1,4 @@
-// MXScrollViewControllerExample.m
+// MXWebViewController.h
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -20,30 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MXScrollViewControllerExample.h"
-#import "MXChildViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface MXScrollViewControllerExample () <MXScrollViewDelegate>
-
-@end
-
-@implementation MXScrollViewControllerExample
-
-#pragma mark Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"Photo"]) {
-        UINavigationController *nav = segue.destinationViewController;
-        (void)[nav.topViewController init];
-        
-        self.scrollView.delegate = self;
-    }
-}
-
-#pragma mark <UIScrollViewDelegate>
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"progress %f", self.scrollView.parallaxHeader.progress);
-}
+@interface MXWebViewController : UIViewController
 
 @end

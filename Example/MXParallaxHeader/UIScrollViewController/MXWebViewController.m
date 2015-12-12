@@ -1,4 +1,4 @@
-// MXScrollViewControllerExample.h
+// MXWebViewController.m
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -20,8 +20,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MXScrollViewController.h"
+#import "MXWebViewController.h"
+#import "MXFalconHeader.h"
+#import <MXParallaxHeader/MXScrollViewController.h>
 
-@interface MXScrollViewControllerExample : MXScrollViewController
+@interface MXWebViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@end
 
+@implementation MXWebViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://dribbble.com/search?q=spaceship"]];
+    [self.webView loadRequest:request];
+    
+    // Parallax Header
+    self.parallaxHeader.view = [MXFalconHeader instanciateFromNib];
+    self.parallaxHeader.height = 300;
+    self.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    self.parallaxHeader.minimumHeight = 20;
+}
+
+- (IBAction)back:(id)sender {
+    [self.webView goBack];
+}
+
+- (IBAction)forward:(id)sender {
+    [self.webView goForward];
+}
+
+- (IBAction)refresh:(id)sender {
+    [self.webView reload];
+}
 @end

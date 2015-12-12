@@ -26,15 +26,11 @@
 @implementation UIScrollViewExample
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
 	
-    // Parallax Header
-    UIImageView *header = [UIImageView new];
-    header.image = [UIImage imageNamed:@"success-baby"];
-    header.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.tableView.parallaxHeader.view = header;
-    self.tableView.parallaxHeader.height = 150;
+    // Parallax Header    
+    self.tableView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"RocketHeader" owner:self options:nil].firstObject;
+    self.tableView.parallaxHeader.height = 300;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = 20;
 }

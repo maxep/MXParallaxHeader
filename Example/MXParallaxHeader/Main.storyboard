@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gJ1-TG-u0D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gJ1-TG-u0D">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--UIScrollView-->
         <scene sceneID="GQm-lk-xcZ">
             <objects>
                 <tableViewController id="5wP-tC-L4h" customClass="UIScrollViewExample" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rFe-ya-cfR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="rFe-ya-cfR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="pgl-bc-CYS" style="IBUITableViewCellStyleDefault" id="mIY-YQ-MPX">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mIY-YQ-MPX" id="SUD-k0-U59">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pgl-bc-CYS">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="65"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.058823529409999999" green="0.1019607843" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -46,7 +50,7 @@
         <!--MXScrollViewController-->
         <scene sceneID="cGa-Dy-CoM">
             <objects>
-                <viewController id="wpI-o5-ONu" customClass="MXScrollViewControllerExample" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="wpI-o5-ONu" customClass="MXScrollViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iTi-5G-Gb0"/>
                         <viewControllerLayoutGuide type="bottom" id="hyE-Vu-GXR"/>
@@ -92,9 +96,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkj-dI-Sjd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.058823529411764705" green="0.10196078431372549" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.058823529409999999" green="0.1019607843" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -105,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="1207" y="434"/>
         </scene>
-        <!--Child View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="e88-UT-JKL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="erx-Ha-mfa" customClass="MXChildViewController" sceneMemberID="viewController">
+                <viewController id="erx-Ha-mfa" customClass="MXWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ibh-Rs-DgU"/>
                         <viewControllerLayoutGuide type="bottom" id="fqw-FA-q91"/>
@@ -116,20 +122,42 @@
                     <view key="view" contentMode="scaleToFill" id="vPo-vc-HEb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbS-ti-jce">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96078431369999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CbS-ti-jce" firstAttribute="top" secondItem="vPo-vc-HEb" secondAttribute="top" id="9Bb-Hi-kz2"/>
+                            <constraint firstItem="CbS-ti-jce" firstAttribute="leading" secondItem="vPo-vc-HEb" secondAttribute="leading" id="ECa-Du-hur"/>
+                            <constraint firstItem="CbS-ti-jce" firstAttribute="bottom" secondItem="fqw-FA-q91" secondAttribute="top" id="UwN-j1-hfd"/>
+                            <constraint firstAttribute="trailing" secondItem="CbS-ti-jce" secondAttribute="trailing" id="onA-FW-N9e"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c1x-8E-IRo">
-                        <barButtonItem key="leftBarButtonItem" title="-" id="zla-xd-vuq">
+                        <leftBarButtonItems>
+                            <barButtonItem title="&lt;" id="zla-xd-vuq">
+                                <connections>
+                                    <action selector="back:" destination="erx-Ha-mfa" id="JpX-Qa-TUV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="&gt;" id="AQy-fq-zJS">
+                                <connections>
+                                    <action selector="forward:" destination="erx-Ha-mfa" id="r0H-ho-fDO"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Et1-sd-6I2">
                             <connections>
-                                <action selector="reduceHeader:" destination="erx-Ha-mfa" id="4qG-hQ-X5X"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="+" id="Et1-sd-6I2">
-                            <connections>
-                                <action selector="extendHeader:" destination="erx-Ha-mfa" id="9eS-l8-fSY"/>
+                                <action selector="refresh:" destination="erx-Ha-mfa" id="oda-ep-N7L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="CbS-ti-jce" id="ces-Yh-shz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKB-N1-q2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,9 +167,10 @@
         <scene sceneID="6l6-DX-DzO">
             <objects>
                 <tabBarController id="gJ1-TG-u0D" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="G4N-fV-aHA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="G4N-fV-aHA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="5wP-tC-L4h" kind="relationship" relationship="viewControllers" id="HqE-lM-10O"/>

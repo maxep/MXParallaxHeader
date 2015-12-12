@@ -23,6 +23,8 @@
 #import <MXParallaxHeader/MXScrollView.h>
 #import "MXScrollViewExample.h"
 
+#define SPANISH_WHITE [UIColor colorWithRed:0.996 green:0.992 blue:0.941 alpha:1] /*#fefdf0*/
+
 @interface MXScrollViewExample () <MXScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) MXScrollView *scrollView;
 @property (nonatomic, strong) UITableView *table1;
@@ -39,12 +41,8 @@
     [self.scrollView addSubview:self.table2];
     
     // Parallax Header
-    UIImageView *header = [UIImageView new];
-    header.image = [UIImage imageNamed:@"success-baby"];
-    header.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.scrollView.parallaxHeader.view = header;
-    self.scrollView.parallaxHeader.height = 150;
+    self.scrollView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"StarshipHeader" owner:self options:nil].firstObject;
+    self.scrollView.parallaxHeader.height = 300;
     self.scrollView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.scrollView.parallaxHeader.minimumHeight = 20;
 }
@@ -81,6 +79,7 @@
     if (!_table1) {
         _table1 = [[UITableView alloc] init];
         _table1.dataSource  = self;
+        _table1.backgroundColor = SPANISH_WHITE;
     }
     return _table1;
 }
@@ -89,6 +88,7 @@
     if (!_table2) {
         _table2 = [[UITableView alloc] init];
         _table2.dataSource  = self;
+        _table2.backgroundColor = SPANISH_WHITE;
     }
     return _table2;
 }
@@ -113,6 +113,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"Row %ld", (long)indexPath.row];
+    cell.backgroundColor = SPANISH_WHITE;
     
     return cell;
 }
