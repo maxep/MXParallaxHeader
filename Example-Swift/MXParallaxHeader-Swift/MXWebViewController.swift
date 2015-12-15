@@ -23,38 +23,32 @@
 import UIKit
 import MXParallaxHeader
 
-class MXChildViewController: UIImagePickerController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MXWebViewController: UIViewController {
     
-    var header: UIImageView!
+    @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.delegate = self
+        let request = NSURLRequest(URL: NSURL(string: "https://dribbble.com/search?q=spaceship")!)
+        self.webView.loadRequest(request)
         
-        // Parallax Header
-        self.header = UIImageView()
-        self.header.image = UIImage(named:"success-baby")
-        self.header.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        self.parallaxHeader!.view = header
-        self.parallaxHeader!.height = 150
+        // Parallax Header        
+        self.parallaxHeader!.view = MXFalconHeader.instanciateFromNib()
+        self.parallaxHeader!.height = 300
         self.parallaxHeader!.mode = MXParallaxHeaderMode.Fill
         self.parallaxHeader!.minimumHeight = 20
     }
     
-    @IBAction func reduceHeader(sender: AnyObject) {
-        self.parallaxHeader!.height -= 10
+    @IBAction func back(sender: AnyObject) {
+        self.webView.goBack()
     }
     
-    @IBAction func extendHeader(sender: AnyObject) {
-        self.parallaxHeader!.height += 10
+    @IBAction func forward(sender: AnyObject) {
+        self.webView.goForward()
     }
     
-    // MARK: - UIImagePickerControllerDelegate
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        self.header.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    @IBAction func refresh(sender: AnyObject) {
+        self.webView.reload()
     }
 }

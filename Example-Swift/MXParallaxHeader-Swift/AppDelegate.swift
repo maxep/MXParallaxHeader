@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        UITabBar.appearance().tintColor = UIColor.orangeColor();
+        UITabBar.appearance().tintColor = UIColor(colorLiteralRed: 0.059, green: 0.102, blue: 0.216, alpha: 1) // #974244
         return true
     }
 

@@ -1,4 +1,4 @@
-// MXScrollViewControllerExample.swift
+// MXFalconHeader.swift
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -23,22 +23,18 @@
 import UIKit
 import MXParallaxHeader
 
-class MXScrollViewControllerExample: MXScrollViewController, MXScrollViewDelegate {
+class MXFalconHeader: UIView, MXParallaxHeaderProtocol {
 
-    // MARK: - Navigation
+    @IBOutlet weak var falcon: UIImageView!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "Photo") {
-            let nav = segue.destinationViewController as! UINavigationController
-            (nav.topViewController as! MXChildViewController).dynamicType.init()
-            
-            self.scrollView.delegate = self
-        }
+    class func instanciateFromNib() -> MXFalconHeader {
+        return NSBundle.mainBundle().loadNibNamed("FalconHeader", owner: nil, options: nil)[0] as! MXFalconHeader
     }
     
-    // MARK: - Scroll view delegate
+    // MARK: - <MXParallaxHeader>
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        NSLog("progress %f", scrollView.parallaxHeader.progress)
+    func parallaxHeaderDidScroll(parallaxHeader: MXParallaxHeader) {
+        let angle = parallaxHeader.progress * CGFloat(M_PI) * 2
+        self.falcon.transform = CGAffineTransformRotate(CGAffineTransformIdentity, angle)
     }
 }

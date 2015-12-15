@@ -28,13 +28,9 @@ class UIScrollViewExample: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Parallax Header
-        let header = UIImageView()
-        header.image = UIImage(named:"success-baby")
-        header.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        self.tableView.parallaxHeader.view = header
-        self.tableView.parallaxHeader.height = 150
+        // Parallax Header        
+        self.tableView.parallaxHeader.view = NSBundle.mainBundle().loadNibNamed("RocketHeader", owner: self, options: nil).first as? UIView
+        self.tableView.parallaxHeader.height = 300
         self.tableView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
         self.tableView.parallaxHeader.minimumHeight = 20
     }

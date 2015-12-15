@@ -25,6 +25,8 @@ import MXParallaxHeader
 
 class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    private var SpanichWhite : UIColor = UIColor(colorLiteralRed: 0.996, green: 0.992, blue: 0.941, alpha: 1) /*#fefdf0*/
+    
     @IBOutlet weak var scrollView: MXScrollView!
     
     var table1: UITableView!
@@ -33,22 +35,20 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Parallax Header
-        let header = UIImageView()
-        header.image = UIImage(named:"success-baby")
-        header.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        self.scrollView.parallaxHeader.view = header
-        self.scrollView.parallaxHeader.height = 150
+        // Parallax Header        
+        self.scrollView.parallaxHeader.view = NSBundle.mainBundle().loadNibNamed("StarshipHeader", owner: self, options: nil).first as? UIView
+        self.scrollView.parallaxHeader.height = 300
         self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
         self.scrollView.parallaxHeader.minimumHeight = 20
         
         self.table1 = UITableView()
         self.table1.dataSource = self;
+        self.table1.backgroundColor = SpanichWhite
         self.scrollView.addSubview(self.table1)
         
         self.table2 = UITableView()
         self.table2.dataSource = self;
+        self.table2.backgroundColor = SpanichWhite
         self.scrollView.addSubview(self.table2)
     }
 
@@ -82,6 +82,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
         }
         cell!.textLabel!.text = String(format: "Row %ld", indexPath.row * 10)
+        cell!.backgroundColor = SpanichWhite;
         return cell!
     }
     

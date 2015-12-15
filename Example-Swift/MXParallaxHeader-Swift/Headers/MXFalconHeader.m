@@ -16,8 +16,9 @@
 @implementation MXFalconHeader
 
 + (MXFalconHeader *)instanciateFromNib {
-    return [NSBundle.mainBundle loadNibNamed:@"FalconHeader" owner:nil options:nil].firstObject;
+    return [NSBundle.mainBundle loadNibNamed:@"FalconHeader" owner:self options:nil].firstObject;
 }
+
 
 #pragma mark <MXParallaxHeader>
 
