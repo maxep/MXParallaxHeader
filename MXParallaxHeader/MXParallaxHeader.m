@@ -23,15 +23,40 @@
 #import <objc/runtime.h>
 #import "MXParallaxHeader.h"
 
+@interface MXParallaxView : UIView
+@property (nonatomic,weak) MXParallaxHeader *parent;
+@end
+
+@implementation MXParallaxView
+
+static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOContext;
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
+    [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
+}
+
+- (void)didMoveToSuperview {
+    [self.superview addObserver:self.parent
+                     forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                        options:NSKeyValueObservingOptionNew
+                        context:kMXParallaxHeaderKVOContext];
+    
+    [self.superview addObserver:self.parent
+                     forKeyPath:NSStringFromSelector(@selector(contentInset))
+                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+                        context:kMXParallaxHeaderKVOContext];
+}
+
+@end
+
 @interface MXParallaxHeader ()
-@property (nonatomic,strong) UIScrollView *scrollView;
+@property (nonatomic,weak) UIScrollView *scrollView;
 @end
 
 @implementation MXParallaxHeader {
     BOOL _isObserving;
 }
-
-static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOContext;
 
 @synthesize contentView = _contentView;
 
@@ -39,8 +64,10 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (UIView *)contentView {
     if (!_contentView) {
-        _contentView = [UIView new];
-        _contentView.clipsToBounds = YES;
+        MXParallaxView *contentView = [MXParallaxView new];
+        contentView.parent = self;
+        contentView.clipsToBounds = YES;
+        _contentView = contentView;
     }
     return _contentView;
 }
@@ -77,28 +104,14 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)setScrollView:(UIScrollView *)scrollView {
     if (_scrollView != scrollView) {
-        [self removeObservers];
-        
         _scrollView = scrollView;
         
         //Adjust content inset
-        UIEdgeInsets inset = scrollView.contentInset;
-        inset.top += self.height;
-        scrollView.contentInset = inset;
+        [self setScrollViewContentTopInset:(self.scrollView.contentInset.top + self.height)];
         
         //Layout content view
         [scrollView addSubview:self.contentView];
         [self layoutContentView];
-        
-        [scrollView addObserver:self
-                     forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                        options:NSKeyValueObservingOptionNew
-                        context:kMXParallaxHeaderKVOContext];
-        
-        [scrollView addObserver:self
-                     forKeyPath:NSStringFromSelector(@selector(contentInset))
-                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
-                        context:kMXParallaxHeaderKVOContext];
         
         _isObserving = YES;
     }
@@ -266,23 +279,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
-}
-
-- (void) removeObservers {
-    
-    if (self.scrollView) {
-        [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
-        [self.scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
-        
-        //Adjust content inset
-        UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top -= self.height;
-        self.scrollView.contentInset = inset;
-    }
-}
-
-- (void)dealloc {
-    [self removeObservers];
 }
 
 @end
