@@ -33,18 +33,12 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
-    [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentInset)) context:kMXParallaxHeaderKVOContext];
 }
 
 - (void)didMoveToSuperview {
     [self.superview addObserver:self.parent
                      forKeyPath:NSStringFromSelector(@selector(contentOffset))
                         options:NSKeyValueObservingOptionNew
-                        context:kMXParallaxHeaderKVOContext];
-    
-    [self.superview addObserver:self.parent
-                     forKeyPath:NSStringFromSelector(@selector(contentInset))
-                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
                         context:kMXParallaxHeaderKVOContext];
 }
 
@@ -89,7 +83,8 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void)setHeight:(CGFloat)height {
     if (_height != height) {
         
-        [self setScrollViewContentTopInset:(self.scrollView.contentInset.top - _height + height)];
+        //Adjust content inset
+        self.scrollViewContentTopInset = self.scrollView.contentInset.top - _height + height;
         
         _height = height;
         [self updateConstraints];
@@ -107,7 +102,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         _scrollView = scrollView;
         
         //Adjust content inset
-        [self setScrollViewContentTopInset:(self.scrollView.contentInset.top + self.height)];
+        self.scrollViewContentTopInset = self.scrollView.contentInset.top + self.height;
         
         //Layout content view
         [scrollView addSubview:self.contentView];
@@ -225,23 +220,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 #pragma mark Private Methods
 
-- (void) setScrollViewContentTopInset:(CGFloat)top {
-    _isObserving = NO;
-    
-    UIEdgeInsets inset = self.scrollView.contentInset;
-    
-    //Adjust content offset
-    CGPoint offset = self.scrollView.contentOffset;
-    offset.y += inset.top - top;
-    self.scrollView.contentOffset = offset;
-    
-    //Adjust content inset
-    inset.top = top;
-    self.scrollView.contentInset = inset;
-    
-    _isObserving = YES;
-}
-
 - (void) layoutContentView {
     CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
     CGFloat relativeYOffset = self.height - self.scrollView.contentOffset.y - self.scrollView.contentInset.top;
@@ -252,6 +230,19 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         .size.width     = self.scrollView.frame.size.width,
         .size.height    = MAX(relativeYOffset, minimumHeight)
     };
+}
+
+- (void) setScrollViewContentTopInset:(CGFloat)top {
+    UIEdgeInsets inset = self.scrollView.contentInset;
+    
+    //Adjust content offset
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.y += inset.top - top;
+    self.scrollView.contentOffset = offset;
+    
+    //Adjust content inset
+    inset.top = top;
+    self.scrollView.contentInset = inset;
 }
 
 #pragma mark KVO
@@ -267,13 +258,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
             if ([self.view respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
                 [(id<MXParallaxHeader>)self.view parallaxHeaderDidScroll:self];
             }
-        }
-        else if (_isObserving && [keyPath isEqualToString:NSStringFromSelector(@selector(contentInset))]) {
-            UIEdgeInsets old = [[change objectForKey:NSKeyValueChangeOldKey] UIEdgeInsetsValue];
-            UIEdgeInsets new = [[change objectForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
-            
-            //Adjust content inset
-            [self setScrollViewContentTopInset:(fabs(new.top - old.top) + self.height)];
         }
     }
     else {
