@@ -259,4 +259,10 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if ([self.delegate respondsToSelector:_cmd]) {
+        [self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+}
+
 @end
