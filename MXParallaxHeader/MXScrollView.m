@@ -49,7 +49,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect *)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame: frame];
     if (self) {
         [self initialize];
