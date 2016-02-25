@@ -3,11 +3,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 
-target 'MXParallaxHeader_Example', :exclusive => true do
+target 'MXParallaxHeader_Example' do
   pod "MXParallaxHeader", :path => "../"
 end
 
-target 'MXParallaxHeader_Tests', :exclusive => true do
+target 'MXParallaxHeader_Tests' do
   pod "MXParallaxHeader", :path => "../"
 
   

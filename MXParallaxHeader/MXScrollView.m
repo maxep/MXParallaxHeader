@@ -245,9 +245,6 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
-    // This should only ever be called from `UITextField`, after it has verified
-    // that `_userDelegate` responds to the selector by sending me
-    // `respondsToSelector:`.  So I don't need to check again here.
     [invocation invokeWithTarget:self.delegate];
 }
 
