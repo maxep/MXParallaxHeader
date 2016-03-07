@@ -35,6 +35,10 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
      */
     MXParallaxHeaderModeFill,
     /**
+     The option to scale the content to fill the size of the header and aligned at the top in the header's bounds.
+     */
+    MXParallaxHeaderModeTopFill,
+    /**
      The option to center the content aligned at the top in the header's bounds.
      */
     MXParallaxHeaderModeTop,
