@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -13,10 +13,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="0rn-g5-eiJ">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="565"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Spaceship" translatesAutoresizingMaskIntoConstraints="NO" id="V05-dY-Hrh">
-                    <rect key="frame" x="225" y="208" width="150" height="150"/>
+                    <rect key="frame" x="225" y="225" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="5lt-Ek-4H8"/>
                         <constraint firstAttribute="width" secondItem="V05-dY-Hrh" secondAttribute="height" multiplier="1:1" id="ZSI-Ws-xUX"/>
@@ -30,7 +30,7 @@
                 <constraint firstItem="V05-dY-Hrh" firstAttribute="centerX" secondItem="0rn-g5-eiJ" secondAttribute="centerX" id="d9D-Vd-7c3"/>
                 <constraint firstItem="0rn-g5-eiJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gox-Az-HFd"/>
                 <constraint firstItem="0rn-g5-eiJ" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="nK3-J3-4E2"/>
-                <constraint firstItem="0rn-g5-eiJ" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" priority="750" constant="-35" id="ug2-C9-6Nd"/>
+                <constraint firstItem="0rn-g5-eiJ" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="ug2-C9-6Nd"/>
             </constraints>
         </view>
     </objects>

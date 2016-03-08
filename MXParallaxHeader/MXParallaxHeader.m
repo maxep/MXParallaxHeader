@@ -137,6 +137,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         case MXParallaxHeaderModeTopFill:
             [self setTopFillModeConstraints];
             break;
+            
         case MXParallaxHeaderModeTop:
             [self setTopModeConstraints];
             break;
@@ -189,44 +190,16 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void) setTopModeConstraints {
     NSDictionary *binding  = @{@"v" : self.view};
+    NSDictionary *metrics   = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeTop
-                                                                multiplier:1
-                                                                  constant:0]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeNotAnAttribute
-                                                                multiplier:1
-                                                                  constant:self.height]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
 }
 
 - (void) setBottomModeConstraints {
     NSDictionary *binding  = @{@"v" : self.view};
+    NSDictionary *metrics   = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:0]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeNotAnAttribute
-                                                                multiplier:1
-                                                                  constant:self.height]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[v(==height)]|" options:0 metrics:metrics views:binding]];
 }
 
 #pragma mark Private Methods

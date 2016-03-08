@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		359519701A6D139F9A215D0C /* libPods-MXParallaxHeader_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2DAC32AF74BD50829FC6C2 /* libPods-MXParallaxHeader_Tests.a */; };
+		47A1AC201D5C05F7F766517E /* Pods_MXParallaxHeader_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8465C07A1BCC19162F0BD79 /* Pods_MXParallaxHeader_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,7 +21,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		CFEB40B0E24B6C2A5D8BD21E /* libPods-MXParallaxHeader_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 773552F91E140C0FF8697E54 /* libPods-MXParallaxHeader_Example.a */; };
+		AD6695B4150F5D47134336B0 /* Pods_MXParallaxHeader_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6863955D359C9E118E92AE39 /* Pods_MXParallaxHeader_Tests.framework */; };
 		D0C04B771BE121D7005153AF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C04B761BE121D7005153AF /* Launch Screen.storyboard */; };
 		D0C6A5D71C1B689C00A3508E /* MXFalconHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C6A5D61C1B689C00A3508E /* MXFalconHeader.m */; };
 		D0C6A5D91C1B68E900A3508E /* FalconHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C6A5D81C1B68E900A3508E /* FalconHeader.xib */; };
@@ -60,9 +60,8 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6863955D359C9E118E92AE39 /* Pods_MXParallaxHeader_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXParallaxHeader_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B99E9B9358C3976434E563D /* Pods-MXParallaxHeader_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Example/Pods-MXParallaxHeader_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		773552F91E140C0FF8697E54 /* libPods-MXParallaxHeader_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MXParallaxHeader_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D2DAC32AF74BD50829FC6C2 /* libPods-MXParallaxHeader_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MXParallaxHeader_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9BE373376794310D373DA002 /* MXParallaxHeader.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MXParallaxHeader.podspec; path = ../MXParallaxHeader.podspec; sourceTree = "<group>"; };
 		9D54CCAB8CA4F3FAA310665C /* Pods-MXParallaxHeader_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Example/Pods-MXParallaxHeader_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		D8A5CC3A58C88674FE006F63 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DFE18A449D85E4F19A5EDF7E /* Pods-MXParallaxHeader_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F1FE27068929B549C4AE788C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F8465C07A1BCC19162F0BD79 /* Pods_MXParallaxHeader_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXParallaxHeader_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				CFEB40B0E24B6C2A5D8BD21E /* libPods-MXParallaxHeader_Example.a in Frameworks */,
+				47A1AC201D5C05F7F766517E /* Pods_MXParallaxHeader_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				359519701A6D139F9A215D0C /* libPods-MXParallaxHeader_Tests.a in Frameworks */,
+				AD6695B4150F5D47134336B0 /* Pods_MXParallaxHeader_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +138,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				773552F91E140C0FF8697E54 /* libPods-MXParallaxHeader_Example.a */,
-				7D2DAC32AF74BD50829FC6C2 /* libPods-MXParallaxHeader_Tests.a */,
+				F8465C07A1BCC19162F0BD79 /* Pods_MXParallaxHeader_Example.framework */,
+				6863955D359C9E118E92AE39 /* Pods_MXParallaxHeader_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -583,7 +583,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MXParallaxHeader/MXParallaxHeader-Prefix.pch";
 				INFOPLIST_FILE = "MXParallaxHeader/MXParallaxHeader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -600,7 +600,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MXParallaxHeader/MXParallaxHeader-Prefix.pch";
 				INFOPLIST_FILE = "MXParallaxHeader/MXParallaxHeader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -30,7 +30,7 @@
 	
     // Parallax Header    
     self.tableView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"RocketHeader" owner:self options:nil].firstObject;
-    self.tableView.parallaxHeader.height = 300;
+    self.tableView.parallaxHeader.height = 200;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = 20;
 }
