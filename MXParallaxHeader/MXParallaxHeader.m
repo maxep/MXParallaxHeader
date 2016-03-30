@@ -142,6 +142,10 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
             [self setTopModeConstraints];
             break;
             
+        case MXParallaxHeaderModeBottomFill:
+            [self setBottomFillModeConstraints];
+            break;
+            
         case MXParallaxHeaderModeBottom:
             [self setBottomModeConstraints];
             break;
@@ -193,6 +197,14 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     NSDictionary *metrics   = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
+}
+
+- (void) setBottomFillModeConstraints {
+    NSDictionary *binding   = @{@"v" : self.view};
+    NSDictionary *metrics   = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),
+                                @"height"       : @(self.height)};
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0.0@highPriority-[v(>=height)]|" options:0 metrics:metrics views:binding]];
 }
 
 - (void) setBottomModeConstraints {
