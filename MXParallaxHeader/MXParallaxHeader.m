@@ -67,6 +67,9 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void)setView:(UIView *)view {
+    // Remove old view
+    [_view removeFromSuperview];
+    
     if (view != _view) {
         _view = view;
         [self updateConstraints];
