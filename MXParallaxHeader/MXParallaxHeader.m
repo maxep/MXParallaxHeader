@@ -83,8 +83,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void)setHeight:(CGFloat)height {
     if (_height != height) {
         
-        //Adjust content inset
-        self.scrollViewContentTopInset = self.scrollView.contentInset.top - _height + height;
+        if ([self.scrollView isKindOfClass:UITableView.class]) {
+            //Adjust the table header view frame
+            [self setTableHeaderViewFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), height)];
+        } else {
+            //Adjust content inset
+            [self setScrollViewTopInset:self.scrollView.contentInset.top - _height + height];
+        }
         
         _height = height;
         [self updateConstraints];
@@ -101,13 +106,18 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     if (_scrollView != scrollView) {
         _scrollView = scrollView;
         
-        //Adjust content inset
-        self.scrollViewContentTopInset = self.scrollView.contentInset.top + self.height;
+        
+        if ([scrollView isKindOfClass:UITableView.class]) {
+            //Adjust the table header view frame
+            [self setTableHeaderViewFrame:CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), self.height)];
+        } else {
+            //Adjust content inset
+            [self setScrollViewTopInset:scrollView.contentInset.top + self.height];
+            [scrollView addSubview:self.contentView];
+        }
         
         //Layout content view
-        [scrollView addSubview:self.contentView];
         [self layoutContentView];
-        
         _isObserving = YES;
     }
 }
@@ -119,7 +129,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 #pragma mark Constraints
 
-- (void) updateConstraints {
+- (void)updateConstraints {
     if (!self.view) {
         return;
     }
@@ -152,7 +162,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     }
 }
 
-- (void) setCenterModeConstraints {
+- (void)setCenterModeConstraints {
     
     NSDictionary *binding  = @{@"v" : self.view};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
@@ -174,13 +184,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
                                                                   constant:self.height]];
 }
 
-- (void) setFillModeConstraints {
+- (void)setFillModeConstraints {
     NSDictionary *binding  = @{@"v" : self.view};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
 }
 
-- (void) setTopFillModeConstraints {
+- (void)setTopFillModeConstraints {
     NSDictionary *binding   = @{@"v" : self.view};
     NSDictionary *metrics   = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),
                                 @"height"       : @(self.height)};
@@ -188,14 +198,14 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(>=height)]-0.0@highPriority-|" options:0 metrics:metrics views:binding]];
 }
 
-- (void) setTopModeConstraints {
+- (void)setTopModeConstraints {
     NSDictionary *binding  = @{@"v" : self.view};
     NSDictionary *metrics   = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
 }
 
-- (void) setBottomModeConstraints {
+- (void)setBottomModeConstraints {
     NSDictionary *binding  = @{@"v" : self.view};
     NSDictionary *metrics   = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
@@ -204,19 +214,28 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 #pragma mark Private Methods
 
-- (void) layoutContentView {
+- (void)layoutContentView {
     CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
-    CGFloat relativeYOffset = self.height - self.scrollView.contentOffset.y - self.scrollView.contentInset.top;
+    CGFloat relativeHeight;
+    CGFloat relativeYOffset;
+    
+    if ([self.scrollView isKindOfClass:UITableView.class]) {
+        relativeYOffset = self.scrollView.contentOffset.y;
+        relativeHeight  = self.height - relativeYOffset;
+    } else {
+        relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
+        relativeHeight  = -relativeYOffset;
+    }
     
     self.contentView.frame = (CGRect){
         .origin.x       = 0,
-        .origin.y       = -relativeYOffset,
+        .origin.y       = relativeYOffset,
         .size.width     = self.scrollView.frame.size.width,
-        .size.height    = MAX(relativeYOffset, minimumHeight)
+        .size.height    = MAX(relativeHeight, minimumHeight)
     };
 }
 
-- (void) setScrollViewContentTopInset:(CGFloat)top {
+- (void)setScrollViewTopInset:(CGFloat)top {
     UIEdgeInsets inset = self.scrollView.contentInset;
     
     //Adjust content offset
@@ -227,6 +246,17 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     //Adjust content inset
     inset.top = top;
     self.scrollView.contentInset = inset;
+}
+
+- (void)setTableHeaderViewFrame:(CGRect)frame {
+    
+    //Create a table header view that will raise KVO
+    MXParallaxView *headerView = [[MXParallaxView alloc] initWithFrame:frame];
+    headerView.parent = self;
+    
+    [headerView addSubview:self.contentView];
+    [(UITableView *)self.scrollView setTableHeaderView:headerView];
+    [headerView setNeedsLayout];
 }
 
 #pragma mark KVO
