@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C26791B9735A39784701AD57C415D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
 		11873F9AEC6D5C809149ECE1A6D8A89A /* MXParallaxHeader-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B902D47BAFE78FCBBE113937E64EFBD /* MXParallaxHeader-dummy.m */; };
 		24BF1750F4CFC59CD678170B08055D21 /* Pods-MXParallaxHeader_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 987F56FF4F9F5B7E244F11E7CFAB83EA /* Pods-MXParallaxHeader_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3567D01AF0D69CB728C89EC117766FEE /* Pods-MXParallaxHeader_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BC00AF72715CACA724EF388E39B164 /* Pods-MXParallaxHeader_Example-dummy.m */; };
 		38F0CC43AA702A06D09162ADD578AABD /* MXParallaxHeader-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C0A19D3DE1FCEEF51300DBCE83F864 /* MXParallaxHeader-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		440E27D02407612CBDAB18650EB7BD95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		541012167522365C84F14840785A62EA /* MXParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C618CDE374C697BF3706A8AFF75D15 /* MXParallaxHeader.m */; };
 		7952B2F1B82BDBE2A9A33579FCED123F /* MXParallaxHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = F02BD5C707E9B61F52A144A1D4B6887C /* MXParallaxHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D8623B246951FDC756C9C0B8A55F852 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
 		985834C9184FA5641753E252F1127BE8 /* Pods-MXParallaxHeader_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6014BE775BCC591B24E2B84DF07A97B /* Pods-MXParallaxHeader_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E4BC77D1736F8198EE26CF3DC8577A2 /* MXScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = A298503469D6CFCB391C8106DD8DFB62 /* MXScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3C7CD02A649DD562DDB7205BECDF010 /* MXScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 056417BBD10CFE8E15ECD9E5F99567F2 /* MXScrollView.m */; };
 		A695409F1D7C57E2D64A6F75132F9F06 /* MXScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 853E64F8B0753CF7C8B71FC5AF9979A9 /* MXScrollViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE96EC97F56D52FEC822F36EC545441 /* Pods-MXParallaxHeader_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F72B325E8464C4ABA64FA29CBD7D46 /* Pods-MXParallaxHeader_Tests-dummy.m */; };
 		C384E0BA0D3A855623E949A05020BDC8 /* MXScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA06C2343231076018D3C874AAE45F8 /* MXScrollViewController.m */; };
-		C70540E4EF0499BC5D0D445FA7E232D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		C4C1F5A6316EA49BE062A1FDA25FD174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		E35C046612AA8164F9F913C2E4C3D65D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		0E895AAF6755D0E9C24636914B1C2899 /* Pods-MXParallaxHeader_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MXParallaxHeader_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		117A41677121DEB178CA5850399EC133 /* Pods_MXParallaxHeader_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXParallaxHeader_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B902D47BAFE78FCBBE113937E64EFBD /* MXParallaxHeader-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MXParallaxHeader-dummy.m"; sourceTree = "<group>"; };
-		3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3FDCADD480220FFDD0725401C10A9D90 /* MXParallaxHeader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MXParallaxHeader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C6C513C451300FC336CB3C48845068 /* Pods-MXParallaxHeader_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MXParallaxHeader_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4FA06C2343231076018D3C874AAE45F8 /* MXScrollViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewController.m; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		86C138290064AFF13F0CA60A9341C166 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3106A07E3419CCDFABF28EAD68E3B3 /* Pods-MXParallaxHeader_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MXParallaxHeader_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB78FC0F47F9924F2112B62CF91677F /* Pods-MXParallaxHeader_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MXParallaxHeader_Tests-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		987F56FF4F9F5B7E244F11E7CFAB83EA /* Pods-MXParallaxHeader_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MXParallaxHeader_Tests-umbrella.h"; sourceTree = "<group>"; };
 		98F72B325E8464C4ABA64FA29CBD7D46 /* Pods-MXParallaxHeader_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MXParallaxHeader_Tests-dummy.m"; sourceTree = "<group>"; };
 		A298503469D6CFCB391C8106DD8DFB62 /* MXScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MXScrollView.h; sourceTree = "<group>"; };
@@ -69,10 +69,10 @@
 		A660B646D967A7D37A53266CFA8D3D3B /* MXParallaxHeader-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MXParallaxHeader-prefix.pch"; sourceTree = "<group>"; };
 		AEAD78795EF7DCB86C32FD978A3CA231 /* Pods-MXParallaxHeader_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MXParallaxHeader_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B6D605E42C4A62CDF0ECC10A490DB002 /* Pods-MXParallaxHeader_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MXParallaxHeader_Example-resources.sh"; sourceTree = "<group>"; };
-		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BF4FD02D8A69EFBF226AC5BD7180F3CD /* Pods_MXParallaxHeader_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXParallaxHeader_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23F873C41705AC5973EBE9BD5B243B3 /* Pods-MXParallaxHeader_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MXParallaxHeader_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9C0A19D3DE1FCEEF51300DBCE83F864 /* MXParallaxHeader-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MXParallaxHeader-umbrella.h"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D06DB1EA40E048E6528B931B0BF963C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6014BE775BCC591B24E2B84DF07A97B /* Pods-MXParallaxHeader_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MXParallaxHeader_Example-umbrella.h"; sourceTree = "<group>"; };
 		DE9B4018F644A5DC069053900B29A965 /* Pods-MXParallaxHeader_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MXParallaxHeader_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70540E4EF0499BC5D0D445FA7E232D2 /* Foundation.framework in Frameworks */,
+				E35C046612AA8164F9F913C2E4C3D65D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C26791B9735A39784701AD57C415D39 /* Foundation.framework in Frameworks */,
+				C4C1F5A6316EA49BE062A1FDA25FD174 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,21 +102,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D8623B246951FDC756C9C0B8A55F852 /* Foundation.framework in Frameworks */,
+				440E27D02407612CBDAB18650EB7BD95 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		112C7921E3A497328D11F4930CBBC9CA /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		2F56ABCDF845469A8A11F0BBB438C903 /* MXParallaxHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +117,14 @@
 			);
 			name = MXParallaxHeader;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		4EB57CE7D6680EC4660C6047E54BB0FD /* MXParallaxHeader */ = {
@@ -170,7 +170,7 @@
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				EA6DBFC26DFE63EE5D290F5EFDA401CB /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				9AA982D1444884881A31879A4E1BD9AD /* Products */,
@@ -205,7 +205,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				112C7921E3A497328D11F4930CBBC9CA /* iOS */,
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -429,6 +429,48 @@
 			};
 			name = Debug;
 		};
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
 		6FE19A17131BC34427F952840EE8160D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5896431EA3FF207386745BD0254F385A /* MXParallaxHeader.xcconfig */;
@@ -520,43 +562,6 @@
 			};
 			name = Release;
 		};
-		811519CB8F683AC06F9C98B55AC40F11 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		817AE272B5B5D2E0DB35D8EFCE9FCA1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C23F873C41705AC5973EBE9BD5B243B3 /* Pods-MXParallaxHeader_Tests.debug.xcconfig */;
@@ -590,10 +595,11 @@
 			};
 			name = Debug;
 		};
-		882EB4391EC2E701934974DA86F7343F /* Debug */ = {
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -607,17 +613,13 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
+					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -625,11 +627,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		E578BF7051B288A0FA532CCC4F0196A6 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -679,8 +681,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				882EB4391EC2E701934974DA86F7343F /* Debug */,
-				811519CB8F683AC06F9C98B55AC40F11 /* Release */,
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

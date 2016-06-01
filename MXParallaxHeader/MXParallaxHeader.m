@@ -86,6 +86,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         if ([self.scrollView isKindOfClass:UITableView.class]) {
             //Adjust the table header view frame
             [self setTableHeaderViewFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), height)];
+            [self setScrollViewTopInset:self.minimumHeight];
         } else {
             //Adjust content inset
             [self setScrollViewTopInset:self.scrollView.contentInset.top - _height + height];
@@ -99,6 +100,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)setMinimumHeight:(CGFloat)minimumHeight {
     _minimumHeight = minimumHeight;
+    
+    if ([self.scrollView isKindOfClass:UITableView.class]) {
+        [self setScrollViewTopInset:minimumHeight];
+    }
+         
     [self layoutContentView];
 }
 
@@ -110,6 +116,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         if ([scrollView isKindOfClass:UITableView.class]) {
             //Adjust the table header view frame
             [self setTableHeaderViewFrame:CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), self.height)];
+            [self setScrollViewTopInset:self.minimumHeight];
         } else {
             //Adjust content inset
             [self setScrollViewTopInset:scrollView.contentInset.top + self.height];
@@ -222,6 +229,9 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     if ([self.scrollView isKindOfClass:UITableView.class]) {
         relativeYOffset = self.scrollView.contentOffset.y;
         relativeHeight  = self.height - relativeYOffset;
+        
+        // Keep table header view over sections
+        [self.scrollView bringSubviewToFront:self.contentView.superview];
     } else {
         relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
         relativeHeight  = -relativeYOffset;
