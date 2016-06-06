@@ -34,6 +34,7 @@
 @implementation MXScrollView {
     BOOL _isObserving;
     BOOL _lock;
+    dispatch_once_t _onceToken;
 }
 
 static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
@@ -66,15 +67,17 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (void) initialize {
-    super.delegate = self.delegateForwarder;
-    self.showsVerticalScrollIndicator = NO;
-    self.directionalLockEnabled = YES;
-    self.bounces = YES;
-    
-    [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
-              options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-              context:kMXScrollViewKVOContext];
-    _isObserving = YES;
+    dispatch_once(&_onceToken, ^{
+        super.delegate = self.delegateForwarder;
+        self.showsVerticalScrollIndicator = NO;
+        self.directionalLockEnabled = YES;
+        self.bounces = YES;
+
+        [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                  context:kMXScrollViewKVOContext];
+        _isObserving = YES;
+    });
 }
 
 #pragma mark Properties
