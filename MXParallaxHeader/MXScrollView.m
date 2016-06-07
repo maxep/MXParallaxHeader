@@ -41,14 +41,6 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 @synthesize delegate = _delegate;
 @synthesize bounces = _bounces;
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self initialize];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame: frame];
     if (self) {
