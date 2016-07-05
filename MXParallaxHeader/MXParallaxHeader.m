@@ -32,14 +32,18 @@
 static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOContext;
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        [self.superview removeObserver:self.parent forKeyPath:NSStringFromSelector(@selector(contentOffset)) context:kMXParallaxHeaderKVOContext];
+    }
 }
 
-- (void)didMoveToSuperview {
-    [self.superview addObserver:self.parent
-                     forKeyPath:NSStringFromSelector(@selector(contentOffset))
-                        options:NSKeyValueObservingOptionNew
-                        context:kMXParallaxHeaderKVOContext];
+- (void)didMoveToSuperview{
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        [self.superview addObserver:self.parent
+                         forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                            options:NSKeyValueObservingOptionNew
+                            context:kMXParallaxHeaderKVOContext];
+    }
 }
 
 @end
