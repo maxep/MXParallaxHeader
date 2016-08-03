@@ -26,7 +26,7 @@
 @property (nonatomic,weak) id<MXScrollViewDelegate> delegate;
 @end
 
-@interface MXScrollView () <UIGestureRecognizerDelegate>
+@interface MXScrollView () <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) MXScrollViewDelegateForwarder *delegateForwarder;
 @property (nonatomic, strong) NSMutableArray<UIScrollView *> *observedViews;
 @end
@@ -57,7 +57,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     return self;
 }
 
-- (void) initialize {
+- (void)initialize {
     super.delegate = self.delegateForwarder;
     self.showsVerticalScrollIndicator = NO;
     self.directionalLockEnabled = YES;
@@ -129,16 +129,17 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 #pragma mark KVO
 
-- (void) addObserverToView:(UIScrollView *)scrollView {
+- (void)addObserverToView:(UIScrollView *)scrollView {
+    _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
     [scrollView addObserver:self
            forKeyPath:NSStringFromSelector(@selector(contentOffset))
               options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
               context:kMXScrollViewKVOContext];
     
-    _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
+    
 }
 
-- (void) removeObserverFromView:(UIScrollView *)scrollView {
+- (void)removeObserverFromView:(UIScrollView *)scrollView {
     @try {
         [scrollView removeObserver:self
                   forKeyPath:NSStringFromSelector(@selector(contentOffset))
@@ -161,20 +162,18 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
         if (object == self) {
             
             //Adjust self scroll offset when scroll down
-            if (diff > 0 && _lock) {
+            if (diff > 0 && _lock /* && old.y <= -self.parallaxHeader.minimumHeight */) {
                 [self scrollView:self setContentOffset:old];
-            }
-            else if (((self.contentOffset.y < -self.contentInset.top) && !self.bounces)) {
+            } else if (((self.contentOffset.y < -self.contentInset.top) && !self.bounces)) {
                 [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, -self.contentInset.top)];
             }
-        }
-        else {
+        } else {
             //Adjust the observed scrollview's content offset
             UIScrollView *scrollView = object;
             _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
             
             //Manage scroll up
-            if (self.contentOffset.y < -self.parallaxHeader.minimumHeight && _lock && diff < 0) {
+            if (diff < 0 && _lock && self.contentOffset.y < -self.parallaxHeader.minimumHeight) {
                 [self scrollView:scrollView setContentOffset:old];
             }
             //Disable bouncing when scroll down
@@ -182,29 +181,30 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
                 [self scrollView:scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -scrollView.contentInset.top)];
             }
         }
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
 #pragma mark Scrolling views handlers
 
-- (void) addObservedView:(UIScrollView *)scrollView {
+- (void)addObservedView:(UIScrollView *)scrollView {
     if (![self.observedViews containsObject:scrollView]) {
         [self.observedViews addObject:scrollView];
         [self addObserverToView:scrollView];
     }
 }
 
-- (void) removeObservedViews {
+- (void)removeObservedViews {
+    _lock = NO;
+    
     for (UIScrollView *scrollView in self.observedViews) {
         [self removeObserverFromView:scrollView];
     }
     [self.observedViews removeAllObjects];
 }
 
-- (void) scrollView:(UIScrollView*)scrollView setContentOffset:(CGPoint)offset {
+- (void)scrollView:(UIScrollView*)scrollView setContentOffset:(CGPoint)offset {
     _isObserving = NO;
     scrollView.contentOffset = offset;
     _isObserving = YES;
@@ -224,8 +224,13 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    _lock = NO;
     [self removeObservedViews];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        [self removeObservedViews];
+    }
 }
 
 @end
@@ -243,16 +248,23 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 #pragma mark <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [(MXScrollView*)scrollView scrollViewDidScroll:scrollView];
+    [(MXScrollView *)scrollView scrollViewDidScroll:scrollView];
     if ([self.delegate respondsToSelector:_cmd]) {
         [self.delegate scrollViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [(MXScrollView*)scrollView scrollViewDidEndDecelerating:scrollView];
+    [(MXScrollView *)scrollView scrollViewDidEndDecelerating:scrollView];
     if ([self.delegate respondsToSelector:_cmd]) {
         [self.delegate scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [(MXScrollView *)scrollView scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if ([self.delegate respondsToSelector:_cmd]) {
+        [self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
 
