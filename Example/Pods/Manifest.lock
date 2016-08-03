@@ -1,5 +1,5 @@
 PODS:
-  - MXParallaxHeader (0.5.0)
+  - MXParallaxHeader (0.5.1)
 
 DEPENDENCIES:
   - MXParallaxHeader (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MXParallaxHeader: c7dfdf8d769a8eb868a431ec3aeaf994a147b8bc
+  MXParallaxHeader: b40fabd42d1bb76f6d1a713ceae5628f69241bd6
 
 PODFILE CHECKSUM: a677d4082ab48c947ca77bc0661d75f7e8b9a860
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
