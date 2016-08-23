@@ -35,12 +35,6 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://dribbble.com/search?q=spaceship"]];
     [self.webView loadRequest:request];
-    
-    // Parallax Header
-    self.parallaxHeader.view = [MXFalconHeader instanciateFromNib];
-    self.parallaxHeader.height = 300;
-    self.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    self.parallaxHeader.minimumHeight = 20;
 }
 
 - (IBAction)back:(id)sender {

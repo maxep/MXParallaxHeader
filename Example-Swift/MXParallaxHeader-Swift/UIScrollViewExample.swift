@@ -25,14 +25,16 @@ import MXParallaxHeader
 
 class UIScrollViewExample: UITableViewController {
 
+    @IBOutlet var headerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Parallax Header        
-        self.tableView.parallaxHeader.view = NSBundle.mainBundle().loadNibNamed("RocketHeader", owner: self, options: nil).first as? UIView
-        self.tableView.parallaxHeader.height = 300
-        self.tableView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
-        self.tableView.parallaxHeader.minimumHeight = 20
+        tableView.parallaxHeader.view = headerView // You can set the parallax header view from the floating view
+        tableView.parallaxHeader.height = 300
+        tableView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
+        tableView.parallaxHeader.minimumHeight = 20
     }
 
     // MARK: - Table view data source
@@ -50,7 +52,7 @@ class UIScrollViewExample: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.parallaxHeader.height = CGFloat(indexPath.row * 10)
+        tableView.parallaxHeader.height = CGFloat(indexPath.row * 10)
     }
     
     // MARK: - Scroll view delegate

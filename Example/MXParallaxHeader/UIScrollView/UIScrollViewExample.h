@@ -24,4 +24,7 @@
 
 @interface UIScrollViewExample : UITableViewController
 
+/// This Header view is a floating view from storyboard.
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+
 @end

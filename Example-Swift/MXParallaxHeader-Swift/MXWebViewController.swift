@@ -31,24 +31,18 @@ class MXWebViewController: UIViewController {
         super.viewDidLoad()
         
         let request = NSURLRequest(URL: NSURL(string: "https://dribbble.com/search?q=spaceship")!)
-        self.webView.loadRequest(request)
-        
-        // Parallax Header        
-        self.parallaxHeader!.view = MXFalconHeader.instanciateFromNib()
-        self.parallaxHeader!.height = 300
-        self.parallaxHeader!.mode = MXParallaxHeaderMode.Fill
-        self.parallaxHeader!.minimumHeight = 20
+        webView.loadRequest(request)
     }
     
     @IBAction func back(sender: AnyObject) {
-        self.webView.goBack()
+        webView.goBack()
     }
     
     @IBAction func forward(sender: AnyObject) {
-        self.webView.goForward()
+        webView.goForward()
     }
     
     @IBAction func refresh(sender: AnyObject) {
-        self.webView.reload()
+        webView.reload()
     }
 }

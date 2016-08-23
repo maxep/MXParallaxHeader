@@ -41,12 +41,13 @@
     [self.scrollView addSubview:self.table2];
     
     // Parallax Header
-    self.scrollView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"StarshipHeader" owner:self options:nil].firstObject;
+    self.scrollView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"StarshipHeader" owner:self options:nil].firstObject; // You can set the parallax header view from a nib.
     self.scrollView.parallaxHeader.height = 300;
     self.scrollView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.scrollView.parallaxHeader.minimumHeight = 20;
 }
 
+// In this example I use manual layout for peformances
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     CGRect frame = self.view.frame;

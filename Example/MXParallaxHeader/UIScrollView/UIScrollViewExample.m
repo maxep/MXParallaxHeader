@@ -29,8 +29,8 @@
     [super viewDidLoad];    
 	
     // Parallax Header    
-    self.tableView.parallaxHeader.view = [NSBundle.mainBundle loadNibNamed:@"RocketHeader" owner:self options:nil].firstObject;
-    self.tableView.parallaxHeader.height = 200;
+    self.tableView.parallaxHeader.view = self.headerView; // You can set the parallax header view from the floating view.
+    self.tableView.parallaxHeader.height = 300;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = 20;
 }
@@ -49,11 +49,11 @@
 
 #pragma mark <UITableViewDataSource>
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 50;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = [NSString stringWithFormat:@"Height %ld", (long)indexPath.row * 10];
     return cell;

@@ -24,11 +24,9 @@
 		AD6695B4150F5D47134336B0 /* Pods_MXParallaxHeader_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6863955D359C9E118E92AE39 /* Pods_MXParallaxHeader_Tests.framework */; };
 		D0C04B771BE121D7005153AF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C04B761BE121D7005153AF /* Launch Screen.storyboard */; };
 		D0C6A5D71C1B689C00A3508E /* MXFalconHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C6A5D61C1B689C00A3508E /* MXFalconHeader.m */; };
-		D0C6A5D91C1B68E900A3508E /* FalconHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C6A5D81C1B68E900A3508E /* FalconHeader.xib */; };
 		D0D1A4EF1BE909200048B16D /* MXScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A4E81BE909200048B16D /* MXScrollViewExample.m */; };
 		D0D1A4F01BE909200048B16D /* UIScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A4EB1BE909200048B16D /* UIScrollViewExample.m */; };
 		D0D1A5251BECDD0F0048B16D /* MXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D1A5241BECDD0F0048B16D /* MXWebViewController.m */; };
-		D0FA57801C1AFE1B00CE296F /* RocketHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FA577E1C1AFE1B00CE296F /* RocketHeader.xib */; };
 		D0FA57811C1AFE1B00CE296F /* StarshipHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FA577F1C1AFE1B00CE296F /* StarshipHeader.xib */; };
 /* End PBXBuildFile section */
 
@@ -69,14 +67,12 @@
 		D0C04B761BE121D7005153AF /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D0C6A5D51C1B689C00A3508E /* MXFalconHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXFalconHeader.h; sourceTree = "<group>"; };
 		D0C6A5D61C1B689C00A3508E /* MXFalconHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXFalconHeader.m; sourceTree = "<group>"; };
-		D0C6A5D81C1B68E900A3508E /* FalconHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FalconHeader.xib; sourceTree = "<group>"; };
 		D0D1A4E71BE909200048B16D /* MXScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewExample.h; sourceTree = "<group>"; };
 		D0D1A4E81BE909200048B16D /* MXScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewExample.m; sourceTree = "<group>"; };
 		D0D1A4EA1BE909200048B16D /* UIScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScrollViewExample.h; sourceTree = "<group>"; };
 		D0D1A4EB1BE909200048B16D /* UIScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewExample.m; sourceTree = "<group>"; };
 		D0D1A5231BECDD0F0048B16D /* MXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXWebViewController.h; sourceTree = "<group>"; };
 		D0D1A5241BECDD0F0048B16D /* MXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXWebViewController.m; sourceTree = "<group>"; };
-		D0FA577E1C1AFE1B00CE296F /* RocketHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RocketHeader.xib; sourceTree = "<group>"; };
 		D0FA577F1C1AFE1B00CE296F /* StarshipHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarshipHeader.xib; sourceTree = "<group>"; };
 		D8A5CC3A58C88674FE006F63 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DFE18A449D85E4F19A5EDF7E /* Pods-MXParallaxHeader_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXParallaxHeader_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MXParallaxHeader_Tests/Pods-MXParallaxHeader_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -244,9 +240,7 @@
 		D0FA577D1C1AFE1B00CE296F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				D0FA577E1C1AFE1B00CE296F /* RocketHeader.xib */,
 				D0FA577F1C1AFE1B00CE296F /* StarshipHeader.xib */,
-				D0C6A5D81C1B68E900A3508E /* FalconHeader.xib */,
 				D0C6A5D51C1B689C00A3508E /* MXFalconHeader.h */,
 				D0C6A5D61C1B689C00A3508E /* MXFalconHeader.m */,
 			);
@@ -336,10 +330,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C6A5D91C1B68E900A3508E /* FalconHeader.xib in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				D0FA57801C1AFE1B00CE296F /* RocketHeader.xib in Resources */,
 				D0C04B771BE121D7005153AF /* Launch Screen.storyboard in Resources */,
 				D0FA57811C1AFE1B00CE296F /* StarshipHeader.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,

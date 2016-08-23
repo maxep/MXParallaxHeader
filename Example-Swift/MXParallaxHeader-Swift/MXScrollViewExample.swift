@@ -27,45 +27,46 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
 
     private var SpanichWhite : UIColor = UIColor(colorLiteralRed: 0.996, green: 0.992, blue: 0.941, alpha: 1) /*#fefdf0*/
     
-    @IBOutlet weak var scrollView: MXScrollView!
-    
+    var scrollView: MXScrollView!
     var table1: UITableView!
     var table2: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Parallax Header        
-        self.scrollView.parallaxHeader.view = NSBundle.mainBundle().loadNibNamed("StarshipHeader", owner: self, options: nil).first as? UIView
-        self.scrollView.parallaxHeader.height = 300
-        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
-        self.scrollView.parallaxHeader.minimumHeight = 20
+        // Parallax Header
+        scrollView = MXScrollView()
+        scrollView.parallaxHeader.view = NSBundle.mainBundle().loadNibNamed("StarshipHeader", owner: self, options: nil).first as? UIView // You can set the parallax header view from a nib.
+        scrollView.parallaxHeader.height = 300
+        scrollView.parallaxHeader.mode = MXParallaxHeaderMode.Fill
+        scrollView.parallaxHeader.minimumHeight = 20
+        view.addSubview(scrollView)
         
-        self.table1 = UITableView()
-        self.table1.dataSource = self;
-        self.table1.backgroundColor = SpanichWhite
-        self.scrollView.addSubview(self.table1)
+        table1 = UITableView()
+        table1.dataSource = self;
+        table1.backgroundColor = SpanichWhite
+        scrollView.addSubview(table1)
         
-        self.table2 = UITableView()
-        self.table2.dataSource = self;
-        self.table2.backgroundColor = SpanichWhite
-        self.scrollView.addSubview(self.table2)
+        table2 = UITableView()
+        table2.dataSource = self;
+        table2.backgroundColor = SpanichWhite
+        scrollView.addSubview(table2)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var frame = self.view.frame
+        var frame = view.frame
         
-        self.scrollView.frame = frame
-        self.scrollView.contentSize = frame.size
+        scrollView.frame = frame
+        scrollView.contentSize = frame.size
         
         frame.size.width /= 2
-        frame.size.height -= self.scrollView.parallaxHeader.minimumHeight
-        self.table1.frame = frame
+        frame.size.height -= scrollView.parallaxHeader.minimumHeight
+        table1.frame = frame
         
         frame.origin.x = frame.size.width
-        self.table2.frame = frame
+        table2.frame = frame
     }
     
     // MARK: - Table view data source
