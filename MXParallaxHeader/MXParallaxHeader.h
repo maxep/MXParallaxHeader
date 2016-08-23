@@ -29,13 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
     /**
-     The option to center the content in the header’s bounds, keeping the proportions the same.
-     */
-    MXParallaxHeaderModeCenter = 0,
-    /**
      The option to scale the content to fill the size of the header. Some portion of the content may be clipped to fill the header’s bounds.
      */
-    MXParallaxHeaderModeFill,
+    MXParallaxHeaderModeFill = 0,
     /**
      The option to scale the content to fill the size of the header and aligned at the top in the header's bounds.
      */
@@ -44,6 +40,10 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
      The option to center the content aligned at the top in the header's bounds.
      */
     MXParallaxHeaderModeTop,
+    /**
+     The option to center the content in the header’s bounds, keeping the proportions the same.
+     */
+    MXParallaxHeaderModeCenter,
     /**
      The option to center the content aligned at the bottom in the header’s bounds.
      */
