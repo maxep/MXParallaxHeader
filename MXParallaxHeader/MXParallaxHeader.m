@@ -307,10 +307,15 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     MXParallaxHeader *parallaxHeader = objc_getAssociatedObject(self, @selector(parallaxHeader));
     if (!parallaxHeader) {
         parallaxHeader = [MXParallaxHeader new];
-        parallaxHeader.scrollView = self;
-        objc_setAssociatedObject(self, @selector(parallaxHeader), parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self setParallaxHeader:parallaxHeader];
     }
     return parallaxHeader;
+}
+
+- (void)setParallaxHeader:(MXParallaxHeader *)parallaxHeader {
+    parallaxHeader.scrollView = self;
+    objc_setAssociatedObject(self, @selector(parallaxHeader), parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
 }
 
 @end

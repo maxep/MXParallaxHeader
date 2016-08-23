@@ -61,17 +61,17 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 /**
  The header's view.
  */
-@property (nonatomic,strong,nullable) UIView *view;
+@property (nonatomic,strong,nullable) IBOutlet UIView *view;
 
 /**
  The header's default height. 0 0 by default.
  */
-@property (nonatomic) CGFloat height;
+@property (nonatomic) IBInspectable CGFloat height;
 
 /**
  The header's minimum height while scrolling up. 0 by default.
  */
-@property (nonatomic) CGFloat minimumHeight;
+@property (nonatomic) IBInspectable CGFloat minimumHeight;
 
 /**
  The parallax header behavior mode.
@@ -100,6 +100,6 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 /**
  The parallax header.
  */
-@property (nonatomic,strong,readonly,nonnull) MXParallaxHeader *parallaxHeader;
+@property (nonatomic, strong) IBOutlet MXParallaxHeader *parallaxHeader;
 
 @end
