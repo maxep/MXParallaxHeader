@@ -23,6 +23,12 @@
 #import <objc/runtime.h>
 #import "MXScrollViewController.h"
 
+@interface MXScrollViewController ()
+@property (nonatomic,weak) IBOutlet UIView *headerView;
+@property (nonatomic) IBInspectable CGFloat headerHeight;
+@property (nonatomic) IBInspectable CGFloat headerMinimumHeight;
+@end
+
 @implementation MXScrollViewController
 
 static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewControllerKVOContext;
@@ -34,6 +40,10 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.scrollView.parallaxHeader.view = self.headerView;
+    self.scrollView.parallaxHeader.height = self.headerHeight;
+    self.scrollView.parallaxHeader.minimumHeight = self.headerMinimumHeight;
     
     //Hack to perform MXScrollViewControllerSegue on load
     @try {
