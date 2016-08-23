@@ -22,6 +22,8 @@
 
 #import "MXScrollView.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  The MXScrollViewController class.
  */
@@ -30,12 +32,12 @@
 /**
  The scroll view container.
  */
-@property (nonatomic, strong, readonly, nonnull) MXScrollView *scrollView;
+@property (nonatomic,readonly) MXScrollView *scrollView;
 
 /**
  The child view controller to be added to the scroll view.
  */
-@property (nonatomic, strong, nullable) UIViewController<MXScrollViewDelegate> *childViewController;
+@property (nonatomic,strong,nullable) UIViewController<MXScrollViewDelegate> *childViewController;
 
 @end
 
@@ -47,7 +49,7 @@
 /**
  The parallax header.
  */
-@property (nonatomic, strong, nullable, readonly) MXParallaxHeader *parallaxHeader;
+@property (nonatomic,readonly,nullable) MXParallaxHeader *parallaxHeader;
 
 @end
 
@@ -57,3 +59,5 @@
 @interface MXScrollViewControllerSegue : UIStoryboardSegue
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -22,6 +22,8 @@
 
 #import "MXParallaxHeader.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MXScrollView;
 
 /**
@@ -38,7 +40,7 @@
  
  @return YES to allow scrollview and subview to scroll together. YES by default.
  */
-- (BOOL) scrollView:(nonnull MXScrollView *)scrollView shouldScrollWithSubView:(nonnull UIScrollView *)subView;
+- (BOOL)scrollView:(MXScrollView *)scrollView shouldScrollWithSubView:(UIScrollView *)subView;
 
 @end
 
@@ -53,3 +55,5 @@
 @property (nonatomic, weak, nullable) id<MXScrollViewDelegate> delegate;
 
 @end
+
+NS_ASSUME_NONNULL_END

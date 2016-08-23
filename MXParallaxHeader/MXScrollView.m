@@ -57,7 +57,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     return self;
 }
 
-- (void) initialize {
+- (void)initialize {
     super.delegate = self.delegateForwarder;
     self.showsVerticalScrollIndicator = NO;
     self.directionalLockEnabled = YES;
@@ -129,7 +129,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 #pragma mark KVO
 
-- (void) addObserverToView:(UIScrollView *)scrollView {
+- (void)addObserverToView:(UIScrollView *)scrollView {
     [scrollView addObserver:self
            forKeyPath:NSStringFromSelector(@selector(contentOffset))
               options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
@@ -190,21 +190,21 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 #pragma mark Scrolling views handlers
 
-- (void) addObservedView:(UIScrollView *)scrollView {
+- (void)addObservedView:(UIScrollView *)scrollView {
     if (![self.observedViews containsObject:scrollView]) {
         [self.observedViews addObject:scrollView];
         [self addObserverToView:scrollView];
     }
 }
 
-- (void) removeObservedViews {
+- (void)removeObservedViews {
     for (UIScrollView *scrollView in self.observedViews) {
         [self removeObserverFromView:scrollView];
     }
     [self.observedViews removeAllObjects];
 }
 
-- (void) scrollView:(UIScrollView*)scrollView setContentOffset:(CGPoint)offset {
+- (void)scrollView:(UIScrollView*)scrollView setContentOffset:(CGPoint)offset {
     _isObserving = NO;
     scrollView.contentOffset = offset;
     _isObserving = YES;

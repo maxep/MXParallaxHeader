@@ -22,6 +22,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  The parallac header mode.
  */
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 /**
  The content view on top of the UIScrollView's content.
  */
-@property (nonatomic,strong,readonly,nonnull) UIView *contentView;
+@property (nonatomic,readonly) UIView *contentView;
 
 /**
  The header's view.
@@ -88,7 +90,7 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 @protocol MXParallaxHeader <NSObject>
 
 @optional
-- (void) parallaxHeaderDidScroll:(nonnull MXParallaxHeader *)parallaxHeader;
+- (void)parallaxHeaderDidScroll:(MXParallaxHeader *)parallaxHeader;
 
 @end
 
@@ -103,3 +105,5 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 @property (nonatomic, strong) IBOutlet MXParallaxHeader *parallaxHeader;
 
 @end
+
+NS_ASSUME_NONNULL_END

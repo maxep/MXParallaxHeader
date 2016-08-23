@@ -56,7 +56,7 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     [self layoutChildViewController];
 }
 
-- (void) layoutChildViewController {
+- (void)layoutChildViewController {
     CGRect frame = self.scrollView.frame;
     frame.origin = CGPointZero;
     frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;

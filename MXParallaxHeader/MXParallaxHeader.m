@@ -293,8 +293,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
                 [(id<MXParallaxHeader>)self.view parallaxHeaderDidScroll:self];
             }
         }
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
