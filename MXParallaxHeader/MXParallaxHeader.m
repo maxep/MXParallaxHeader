@@ -239,7 +239,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         // Adjust the table view inset (cf. http://stackoverflow.com/a/5669879 )
         UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top = relativeYOffset < 0 ?: self.minimumHeight;
+        inset.top = relativeYOffset < 0 ? 0: self.minimumHeight;
         self.scrollView.contentInset = inset;
         
     } else {
