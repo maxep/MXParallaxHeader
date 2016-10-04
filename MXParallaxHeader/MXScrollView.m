@@ -167,8 +167,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
             else if (((self.contentOffset.y < -self.contentInset.top) && !self.bounces)) {
                 [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, -self.contentInset.top)];
             }
-        }
-        else {
+        } else {
             //Adjust the observed scrollview's content offset
             UIScrollView *scrollView = object;
             _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
@@ -182,8 +181,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
                 [self scrollView:scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -scrollView.contentInset.top)];
             }
         }
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }

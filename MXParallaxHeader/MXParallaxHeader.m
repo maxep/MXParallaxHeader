@@ -237,11 +237,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         // Keep table header view over sections
         [self.scrollView bringSubviewToFront:self.contentView.superview];
         
-        // Adjust the table view inset (cf. http://stackoverflow.com/a/5669879 )
-        UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top = relativeYOffset < 0 ? 0: self.minimumHeight;
-        self.scrollView.contentInset = inset;
-        
     } else {
         relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
         relativeHeight  = -relativeYOffset;
