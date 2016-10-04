@@ -1,0 +1,5 @@
+framework module MXParallaxHeader {
+    umbrella header "MXParallaxHeader-umbrella.h"
+    export *
+    module * { export * }
+}

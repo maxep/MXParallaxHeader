@@ -12,7 +12,7 @@ In addition, MXScrollView is a UIScrollView subclass with the ability to hook th
 
 |             UIScrollView        |           MXScrollViewController          |
 |---------------------------------|-------------------------------------------|
-|![Demo](Example/UIScrollView.gif)|![Demo](Example/MXScrollViewController.gif)|
+|![Demo](Example-objc/demo1.gif)|![Demo](Example-objc/demo2.gif)|
 
 ## Usage
 
