@@ -1,16 +1,26 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
-osx_image: xcode7
 language: objective-c
-cache: cocoapods
-podfile: Example/Podfile
+osx_image: xcode8
+env:
+  global:
+  - FRAMEWORK_NAME=MXParallaxHeader
 before_install:
-- gem install cocoapods
-- pod install --project-directory=Example
+- brew update
+- brew outdated carthage || brew upgrade carthage
 install:
+- gem install cocoapods
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- set -o pipefail && xcodebuild -workspace Example/MXParallaxHeader.xcworkspace -scheme MXParallaxHeader-Example -sdk iphonesimulator -configuration Release -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+- set -o pipefail && xcodebuild -project MXParallaxHeader.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator10.0 -configuration Release | xcpretty -c
 - pod lib lint --quick
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: q83VCMSSQC2ne5w1B7fTdz72qvR1OqeYzKG6ZcVpNWFEAGqTG87Q9+kw9UjT4hX9aosHF1OV5qNb+LN8gGe1p562xnZp9vjeg1LNuEgJkJ9A27CullXcwQ1YdnShuzfmEkrrfZMvF+Ulw5/WyZN1VBEH8R7hAqpju+HHZgCSDkj4TkNLwZRHdtfjhRTYGrguDRWNFSnZ1FcUSKZaV2AivKatL0C1SZ6bCDU3IRNNbNs/Go+R7ajcLYR/1ifHsbdUgK9dxIObO9Ual4oRIYb3m6ZpuKWEIyv5Wd4cgkpC6xzgCVXUgsTjWPV32BiIEFu3knk4ny3iHg0Ij6MZkit9tp/DFjJWv9GUFtNGfoV52cQ8hCqhqJi39ywFuyISfkXhlB9WMlDjkKyfzl6GbRepfi7HOPVKhYywMICfX8/GKlcDhnJyA0ah8vlHARMOu7f1RZMOoleLl0D4Z88ktxSqxFicVLCNcsjNPlKle2l0Lw8CLiLeXB1BKhcE+5uClhRyySUehvI6gVIaRs5pYu8iYeMJLXF/MyITsyeD4Ygzp8bxOSfJ/7xa4oKRFLt1fLUxySMP44bb7DHX6zkLwtH7v/z9Xn7uy2hG32LbulIN1Nok+SjweqoZDi+au3lj8gOWC0YFf+TYHqHOVCKGUbvAsr98Qto9aKyQ5V4dnK6pBLs=
+  file: $FRAMEWORK_NAME.framework.zip
+  skip_cleanup: true
+  on:
+    repo: maxep/MXParallaxHeader
+    tags: true
