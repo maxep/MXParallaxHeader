@@ -116,8 +116,8 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (CGFloat)progress {
-    CGFloat x = self.height? (1/self.height) * self.contentView.frame.size.height : 1;
-    return x - 1;
+    CGFloat div = self.height - self.minimumHeight;
+    return (self.contentView.frame.size.height - self.minimumHeight) / (div? : self.height);
 }
 
 #pragma mark Constraints
