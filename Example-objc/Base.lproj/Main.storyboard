@@ -78,7 +78,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="507" y="-1047"/>
+            <point key="canvasLocation" x="506" y="-419"/>
         </scene>
         <!--MXScrollViewController-->
         <scene sceneID="cGa-Dy-CoM">
@@ -103,36 +103,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="headerView" destination="AtR-PP-eP6" id="uOx-7s-c8h"/>
-                        <segue destination="ot0-WQ-HY6" kind="custom" identifier="Photo" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
+                        <segue destination="ot0-WQ-HY6" kind="custom" identifier="dribble_view" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
+                        <segue destination="aLi-Fc-aiw" kind="custom" identifier="parallax_header" customClass="MXParallaxHeaderSegue" id="6jI-vt-5wq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIQ-29-SGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="AtR-PP-eP6" customClass="MXFalconHeader">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="VMu-hl-AHF"/>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Falcon" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-zs-k30">
-                            <constraints>
-                                <constraint firstAttribute="height" constant="100" id="Jwh-xE-B6s"/>
-                                <constraint firstAttribute="width" secondItem="HIa-zs-k30" secondAttribute="height" multiplier="276:169" id="PgC-Mk-Bqw"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="VMu-hl-AHF" firstAttribute="bottom" secondItem="AtR-PP-eP6" secondAttribute="bottom" id="253-nr-tMA"/>
-                        <constraint firstItem="HIa-zs-k30" firstAttribute="centerX" secondItem="AtR-PP-eP6" secondAttribute="centerX" id="NQB-Fl-Joc"/>
-                        <constraint firstItem="HIa-zs-k30" firstAttribute="centerY" secondItem="AtR-PP-eP6" secondAttribute="centerY" id="Vxv-3r-BT3"/>
-                        <constraint firstItem="VMu-hl-AHF" firstAttribute="trailing" secondItem="AtR-PP-eP6" secondAttribute="trailing" id="ciV-3G-P4M"/>
-                        <constraint firstItem="VMu-hl-AHF" firstAttribute="top" secondItem="AtR-PP-eP6" secondAttribute="top" id="nuh-QJ-lYO"/>
-                        <constraint firstItem="VMu-hl-AHF" firstAttribute="leading" secondItem="AtR-PP-eP6" secondAttribute="leading" id="wSb-8L-d4T"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="falcon" destination="HIa-zs-k30" id="dZv-wC-ElT"/>
-                    </connections>
-                </view>
             </objects>
             <point key="canvasLocation" x="507" y="986"/>
         </scene>
@@ -154,7 +129,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUG-Im-LSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="507" y="-346"/>
+            <point key="canvasLocation" x="506" y="308"/>
+        </scene>
+        <!--Falcon View Controller-->
+        <scene sceneID="5mI-CN-F9r">
+            <objects>
+                <viewController id="aLi-Fc-aiw" customClass="MXFalconViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fDP-WT-NDX"/>
+                        <viewControllerLayoutGuide type="bottom" id="TYD-0q-sTU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F0H-Vg-lkz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="7jy-ds-TDk"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Falcon" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-bu-AHG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="DFD-vd-dDp"/>
+                                    <constraint firstAttribute="width" secondItem="oBb-bu-AHG" secondAttribute="height" multiplier="276:169" id="lLe-vL-HLv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7jy-ds-TDk" firstAttribute="top" secondItem="F0H-Vg-lkz" secondAttribute="top" id="4zG-Sp-sKe"/>
+                            <constraint firstItem="oBb-bu-AHG" firstAttribute="centerY" secondItem="F0H-Vg-lkz" secondAttribute="centerY" id="899-Xo-9x9"/>
+                            <constraint firstItem="7jy-ds-TDk" firstAttribute="bottom" secondItem="F0H-Vg-lkz" secondAttribute="bottom" id="JrZ-P5-Osu"/>
+                            <constraint firstItem="7jy-ds-TDk" firstAttribute="trailing" secondItem="F0H-Vg-lkz" secondAttribute="trailing" id="MH3-56-5vG"/>
+                            <constraint firstItem="oBb-bu-AHG" firstAttribute="centerX" secondItem="F0H-Vg-lkz" secondAttribute="centerX" id="mIO-dP-zWr"/>
+                            <constraint firstItem="7jy-ds-TDk" firstAttribute="leading" secondItem="F0H-Vg-lkz" secondAttribute="leading" id="riv-d2-eDA"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="falcon" destination="oBb-bu-AHG" id="afx-tA-32r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Awj-Lm-Pfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1430" y="473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Axw-xp-116">
@@ -176,7 +191,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7am-yE-9BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="986"/>
+            <point key="canvasLocation" x="1430" y="985"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="e88-UT-JKL">
@@ -227,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKB-N1-q2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="986"/>
+            <point key="canvasLocation" x="2236" y="985"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6l6-DX-DzO">
@@ -246,7 +261,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-fP-svW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="434"/>
+            <point key="canvasLocation" x="-454" y="985"/>
         </scene>
     </scenes>
     <resources>

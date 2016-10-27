@@ -1,4 +1,4 @@
-// MXFalconHeader.swift
+// MXFalconViewController.m
 //
 // Copyright (c) 2015 Maxime Epain
 //
@@ -20,21 +20,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import UIKit
-import MXParallaxHeader
+#import "MXFalconViewController.h"
 
-class MXFalconHeader: UIView, MXParallaxHeaderProtocol {
+#import <MXParallaxHeader/MXScrollViewController.h>
 
-    @IBOutlet weak var falcon: UIImageView!
+@interface MXFalconViewController () <MXParallaxHeaderDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *falcon;
+@end
+
+@implementation MXFalconViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    class func instanciateFromNib() -> MXFalconHeader {
-        return Bundle.main.loadNibNamed("FalconHeader", owner: nil, options: nil)![0] as! MXFalconHeader
-    }
-    
-    // MARK: - <MXParallaxHeader>
-    
-    func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
-        let angle = parallaxHeader.progress * CGFloat(M_PI) * 2
-        self.falcon.transform = CGAffineTransform.identity.rotated(by: angle)
-    }
+    self.parallaxHeader.delegate = self;
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <MXParallaxHeaderDelegate>
+
+- (void)parallaxHeaderDidScroll:(MXParallaxHeader *)parallaxHeader {
+    CGFloat angle = parallaxHeader.progress * M_PI * 2;
+    self.falcon.transform = CGAffineTransformRotate(CGAffineTransformIdentity, angle);
+}
+
+@end

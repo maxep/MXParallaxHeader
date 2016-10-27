@@ -45,15 +45,15 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     self.scrollView.parallaxHeader.height = self.headerHeight;
     self.scrollView.parallaxHeader.minimumHeight = self.headerMinimumHeight;
     
-    //Hack to perform MXScrollViewControllerSegue on load
+    //Hack to perform segues on load
     @try {
         NSArray *templates = [self valueForKey:@"storyboardSegueTemplates"];
         for (id template in templates) {
             NSString *segueClasseName = [template valueForKey:@"_segueClassName"];
-            if ([segueClasseName isEqualToString:NSStringFromClass(MXScrollViewControllerSegue.class)]) {
+            if ([segueClasseName isEqualToString:NSStringFromClass(MXScrollViewControllerSegue.class)] ||
+                [segueClasseName isEqualToString:NSStringFromClass(MXParallaxHeaderSegue.class)]) {
                 NSString *identifier = [template valueForKey:@"identifier"];
                 [self performSegueWithIdentifier:identifier sender:self];
-                break;
             }
         }
     }
@@ -87,21 +87,45 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
     return _scrollView;
 }
 
+- (void)setHeaderViewController:(UIViewController *)headerViewController {
+    if (_headerViewController.parentViewController == self) {
+        [_headerViewController willMoveToParentViewController:nil];
+        [_headerViewController.view removeFromSuperview];
+        [_headerViewController removeFromParentViewController];
+        [_headerViewController didMoveToParentViewController:nil];
+    }
+    
+    if (headerViewController) {
+        [headerViewController willMoveToParentViewController:self];
+        [self addChildViewController:headerViewController];
+        
+        //Set parallaxHeader view
+        objc_setAssociatedObject(headerViewController, @selector(parallaxHeader), self.scrollView.parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        
+        self.scrollView.parallaxHeader.view = headerViewController.view;
+        [headerViewController didMoveToParentViewController:self];
+    }
+    _headerViewController = headerViewController;
+}
+
 - (void)setChildViewController:(UIViewController<MXScrollViewDelegate> *)childViewController {
-    [_childViewController.view removeFromSuperview];
-    [_childViewController removeFromParentViewController];
+    if (_childViewController.parentViewController == self) {
+        [_childViewController willMoveToParentViewController:nil];
+        [_childViewController.view removeFromSuperview];
+        [_childViewController removeFromParentViewController];
+        [_childViewController didMoveToParentViewController:nil];
+    }
     
     if (childViewController) {
-        
+        [childViewController willMoveToParentViewController:self];
         [self addChildViewController:childViewController];
-        [childViewController didMoveToParentViewController:self];
-        
-        [self.scrollView addSubview:childViewController.view];
         
         //Set UIViewController's parallaxHeader property
         objc_setAssociatedObject(childViewController, @selector(parallaxHeader), self.scrollView.parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        
+        [self.scrollView addSubview:childViewController.view];
+        [childViewController didMoveToParentViewController:self];
     }
-    
     _childViewController = childViewController;
 }
 
@@ -113,8 +137,7 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         if (self.childViewController && [keyPath isEqualToString:NSStringFromSelector(@selector(minimumHeight))]) {
             [self layoutChildViewController];
         }
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -135,6 +158,19 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
         return self.parentViewController.parallaxHeader;
     }
     return parallaxHeader;
+}
+
+@end
+
+#pragma mark MXParallaxHeaderSegue class
+
+@implementation MXParallaxHeaderSegue
+
+- (void)perform {
+    if ([self.sourceViewController isKindOfClass:[MXScrollViewController class]]) {
+        MXScrollViewController *svc = self.sourceViewController;
+        svc.headerViewController = self.destinationViewController;
+    }
 }
 
 @end

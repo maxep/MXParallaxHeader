@@ -243,8 +243,8 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
             
-            if ([self.view respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
-                [(id<MXParallaxHeader>)self.view parallaxHeaderDidScroll:self];
+            if ([self.delegate respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
+                [self.delegate parallaxHeaderDidScroll:self];
             }
         }
     } else {

@@ -35,9 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly) MXScrollView *scrollView;
 
 /**
+ The parallax header view controller to be added to the scroll view.
+ */
+@property (nonatomic,strong,nullable) UIViewController *headerViewController;
+
+/**
  The child view controller to be added to the scroll view.
  */
-@property (nonatomic,strong,nullable) UIViewController<MXScrollViewDelegate> *childViewController;
+@property (nonatomic,strong,nullable) UIViewController *childViewController;
 
 @end
 
@@ -50,6 +55,13 @@ NS_ASSUME_NONNULL_BEGIN
  The parallax header.
  */
 @property (nonatomic,readonly,nullable) MXParallaxHeader *parallaxHeader;
+
+@end
+
+/**
+ The MXParallaxHeaderSegue class creates a segue object to get the parallax header view controller from storyboard.
+ */
+@interface MXParallaxHeaderSegue : UIStoryboardSegue
 
 @end
 

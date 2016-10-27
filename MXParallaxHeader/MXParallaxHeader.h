@@ -50,6 +50,8 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
     MXParallaxHeaderModeBottom
 };
 
+@protocol MXParallaxHeaderDelegate;
+
 /**
  The MXParallaxHeader class represents a parallax header for UIScrollView.
  */
@@ -59,6 +61,11 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
  The content view on top of the UIScrollView's content.
  */
 @property (nonatomic,readonly) UIView *contentView;
+
+/**
+ Delegate instance that adopt the MXScrollViewDelegate.
+ */
+@property (nonatomic,weak,nullable) IBOutlet id<MXParallaxHeaderDelegate> delegate;
 
 /**
  The header's view.
@@ -87,9 +94,19 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 
 @end
 
-@protocol MXParallaxHeader <NSObject>
+/**
+ The method declared by the MXParallaxHeaderDelegate protocol allow the adopting delegate to respond to scoll from the MXParallaxHeader class.
+ */
+@protocol MXParallaxHeaderDelegate <NSObject>
 
 @optional
+
+/**
+ Tells the header view that the parallax header did scroll.
+ The view typically implements this method to obtain the change in progress from parallaxHeaderView.
+
+ @param parallaxHeader The parallax header that scrolls.
+ */
 - (void)parallaxHeaderDidScroll:(MXParallaxHeader *)parallaxHeader;
 
 @end

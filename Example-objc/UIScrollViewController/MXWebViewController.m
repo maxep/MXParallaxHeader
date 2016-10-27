@@ -21,8 +21,6 @@
 // THE SOFTWARE.
 
 #import "MXWebViewController.h"
-#import "MXFalconHeader.h"
-#import <MXParallaxHeader/MXScrollViewController.h>
 
 @interface MXWebViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
