@@ -157,7 +157,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)setCenterModeConstraints {
     
-    NSDictionary *binding  = @{@"v" : self.view};
+    NSDictionary *binding = @{@"v" : self.view};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
@@ -178,29 +178,29 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void)setFillModeConstraints {
-    NSDictionary *binding  = @{@"v" : self.view};
+    NSDictionary *binding = @{@"v" : self.view};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
 }
 
 - (void)setTopFillModeConstraints {
-    NSDictionary *binding   = @{@"v" : self.view};
-    NSDictionary *metrics   = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),
-                                @"height"       : @(self.height)};
+    NSDictionary *binding = @{@"v" : self.view};
+    NSDictionary *metrics = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),
+                              @"height"       : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(>=height)]-0.0@highPriority-|" options:0 metrics:metrics views:binding]];
 }
 
 - (void)setTopModeConstraints {
-    NSDictionary *binding  = @{@"v" : self.view};
-    NSDictionary *metrics   = @{@"height" : @(self.height)};
+    NSDictionary *binding = @{@"v" : self.view};
+    NSDictionary *metrics = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
 }
 
 - (void)setBottomModeConstraints {
-    NSDictionary *binding  = @{@"v" : self.view};
-    NSDictionary *metrics   = @{@"height" : @(self.height)};
+    NSDictionary *binding = @{@"v" : self.view};
+    NSDictionary *metrics = @{@"height" : @(self.height)};
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[v(==height)]|" options:0 metrics:metrics views:binding]];
 }
@@ -268,7 +268,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void)setParallaxHeader:(MXParallaxHeader *)parallaxHeader {
     parallaxHeader.scrollView = self;
     objc_setAssociatedObject(self, @selector(parallaxHeader), parallaxHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
 }
 
 @end
