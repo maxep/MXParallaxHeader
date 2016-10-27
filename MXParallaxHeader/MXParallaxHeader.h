@@ -111,6 +111,10 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 
 @end
 
+DEPRECATED_MSG_ATTRIBUTE("Use the MXParallaxHeader's delegate property instead.")
+@protocol MXParallaxHeader <MXParallaxHeaderDelegate>
+@end
+
 /**
  A UIScrollView category with a MXParallaxHeader.
  */
