@@ -214,7 +214,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     
     self.contentView.frame = (CGRect){
         .origin.x       = 0,
-        .origin.y       = relativeYOffset,
+        .origin.y       = relativeHeight > minimumHeight || self.scrollUpWhenSizeMinimized == false ? relativeYOffset : -minimumHeight,
         .size.width     = self.scrollView.frame.size.width,
         .size.height    = MAX(relativeHeight, minimumHeight)
     };
