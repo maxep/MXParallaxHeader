@@ -206,6 +206,7 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (void)scrollView:(UIScrollView *)scrollView setContentOffset:(CGPoint)offset {
+    _lock = NO;
     _isObserving = NO;
     scrollView.contentOffset = offset;
     _isObserving = YES;
