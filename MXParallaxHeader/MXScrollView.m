@@ -1,6 +1,6 @@
 // MXScrollView.m
 //
-// Copyright (c) 2015 Maxime Epain
+// Copyright (c) 2017 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 @end
 
 @interface MXScrollView () <UIGestureRecognizerDelegate>
-@property (nonatomic, strong) MXScrollViewDelegateForwarder *delegateForwarder;
+@property (nonatomic, strong) MXScrollViewDelegateForwarder *forwarder;
 @property (nonatomic, strong) NSMutableArray<UIScrollView *> *observedViews;
 @end
 
@@ -58,12 +58,16 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 }
 
 - (void)initialize {
-    super.delegate = self.delegateForwarder;
+    self.forwarder = [MXScrollViewDelegateForwarder new];
+    super.delegate = self.forwarder;
+    
     self.showsVerticalScrollIndicator = NO;
     self.directionalLockEnabled = YES;
     self.bounces = YES;
     
     self.panGestureRecognizer.cancelsTouchesInView = NO;
+    
+    self.observedViews = [NSMutableArray array];
     
     [self addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))
               options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
@@ -73,30 +77,16 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
 
 #pragma mark Properties
 
-- (NSMutableArray *)observedViews {
-    if (!_observedViews) {
-        _observedViews = [NSMutableArray array];
-    }
-    return _observedViews;
-}
-
-- (MXScrollViewDelegateForwarder *)delegateForwarder {
-    if (!_delegateForwarder) {
-        _delegateForwarder = [MXScrollViewDelegateForwarder new];
-    }
-    return _delegateForwarder;
-}
-
 - (void)setDelegate:(id<MXScrollViewDelegate>)delegate {
-    self.delegateForwarder.delegate = delegate;
+    self.forwarder.delegate = delegate;
     // Scroll view delegate caches whether the delegate responds to some of the delegate
     // methods, so we need to force it to re-evaluate if the delegate responds to them
     super.delegate = nil;
-    super.delegate = self.delegateForwarder;
+    super.delegate = self.forwarder;
 }
 
 - (id<MXScrollViewDelegate>)delegate {
-    return self.delegateForwarder.delegate;
+    return self.forwarder.delegate;
 }
 
 #pragma mark <UIGestureRecognizerDelegate>
@@ -238,6 +228,13 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     [self removeObservedViews];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        _lock = NO;
+        [self removeObservedViews];
+    }
+}
+
 @end
 
 @implementation MXScrollViewDelegateForwarder
@@ -256,6 +253,13 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     [(MXScrollView *)scrollView scrollViewDidEndDecelerating:scrollView];
     if ([self.delegate respondsToSelector:_cmd]) {
         [self.delegate scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [(MXScrollView *)scrollView scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if ([self.delegate respondsToSelector:_cmd]) {
+        [self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
 
