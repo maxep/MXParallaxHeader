@@ -23,6 +23,10 @@
 #import "UIScrollViewExample.h"
 #import <MXParallaxHeader/MXParallaxHeader.h>
 
+@interface UIScrollViewExample () <MXParallaxHeaderDelegate>
+
+@end
+
 @implementation UIScrollViewExample
 
 - (void)viewDidLoad {
@@ -33,12 +37,13 @@
     self.tableView.parallaxHeader.height = 300;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = 20;
+    self.tableView.parallaxHeader.delegate = self;
 }
 
-#pragma mark <UIScrollViewDelegate>
+#pragma mark <MXParallaxHeaderDelegate>
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"progress %f", scrollView.parallaxHeader.progress);
+- (void)parallaxHeaderDidScroll:(MXParallaxHeader *)parallaxHeader {
+    NSLog(@"progress %f", parallaxHeader.progress);
 }
 
 #pragma mark <UITableViewDelegate>

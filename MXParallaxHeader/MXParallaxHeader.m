@@ -115,9 +115,14 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     }
 }
 
-- (CGFloat)progress {
-    CGFloat div = self.height - self.minimumHeight;
-    return (self.contentView.frame.size.height - self.minimumHeight) / (div? : self.height);
+- (void)setProgress:(CGFloat)progress {
+    if(_progress != progress) {
+        _progress = progress;
+        
+        if ([self.delegate respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
+            [self.delegate parallaxHeaderDidScroll:self];
+        }
+    }
 }
 
 #pragma mark Constraints
@@ -212,12 +217,17 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     CGFloat relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
     CGFloat relativeHeight  = -relativeYOffset;
     
-    self.contentView.frame = (CGRect){
+    CGRect frame = (CGRect){
         .origin.x       = 0,
         .origin.y       = relativeYOffset,
         .size.width     = self.scrollView.frame.size.width,
         .size.height    = MAX(relativeHeight, minimumHeight)
     };
+    
+    self.contentView.frame = frame;
+    
+    CGFloat div = self.height - self.minimumHeight;
+    self.progress = (self.contentView.frame.size.height - self.minimumHeight) / (div? : self.height);
 }
 
 - (void)adjustScrollViewTopInset:(CGFloat)top {
@@ -242,10 +252,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
-            
-            if ([self.delegate respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
-                [self.delegate parallaxHeaderDidScroll:self];
-            }
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

@@ -23,7 +23,7 @@
 import UIKit
 import MXParallaxHeader
 
-class UIScrollViewExample: UITableViewController {
+class UIScrollViewExample: UITableViewController, MXParallaxHeaderDelegate {
 
     @IBOutlet var headerView: UIView!
     
@@ -35,6 +35,8 @@ class UIScrollViewExample: UITableViewController {
         tableView.parallaxHeader.height = 300
         tableView.parallaxHeader.mode = MXParallaxHeaderMode.fill
         tableView.parallaxHeader.minimumHeight = 20
+        
+        tableView.parallaxHeader.delegate = self
     }
 
     // MARK: - Table view data source
@@ -55,9 +57,9 @@ class UIScrollViewExample: UITableViewController {
         tableView.parallaxHeader.height = CGFloat(indexPath.row * 10)
     }
     
-    // MARK: - Scroll view delegate
+    // MARK: - Parallax header delegate
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        NSLog("progress %f", scrollView.parallaxHeader.progress)
+    func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
+        NSLog("progress %f", parallaxHeader.progress)
     }
 }
