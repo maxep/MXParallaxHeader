@@ -1,0 +1,14 @@
+PODS:
+  - MXParallaxHeader (0.5.0)
+
+DEPENDENCIES:
+  - MXParallaxHeader (from `../`)
+
+EXTERNAL SOURCES:
+  MXParallaxHeader:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MXParallaxHeader: c7dfdf8d769a8eb868a431ec3aeaf994a147b8bc
+
+COCOAPODS: 0.39.0
