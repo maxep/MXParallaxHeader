@@ -214,7 +214,13 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)layoutContentView {
     CGFloat minimumHeight = MIN(self.minimumHeight, self.height);
-    CGFloat relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
+    CGFloat topInset;
+    if (@available(iOS 11.0, *)) {
+        topInset = self.scrollView.adjustedContentInset.top;
+    } else {
+        topInset = self.scrollView.contentInset.top;
+    }
+    CGFloat relativeYOffset = self.scrollView.contentOffset.y + topInset - self.height;
     CGFloat relativeHeight  = -relativeYOffset;
     
     CGRect frame = (CGRect){
