@@ -25,7 +25,7 @@ import MXParallaxHeader
 
 class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    fileprivate var SpanichWhite : UIColor = UIColor(colorLiteralRed: 0.996, green: 0.992, blue: 0.941, alpha: 1) /*#fefdf0*/
+    fileprivate var SpanichWhite : UIColor = #colorLiteral(red: 0.9960784314, green: 0.9921568627, blue: 0.9411764706, alpha: 1) // #FEFDF0
     
     var scrollView: MXScrollView!
     var table1: UITableView!
@@ -39,7 +39,6 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
         scrollView.parallaxHeader.view = Bundle.main.loadNibNamed("StarshipHeader", owner: self, options: nil)?.first as? UIView // You can set the parallax header view from a nib.
         scrollView.parallaxHeader.height = 300
         scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
-        scrollView.parallaxHeader.minimumHeight = 20
         view.addSubview(scrollView)
         
         table1 = UITableView()
@@ -53,6 +52,12 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
         scrollView.addSubview(table2)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollView.parallaxHeader.minimumHeight = topLayoutGuide.length
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         

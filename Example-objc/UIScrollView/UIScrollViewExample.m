@@ -36,8 +36,13 @@
     self.tableView.parallaxHeader.view = self.headerView; // You can set the parallax header view from the floating view.
     self.tableView.parallaxHeader.height = 300;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    self.tableView.parallaxHeader.minimumHeight = 20;
     self.tableView.parallaxHeader.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.tableView.parallaxHeader.minimumHeight = self.topLayoutGuide.length;
 }
 
 #pragma mark <MXParallaxHeaderDelegate>
