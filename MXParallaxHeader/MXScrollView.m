@@ -123,6 +123,10 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     if ([scrollView.superview isKindOfClass:[UITableView class]]) {
         return NO;
     }
+    //tableview on the MXScrollView
+    if ([scrollView.superview isKindOfClass:NSClassFromString(@"UITableViewCellContentView")]) {
+        return NO;
+    }
     
     BOOL shouldScroll = YES;
     if ([self.delegate respondsToSelector:@selector(scrollView:shouldScrollWithSubView:)]) {
