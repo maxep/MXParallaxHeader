@@ -112,12 +112,17 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
         return NO;
     }
     
+    UIView *otherView = otherGestureRecognizer.view;
+    // WKWebView on he MXScrollView
+    if ([otherView isKindOfClass:NSClassFromString(@"WKContentView")]) {
+        otherView = otherView.superview;
+    }
     // Consider scroll view pan only
-    if (![otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
+    if (![otherView isKindOfClass:[UIScrollView class]]) {
         return NO;
     }
     
-    UIScrollView *scrollView = (id)otherGestureRecognizer.view;
+    UIScrollView *scrollView = (id)otherView;
     
     // Tricky case: UITableViewWrapperView
     if ([scrollView.superview isKindOfClass:[UITableView class]]) {
