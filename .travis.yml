@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode10.2
 env:
   global:
   - FRAMEWORK_NAME=MXParallaxHeader
@@ -8,9 +8,9 @@ before_install:
 - brew outdated carthage || brew upgrade carthage
 install:
 - gem install cocoapods
-- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+- gem install xcpretty --no-document --quiet
 script:
-- set -o pipefail && xcodebuild -project MXParallaxHeader.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator11.0 -configuration Release | xcpretty -c
+- set -o pipefail && xcodebuild -project MXParallaxHeader.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator12.2 -configuration Release | xcpretty -c
 - pod lib lint --quick
 before_deploy:
 - carthage build --no-skip-current

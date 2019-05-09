@@ -56,7 +56,7 @@
 // In this example I use manual layout for peformances
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    CGRect frame = self.view.frame;
+    CGRect frame = self.view.bounds;
     
     //Update scroll view frame and content size
     self.scrollView.frame = frame;

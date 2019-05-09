@@ -38,7 +38,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
         scrollView = MXScrollView()
         scrollView.parallaxHeader.view = Bundle.main.loadNibNamed("StarshipHeader", owner: self, options: nil)?.first as? UIView // You can set the parallax header view from a nib.
         scrollView.parallaxHeader.height = 300
-        scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
+        scrollView.parallaxHeader.mode = .fill
         view.addSubview(scrollView)
         
         table1 = UITableView()
@@ -61,7 +61,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var frame = view.frame
+        var frame = view.bounds
         
         scrollView.frame = frame
         scrollView.contentSize = frame.size
@@ -85,7 +85,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
         
         var cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: CellIdentifier)
         }
         cell!.textLabel!.text = String(format: "Row %ld", indexPath.row * 10)
         cell!.backgroundColor = SpanichWhite;

@@ -32,16 +32,11 @@ class MXFalconViewController: UIViewController, MXParallaxHeaderDelegate {
 
         parallaxHeader?.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - MXParallaxHeaderDelegate
 
     func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
-        let angle = parallaxHeader.progress * CGFloat(M_PI) * 2
+        let angle = parallaxHeader.progress * CGFloat(Double.pi) * 2
         self.falcon.transform = CGAffineTransform.identity.rotated(by: angle)
     }
 
