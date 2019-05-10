@@ -32,17 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The scroll view container.
  */
-@property (nonatomic,readonly) MXScrollView *scrollView;
+@property (nonatomic, readonly) MXScrollView *scrollView;
 
 /**
  The parallax header view controller to be added to the scroll view.
  */
-@property (nonatomic,strong,nullable) UIViewController *headerViewController;
+@property (nonatomic, strong, nullable) UIViewController *headerViewController;
 
 /**
  The child view controller to be added to the scroll view.
  */
-@property (nonatomic,strong,nullable) UIViewController *childViewController;
+@property (nonatomic, strong, nullable) UIViewController *childViewController;
 
 @end
 
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The parallax header.
  */
-@property (nonatomic,readonly,nullable) MXParallaxHeader *parallaxHeader;
+@property (nonatomic, readonly, nullable) MXParallaxHeader *parallaxHeader;
 
 @end
 

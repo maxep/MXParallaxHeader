@@ -57,20 +57,50 @@ static void * const kMXScrollViewControllerKVOContext = (void*)&kMXScrollViewCon
             }
         }
     }
-    @catch(NSException *exception) {}
+    @catch(NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (@available(iOS 11.0, *)) return;
+
+    if (self.automaticallyAdjustsScrollViewInsets && !self.headerMinimumHeight) {
+        self.scrollView.parallaxHeader.minimumHeight = self.topLayoutGuide.length;
+    }
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+
     self.scrollView.contentSize = self.scrollView.frame.size;
     [self layoutChildViewController];
 }
 
 - (void)layoutChildViewController {
-    CGRect frame = self.scrollView.frame;
+    CGRect frame = self.scrollView.bounds;
     frame.origin = CGPointZero;
     frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;
+
+    if (@available(iOS 11.0, *)) { } else {
+        frame.size.height -= self.bottomLayoutGuide.length;
+    }
+
     self.childViewController.view.frame = frame;
+}
+
+- (void)viewSafeAreaInsetsDidChange {
+    [super viewSafeAreaInsetsDidChange];
+
+    if (!self.headerMinimumHeight) {
+        self.scrollView.parallaxHeader.minimumHeight = self.view.safeAreaInsets.top;
+    }
+
+    UIEdgeInsets safeAreaInsets = UIEdgeInsetsZero;
+    safeAreaInsets.bottom = self.view.safeAreaInsets.bottom;
+    self.childViewController.additionalSafeAreaInsets = safeAreaInsets;
 }
 
 #pragma mark Properties
