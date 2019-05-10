@@ -101,13 +101,10 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
                             <real key="value" value="300"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumHeight">
-                            <real key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="ot0-WQ-HY6" kind="custom" identifier="dribble_view" customClass="MXScrollViewControllerSegue" id="1UB-6j-kmV"/>
                         <segue destination="c12-C7-n3f" kind="custom" identifier="parallax_header" customClass="MXParallaxHeaderSegue" id="Pkl-K9-cLA"/>
+                        <segue destination="erx-Ha-mfa" kind="custom" identifier="content" customClass="MXScrollViewControllerSegue" id="ITc-07-Tb9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIQ-29-SGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,28 +128,6 @@
             </objects>
             <point key="canvasLocation" x="506" y="302"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Axw-xp-116">
-            <objects>
-                <navigationController id="ot0-WQ-HY6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkj-dI-Sjd">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.058823529411764705" green="0.10196078431372549" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.058823529409999999" green="0.1019607843" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="erx-Ha-mfa" kind="relationship" relationship="rootViewController" id="cfo-sY-2Xy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7am-yE-9BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1377" y="985"/>
-        </scene>
         <!--Web View Controller-->
         <scene sceneID="e88-UT-JKL">
             <objects>
@@ -161,46 +136,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbS-ti-jce">
+                            <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWq-uf-ZaW">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96078431369999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CbS-ti-jce" firstAttribute="top" secondItem="vPo-vc-HEb" secondAttribute="top" id="9Bb-Hi-kz2"/>
-                            <constraint firstItem="CbS-ti-jce" firstAttribute="leading" secondItem="lvH-id-swm" secondAttribute="leading" id="ECa-Du-hur"/>
-                            <constraint firstItem="CbS-ti-jce" firstAttribute="bottom" secondItem="lvH-id-swm" secondAttribute="bottom" id="UwN-j1-hfd"/>
-                            <constraint firstItem="lvH-id-swm" firstAttribute="trailing" secondItem="CbS-ti-jce" secondAttribute="trailing" id="onA-FW-N9e"/>
+                            <constraint firstItem="vWq-uf-ZaW" firstAttribute="trailing" secondItem="lvH-id-swm" secondAttribute="trailing" id="4HF-pp-mAL"/>
+                            <constraint firstItem="vWq-uf-ZaW" firstAttribute="top" secondItem="vPo-vc-HEb" secondAttribute="top" id="A71-Hv-HeE"/>
+                            <constraint firstItem="vWq-uf-ZaW" firstAttribute="leading" secondItem="lvH-id-swm" secondAttribute="leading" id="VPg-WK-Mlq"/>
+                            <constraint firstItem="vWq-uf-ZaW" firstAttribute="bottom" secondItem="lvH-id-swm" secondAttribute="bottom" id="lEC-Zt-49t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lvH-id-swm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c1x-8E-IRo">
-                        <leftBarButtonItems>
-                            <barButtonItem title="&lt;" id="zla-xd-vuq">
-                                <connections>
-                                    <action selector="back:" destination="erx-Ha-mfa" id="JpX-Qa-TUV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="&gt;" id="AQy-fq-zJS">
-                                <connections>
-                                    <action selector="forward:" destination="erx-Ha-mfa" id="r0H-ho-fDO"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Et1-sd-6I2">
-                            <connections>
-                                <action selector="refresh:" destination="erx-Ha-mfa" id="oda-ep-N7L"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="c1x-8E-IRo"/>
                     <connections>
-                        <outlet property="webView" destination="CbS-ti-jce" id="ces-Yh-shz"/>
+                        <outlet property="webView" destination="vWq-uf-ZaW" id="0Z8-7S-vQG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKB-N1-q2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="985"/>
+            <point key="canvasLocation" x="1402.8985507246377" y="985.59782608695662"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6l6-DX-DzO">

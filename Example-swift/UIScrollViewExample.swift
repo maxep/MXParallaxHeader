@@ -40,7 +40,7 @@ class UIScrollViewExample: UITableViewController, MXParallaxHeaderDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.parallaxHeader.minimumHeight = topLayoutGuide.length
+        tableView.parallaxHeader.minimumHeight = view.safeAreaInsets.top
     }
     
     // MARK: - Table view data source

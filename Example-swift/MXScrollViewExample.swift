@@ -36,7 +36,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
 
         // Parallax Header
         scrollView = MXScrollView()
-        scrollView.parallaxHeader.view = Bundle.main.loadNibNamed("StarshipHeader", owner: self, options: nil)?.first as? UIView // You can set the parallax header view from a nib.
+        scrollView.parallaxHeader.load(withNibName: "StarshipHeader", bundle: nil, options: nil) // You can set the parallax header view from a nib.
         scrollView.parallaxHeader.height = 300
         scrollView.parallaxHeader.mode = .fill
         view.addSubview(scrollView)
@@ -55,7 +55,7 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        scrollView.parallaxHeader.minimumHeight = topLayoutGuide.length
+        scrollView.parallaxHeader.minimumHeight = view.safeAreaInsets.top
     }
     
     override func viewDidLayoutSubviews() {

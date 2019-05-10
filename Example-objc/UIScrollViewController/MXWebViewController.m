@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <WebKit/WebKit.h>
 #import "MXWebViewController.h"
 
 @interface MXWebViewController ()
@@ -33,18 +34,6 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://dribbble.com/search?q=spaceship"]];
     [self.webView loadRequest:request];
-}
-
-- (IBAction)back:(id)sender {
-    [self.webView goBack];
-}
-
-- (IBAction)forward:(id)sender {
-    [self.webView goForward];
-}
-
-- (IBAction)refresh:(id)sender {
-    [self.webView reload];
 }
 
 @end

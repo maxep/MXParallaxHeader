@@ -21,28 +21,17 @@
 // THE SOFTWARE.
 
 import UIKit
+import WebKit
 import MXParallaxHeader
 
 class MXWebViewController: UIViewController {
-    
-    @IBOutlet weak var webView: UIWebView!
+
+    @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let request = URLRequest(url: URL(string: "https://dribbble.com/search?q=spaceship")!)
-        webView.loadRequest(request)
-    }
-    
-    @IBAction func back(_ sender: AnyObject) {
-        webView.goBack()
-    }
-    
-    @IBAction func forward(_ sender: AnyObject) {
-        webView.goForward()
-    }
-    
-    @IBAction func refresh(_ sender: AnyObject) {
-        webView.reload()
+        webView.load(request)
     }
 }

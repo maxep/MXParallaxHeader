@@ -35,6 +35,7 @@
 		9C01BCE71DA3EBBA0032494C /* UIScrollViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCE11DA3EBBA0032494C /* UIScrollViewExample.swift */; };
 		9C01BCEA1DA3EBFE0032494C /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; };
 		9C01BCEB1DA3EBFE0032494C /* MXParallaxHeader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C71819522856FFF007F7894 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C71819422856FFF007F7894 /* WebKit.framework */; };
 		9C7904261DC23C4900149A7E /* MXFalconViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7904241DC23C4800149A7E /* MXFalconViewController.h */; };
 		9C79042A1DC243C100149A7E /* MXFalconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904251DC23C4900149A7E /* MXFalconViewController.m */; };
 		9C79042B1DC243C800149A7E /* MXFalconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904281DC242A800149A7E /* MXFalconViewController.swift */; };
@@ -121,6 +122,7 @@
 		9C01BCEF1DA3F0E20032494C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9C01BCF01DA3F0E20032494C /* MXParallaxHeader.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MXParallaxHeader.podspec; sourceTree = "<group>"; };
 		9C01BCF11DA3F0E20032494C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9C71819422856FFF007F7894 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9C7904241DC23C4800149A7E /* MXFalconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXFalconViewController.h; sourceTree = "<group>"; };
 		9C7904251DC23C4900149A7E /* MXFalconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXFalconViewController.m; sourceTree = "<group>"; };
 		9C7904281DC242A800149A7E /* MXFalconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXFalconViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C71819522856FFF007F7894 /* WebKit.framework in Frameworks */,
 				9C01BCEA1DA3EBFE0032494C /* MXParallaxHeader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +165,7 @@
 				9C01BC911DA3E6810032494C /* Example-objc */,
 				9C01BCC91DA3E9A80032494C /* Example-swift */,
 				9C01BC701DA3E4D40032494C /* Products */,
+				9C71819322856FFF007F7894 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,6 +282,14 @@
 				9C01BCF11DA3F0E20032494C /* README.md */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		9C71819322856FFF007F7894 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C71819422856FFF007F7894 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,7 +663,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Framework/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.maxep.MXParallaxHeader;
@@ -674,7 +686,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Framework/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.maxep.MXParallaxHeader;
@@ -716,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C75GEDTP26;
 				INFOPLIST_FILE = "$(SRCROOT)/Example-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -732,7 +744,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C75GEDTP26;
 				INFOPLIST_FILE = "$(SRCROOT)/Example-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
