@@ -125,6 +125,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     }
 }
 
+- (void)loadWithNibName:(NSString *)name bundle:(nullable NSBundle *)bundleOrNil options:(nullable NSDictionary<UINibOptionsKey, id> *)optionsOrNil {
+    UINib *nib = [UINib nibWithNibName:name bundle:bundleOrNil];
+    [nib instantiateWithOwner:self options:optionsOrNil];
+}
+
 #pragma mark Constraints
 
 - (void)updateConstraints {
@@ -249,7 +254,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if (context == kMXParallaxHeaderKVOContext) {
-        
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
         }

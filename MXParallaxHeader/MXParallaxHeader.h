@@ -92,6 +92,15 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
  */
 @property (nonatomic,readonly) CGFloat progress;
 
+/**
+ Loads a `view` from the nib file in the specified bundle.
+
+ @param name The name of the nib file, without any leading path information.
+ @param bundleOrNil The bundle in which to search for the nib file. If you specify nil, this method looks for the nib file in the main bundle.
+ @param optionsOrNil A dictionary containing the options to use when opening the nib file. For a list of available keys for this dictionary, see NSBundle UIKit Additions.
+ */
+- (void)loadWithNibName:(NSString *)name bundle:(nullable NSBundle *)bundleOrNil options:(nullable NSDictionary<UINibOptionsKey, id> *)optionsOrNil;
+
 @end
 
 /**
