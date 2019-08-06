@@ -3,7 +3,7 @@
 //  MXParallaxHeader
 //
 //  Created by Maxime Epain on 10/28/2015.
-//  Copyright (c) 2017 Maxime Epain. All rights reserved.
+//  Copyright (c) 2019 Maxime Epain. All rights reserved.
 //
 
 @import UIKit;
