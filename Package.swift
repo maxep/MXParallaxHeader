@@ -10,7 +10,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MXSegmentedPager",
+            name: "MXParallaxHeader",
             path: "MXParallaxHeader"
         )
     ],
