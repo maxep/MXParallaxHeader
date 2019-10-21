@@ -11,9 +11,8 @@ let package = Package(
     targets: [
         .target(
             name: "MXParallaxHeader",
-            dependencies:["objc"],
             path: "MXParallaxHeader"
         )
     ],
-    swiftLanguageVersions: [.v5,.v4]
+    cLanguageStandard: .c11
 )
