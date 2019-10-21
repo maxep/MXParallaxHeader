@@ -11,6 +11,7 @@ let package = Package(
     targets: [
         .target(
             name: "MXParallaxHeader",
+            dependencies:["objc"],
             path: "MXParallaxHeader"
         )
     ],
