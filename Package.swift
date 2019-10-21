@@ -11,8 +11,7 @@ let package = Package(
     targets: [
         .target(
             name: "MXParallaxHeader",
-            path: "MXParallaxHeader",
-            publicHeadersPath: "MXParallaxHeader"
+            path: "MXParallaxHeader"
         )
     ],
     cLanguageStandard: .c11
