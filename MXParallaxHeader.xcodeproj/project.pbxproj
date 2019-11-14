@@ -481,6 +481,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.0;
 				MODULEMAP_FILE = Framework/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.maxep.MXParallaxHeader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -504,6 +505,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.0;
 				MODULEMAP_FILE = Framework/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.maxep.MXParallaxHeader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
