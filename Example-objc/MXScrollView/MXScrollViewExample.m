@@ -26,9 +26,9 @@
 #define SPANISH_WHITE [UIColor colorWithRed:0.996 green:0.992 blue:0.941 alpha:1] /*#fefdf0*/
 
 @interface MXScrollViewExample () <MXScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) MXScrollView *scrollView;
-@property (nonatomic, strong) UITableView *table1;
-@property (nonatomic, strong) UITableView *table2;
+@property (nonatomic, strong) IBOutlet MXScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UITableView *table1;
+@property (nonatomic, strong) IBOutlet UITableView *table2;
 @end
 
 @implementation MXScrollViewExample
@@ -36,68 +36,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.scrollView];
-    [self.scrollView addSubview:self.table1];
-    [self.scrollView addSubview:self.table2];
-    
     // Parallax Header
     [self.scrollView.parallaxHeader loadWithNibName:@"StarshipHeader" bundle:nil options:nil]; // You can set the parallax header view from a nib.
     self.scrollView.parallaxHeader.height = 300;
     self.scrollView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.scrollView.parallaxHeader.minimumHeight = self.topLayoutGuide.length;
-}
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    self.scrollView.parallaxHeader.minimumHeight = self.topLayoutGuide.length;
-}
+    self.table1.backgroundColor = SPANISH_WHITE;
+    [self.table1 registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
 
-// In this example I use manual layout for peformances
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    CGRect frame = self.view.bounds;
-    
-    //Update scroll view frame and content size
-    self.scrollView.frame = frame;
-    self.scrollView.contentSize = frame.size;
-    
-    //Update table 1 frame
-    frame.size.width /= 2;
-    frame.size.height -= self.scrollView.parallaxHeader.minimumHeight;
-    self.table1.frame = frame;
-    
-    //Update table 2 frame
-    frame.origin.x = frame.size.width;
-    self.table2.frame = frame;
-}
-
-#pragma mark Properties
-
-- (MXScrollView *)scrollView {
-    if(!_scrollView) {
-        _scrollView = [[MXScrollView alloc] init];
-        _scrollView.delegate = self;
-    }
-    return _scrollView;
-}
-
-- (UITableView *)table1 {
-    if (!_table1) {
-        _table1 = [[UITableView alloc] init];
-        _table1.dataSource  = self;
-        _table1.backgroundColor = SPANISH_WHITE;
-    }
-    return _table1;
-}
-
-- (UITableView *)table2 {
-    if (!_table2) {
-        _table2 = [[UITableView alloc] init];
-        _table2.dataSource  = self;
-        _table2.backgroundColor = SPANISH_WHITE;
-    }
-    return _table2;
+    self.table2.backgroundColor = SPANISH_WHITE;
+    [self.table2 registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
 }
 
 #pragma mark <UIScrollViewDelegate>
@@ -113,12 +62,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"Row %ld", (long)indexPath.row];
     cell.backgroundColor = SPANISH_WHITE;
     

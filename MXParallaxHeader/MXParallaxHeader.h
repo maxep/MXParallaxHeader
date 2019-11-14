@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, MXParallaxHeaderMode) {
 @property (nonatomic,strong,nullable) IBOutlet UIView *view;
 
 /**
- The header's default height. 0 0 by default.
+ The header's default height. 0 by default.
  */
 @property (nonatomic) IBInspectable CGFloat height;
 

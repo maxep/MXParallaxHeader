@@ -27,51 +27,23 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
 
     fileprivate var SpanichWhite : UIColor = #colorLiteral(red: 0.9960784314, green: 0.9921568627, blue: 0.9411764706, alpha: 1) // #FEFDF0
     
-    var scrollView: MXScrollView!
-    var table1: UITableView!
-    var table2: UITableView!
+    @IBOutlet weak var scrollView: MXScrollView!
+    @IBOutlet weak var table1: UITableView!
+    @IBOutlet weak var table2: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Parallax Header
-        scrollView = MXScrollView()
         scrollView.parallaxHeader.load(withNibName: "StarshipHeader", bundle: nil, options: nil) // You can set the parallax header view from a nib.
         scrollView.parallaxHeader.height = 300
         scrollView.parallaxHeader.mode = .fill
-        view.addSubview(scrollView)
-        
-        table1 = UITableView()
-        table1.dataSource = self;
-        table1.backgroundColor = SpanichWhite
-        scrollView.addSubview(table1)
-        
-        table2 = UITableView()
-        table2.dataSource = self;
-        table2.backgroundColor = SpanichWhite
-        scrollView.addSubview(table2)
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        scrollView.parallaxHeader.minimumHeight = view.safeAreaInsets.top
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        var frame = view.bounds
-        
-        scrollView.frame = frame
-        scrollView.contentSize = frame.size
-        
-        frame.size.width /= 2
-        frame.size.height -= scrollView.parallaxHeader.minimumHeight
-        table1.frame = frame
-        
-        frame.origin.x = frame.size.width
-        table2.frame = frame
+        table1.backgroundColor = SpanichWhite
+        table1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        table2.backgroundColor = SpanichWhite
+        table2.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     // MARK: - Table view data source
@@ -81,15 +53,10 @@ class MXScrollViewExample: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let CellIdentifier = "Cell"
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)
-        if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: CellIdentifier)
-        }
-        cell!.textLabel!.text = String(format: "Row %ld", indexPath.row * 10)
-        cell!.backgroundColor = SpanichWhite;
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = String(format: "Row %ld", indexPath.row * 10)
+        cell.backgroundColor = SpanichWhite;
+        return cell
     }
     
     // MARK: - Scroll view delegate
