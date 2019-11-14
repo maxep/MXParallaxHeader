@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode10.2
+osx_image: xcode11.2
 env:
   global:
   - FRAMEWORK_NAME=MXParallaxHeader
@@ -10,7 +10,7 @@ install:
 - gem install cocoapods
 - gem install xcpretty --no-document --quiet
 script:
-- set -o pipefail && xcodebuild -project MXParallaxHeader.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator12.2 -configuration Release | xcpretty -c
+- set -o pipefail && xcodebuild -project MXParallaxHeader.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator13.2 -configuration Release | xcpretty -c
 - pod lib lint --quick
 before_deploy:
 - carthage build --no-skip-current
