@@ -12,7 +12,7 @@ In addition, MXScrollView is a UIScrollView subclass with the ability to hook th
 
 |             UIScrollView        |           MXScrollViewController          |
 |---------------------------------|-------------------------------------------|
-|![Demo](Example-objc/demo1.gif)|![Demo](Example-objc/demo2.gif)|
+|![Demo](Example/demo1.gif)|![Demo](Example/demo2.gif)|
 
 ## Usage
 
@@ -59,7 +59,7 @@ scrollView.parallaxHeader.minimumHeight = 20;
 
 + The MXScrollViewController is a container with a child view controller that can be added programmatically or using the custom segue MXScrollViewControllerSegue.
 
-+ Please check examples for **ObjC/Swift** implementations.
++ Please check examples for **Swift** implementations.
 
 ## Installation
 

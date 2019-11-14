@@ -14,17 +14,6 @@
 		9C01BC891DA3E56A0032494C /* MXScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BC831DA3E56A0032494C /* MXScrollView.m */; };
 		9C01BC8A1DA3E56A0032494C /* MXScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C01BC841DA3E56A0032494C /* MXScrollViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C01BC8B1DA3E56A0032494C /* MXScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BC851DA3E56A0032494C /* MXScrollViewController.m */; };
-		9C01BC941DA3E6810032494C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BC931DA3E6810032494C /* main.m */; };
-		9C01BC9D1DA3E6810032494C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BC9B1DA3E6810032494C /* Main.storyboard */; };
-		9C01BC9F1DA3E6810032494C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BC9E1DA3E6810032494C /* Assets.xcassets */; };
-		9C01BCA91DA3E71E0032494C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BCA71DA3E71E0032494C /* Launch Screen.storyboard */; };
-		9C01BCB51DA3E7330032494C /* MXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCAB1DA3E7330032494C /* MXAppDelegate.m */; };
-		9C01BCB61DA3E7330032494C /* MXScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCAE1DA3E7330032494C /* MXScrollViewExample.m */; };
-		9C01BCB71DA3E7330032494C /* UIScrollViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCB11DA3E7330032494C /* UIScrollViewExample.m */; };
-		9C01BCB81DA3E7330032494C /* MXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCB41DA3E7330032494C /* MXWebViewController.m */; };
-		9C01BCBB1DA3E7480032494C /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; };
-		9C01BCBC1DA3E7480032494C /* MXParallaxHeader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9C01BCC31DA3E7900032494C /* StarshipHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BCC11DA3E7900032494C /* StarshipHeader.xib */; };
 		9C01BCCB1DA3E9A80032494C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01BCCA1DA3E9A80032494C /* AppDelegate.swift */; };
 		9C01BCD01DA3E9A80032494C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BCCE1DA3E9A80032494C /* Main.storyboard */; };
 		9C01BCD21DA3E9A80032494C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C01BCD11DA3E9A80032494C /* Assets.xcassets */; };
@@ -36,19 +25,10 @@
 		9C01BCEA1DA3EBFE0032494C /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; };
 		9C01BCEB1DA3EBFE0032494C /* MXParallaxHeader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C71819522856FFF007F7894 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C71819422856FFF007F7894 /* WebKit.framework */; };
-		9C7904261DC23C4900149A7E /* MXFalconViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7904241DC23C4800149A7E /* MXFalconViewController.h */; };
-		9C79042A1DC243C100149A7E /* MXFalconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904251DC23C4900149A7E /* MXFalconViewController.m */; };
 		9C79042B1DC243C800149A7E /* MXFalconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7904281DC242A800149A7E /* MXFalconViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9C01BCB91DA3E7430032494C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9C01BC661DA3E4D40032494C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C01BC6E1DA3E4D40032494C;
-			remoteInfo = MXParallaxHeader;
-		};
 		9C01BCE81DA3EBE60032494C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9C01BC661DA3E4D40032494C /* Project object */;
@@ -59,17 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9C01BCBD1DA3E7480032494C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9C01BCBC1DA3E7480032494C /* MXParallaxHeader.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9C01BCEC1DA3EBFE0032494C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,22 +62,7 @@
 		9C01BC831DA3E56A0032494C /* MXScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollView.m; sourceTree = "<group>"; };
 		9C01BC841DA3E56A0032494C /* MXScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewController.h; sourceTree = "<group>"; };
 		9C01BC851DA3E56A0032494C /* MXScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewController.m; sourceTree = "<group>"; };
-		9C01BC901DA3E6810032494C /* MXParallaxHeader-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MXParallaxHeader-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C01BC931DA3E6810032494C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9C01BC9C1DA3E6810032494C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9C01BC9E1DA3E6810032494C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9C01BCA31DA3E6810032494C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C01BCA81DA3E71E0032494C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
-		9C01BCAA1DA3E7330032494C /* MXAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXAppDelegate.h; sourceTree = "<group>"; };
-		9C01BCAB1DA3E7330032494C /* MXAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXAppDelegate.m; sourceTree = "<group>"; };
-		9C01BCAD1DA3E7330032494C /* MXScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewExample.h; sourceTree = "<group>"; };
-		9C01BCAE1DA3E7330032494C /* MXScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewExample.m; sourceTree = "<group>"; };
-		9C01BCB01DA3E7330032494C /* UIScrollViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScrollViewExample.h; sourceTree = "<group>"; };
-		9C01BCB11DA3E7330032494C /* UIScrollViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewExample.m; sourceTree = "<group>"; };
-		9C01BCB31DA3E7330032494C /* MXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXWebViewController.h; sourceTree = "<group>"; };
-		9C01BCB41DA3E7330032494C /* MXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXWebViewController.m; sourceTree = "<group>"; };
-		9C01BCC11DA3E7900032494C /* StarshipHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StarshipHeader.xib; path = ../UIScrollView/StarshipHeader.xib; sourceTree = "<group>"; };
-		9C01BCC81DA3E9A80032494C /* MXParallaxHeader-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MXParallaxHeader-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C01BCC81DA3E9A80032494C /* MXParallaxHeader Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MXParallaxHeader Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C01BCCA1DA3E9A80032494C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C01BCCF1DA3E9A80032494C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C01BCD11DA3E9A80032494C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,8 +77,6 @@
 		9C01BCF01DA3F0E20032494C /* MXParallaxHeader.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MXParallaxHeader.podspec; sourceTree = "<group>"; };
 		9C01BCF11DA3F0E20032494C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9C71819422856FFF007F7894 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		9C7904241DC23C4800149A7E /* MXFalconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXFalconViewController.h; sourceTree = "<group>"; };
-		9C7904251DC23C4900149A7E /* MXFalconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXFalconViewController.m; sourceTree = "<group>"; };
 		9C7904281DC242A800149A7E /* MXFalconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXFalconViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,14 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9C01BC8D1DA3E6810032494C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C01BCBB1DA3E7480032494C /* MXParallaxHeader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +106,7 @@
 				9C01BCED1DA3F0C80032494C /* Metadata */,
 				9C01BC7F1DA3E56A0032494C /* MXParallaxHeader */,
 				9C01BC7A1DA3E54C0032494C /* Framework */,
-				9C01BC911DA3E6810032494C /* Example-objc */,
-				9C01BCC91DA3E9A80032494C /* Example-swift */,
+				9C01BCC91DA3E9A80032494C /* Example */,
 				9C01BC701DA3E4D40032494C /* Products */,
 				9C71819322856FFF007F7894 /* Frameworks */,
 			);
@@ -173,8 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */,
-				9C01BC901DA3E6810032494C /* MXParallaxHeader-objc.app */,
-				9C01BCC81DA3E9A80032494C /* MXParallaxHeader-swift.app */,
+				9C01BCC81DA3E9A80032494C /* MXParallaxHeader Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,62 +143,7 @@
 			path = MXParallaxHeader;
 			sourceTree = "<group>";
 		};
-		9C01BC911DA3E6810032494C /* Example-objc */ = {
-			isa = PBXGroup;
-			children = (
-				9C01BCAA1DA3E7330032494C /* MXAppDelegate.h */,
-				9C01BCAB1DA3E7330032494C /* MXAppDelegate.m */,
-				9C01BCAF1DA3E7330032494C /* UIScrollView */,
-				9C01BCAC1DA3E7330032494C /* MXScrollView */,
-				9C01BCB21DA3E7330032494C /* UIScrollViewController */,
-				9C01BC9B1DA3E6810032494C /* Main.storyboard */,
-				9C01BCA71DA3E71E0032494C /* Launch Screen.storyboard */,
-				9C01BC9E1DA3E6810032494C /* Assets.xcassets */,
-				9C01BCA31DA3E6810032494C /* Info.plist */,
-				9C01BC921DA3E6810032494C /* Supporting Files */,
-			);
-			path = "Example-objc";
-			sourceTree = "<group>";
-		};
-		9C01BC921DA3E6810032494C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9C01BC931DA3E6810032494C /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9C01BCAC1DA3E7330032494C /* MXScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				9C01BCAD1DA3E7330032494C /* MXScrollViewExample.h */,
-				9C01BCAE1DA3E7330032494C /* MXScrollViewExample.m */,
-				9C01BCC11DA3E7900032494C /* StarshipHeader.xib */,
-			);
-			path = MXScrollView;
-			sourceTree = "<group>";
-		};
-		9C01BCAF1DA3E7330032494C /* UIScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				9C01BCB01DA3E7330032494C /* UIScrollViewExample.h */,
-				9C01BCB11DA3E7330032494C /* UIScrollViewExample.m */,
-			);
-			path = UIScrollView;
-			sourceTree = "<group>";
-		};
-		9C01BCB21DA3E7330032494C /* UIScrollViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9C7904241DC23C4800149A7E /* MXFalconViewController.h */,
-				9C7904251DC23C4900149A7E /* MXFalconViewController.m */,
-				9C01BCB31DA3E7330032494C /* MXWebViewController.h */,
-				9C01BCB41DA3E7330032494C /* MXWebViewController.m */,
-			);
-			path = UIScrollViewController;
-			sourceTree = "<group>";
-		};
-		9C01BCC91DA3E9A80032494C /* Example-swift */ = {
+		9C01BCC91DA3E9A80032494C /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				9C01BCCA1DA3E9A80032494C /* AppDelegate.swift */,
@@ -270,7 +157,7 @@
 				9C01BCD31DA3E9A80032494C /* LaunchScreen.storyboard */,
 				9C01BCD61DA3E9A80032494C /* Info.plist */,
 			);
-			path = "Example-swift";
+			path = Example;
 			sourceTree = "<group>";
 		};
 		9C01BCED1DA3F0C80032494C /* Metadata */ = {
@@ -303,7 +190,6 @@
 				9C01BC8A1DA3E56A0032494C /* MXScrollViewController.h in Headers */,
 				9C01BC881DA3E56A0032494C /* MXScrollView.h in Headers */,
 				9C01BC861DA3E56A0032494C /* MXParallaxHeader.h in Headers */,
-				9C7904261DC23C4900149A7E /* MXFalconViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,28 +214,9 @@
 			productReference = 9C01BC6F1DA3E4D40032494C /* MXParallaxHeader.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9C01BC8F1DA3E6810032494C /* MXParallaxHeader-objc */ = {
+		9C01BCC71DA3E9A80032494C /* MXParallaxHeader Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C01BCA41DA3E6810032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader-objc" */;
-			buildPhases = (
-				9C01BC8C1DA3E6810032494C /* Sources */,
-				9C01BC8D1DA3E6810032494C /* Frameworks */,
-				9C01BC8E1DA3E6810032494C /* Resources */,
-				9C01BCBD1DA3E7480032494C /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9C01BCBA1DA3E7430032494C /* PBXTargetDependency */,
-			);
-			name = "MXParallaxHeader-objc";
-			productName = "MXParallaxHeader-objc";
-			productReference = 9C01BC901DA3E6810032494C /* MXParallaxHeader-objc.app */;
-			productType = "com.apple.product-type.application";
-		};
-		9C01BCC71DA3E9A80032494C /* MXParallaxHeader-swift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9C01BCD71DA3E9A80032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader-swift" */;
+			buildConfigurationList = 9C01BCD71DA3E9A80032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader Example" */;
 			buildPhases = (
 				9C01BCC41DA3E9A80032494C /* Sources */,
 				9C01BCC51DA3E9A80032494C /* Frameworks */,
@@ -361,9 +228,9 @@
 			dependencies = (
 				9C01BCE91DA3EBE60032494C /* PBXTargetDependency */,
 			);
-			name = "MXParallaxHeader-swift";
+			name = "MXParallaxHeader Example";
 			productName = "MXParallaxHeader-swift";
-			productReference = 9C01BCC81DA3E9A80032494C /* MXParallaxHeader-swift.app */;
+			productReference = 9C01BCC81DA3E9A80032494C /* MXParallaxHeader Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -380,11 +247,6 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = C75GEDTP26;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
-					};
-					9C01BC8F1DA3E6810032494C = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = C75GEDTP26;
 						ProvisioningStyle = Automatic;
 					};
 					9C01BCC71DA3E9A80032494C = {
@@ -409,8 +271,7 @@
 			projectRoot = "";
 			targets = (
 				9C01BC6E1DA3E4D40032494C /* MXParallaxHeader */,
-				9C01BC8F1DA3E6810032494C /* MXParallaxHeader-objc */,
-				9C01BCC71DA3E9A80032494C /* MXParallaxHeader-swift */,
+				9C01BCC71DA3E9A80032494C /* MXParallaxHeader Example */,
 			);
 		};
 /* End PBXProject section */
@@ -420,17 +281,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9C01BC8E1DA3E6810032494C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C01BCA91DA3E71E0032494C /* Launch Screen.storyboard in Resources */,
-				9C01BC9F1DA3E6810032494C /* Assets.xcassets in Resources */,
-				9C01BCC31DA3E7900032494C /* StarshipHeader.xib in Resources */,
-				9C01BC9D1DA3E6810032494C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,19 +308,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C01BC8C1DA3E6810032494C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C01BCB71DA3E7330032494C /* UIScrollViewExample.m in Sources */,
-				9C01BCB81DA3E7330032494C /* MXWebViewController.m in Sources */,
-				9C01BC941DA3E6810032494C /* main.m in Sources */,
-				9C01BCB61DA3E7330032494C /* MXScrollViewExample.m in Sources */,
-				9C01BCB51DA3E7330032494C /* MXAppDelegate.m in Sources */,
-				9C79042A1DC243C100149A7E /* MXFalconViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9C01BCC41DA3E9A80032494C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,11 +323,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9C01BCBA1DA3E7430032494C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C01BC6E1DA3E4D40032494C /* MXParallaxHeader */;
-			targetProxy = 9C01BCB91DA3E7430032494C /* PBXContainerItemProxy */;
-		};
 		9C01BCE91DA3EBE60032494C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9C01BC6E1DA3E4D40032494C /* MXParallaxHeader */;
@@ -499,22 +331,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C01BC9B1DA3E6810032494C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C01BC9C1DA3E6810032494C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9C01BCA71DA3E71E0032494C /* Launch Screen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C01BCA81DA3E71E0032494C /* Base */,
-			);
-			name = "Launch Screen.storyboard";
-			sourceTree = "<group>";
-		};
 		9C01BCCE1DA3E9A80032494C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -696,38 +512,12 @@
 			};
 			name = Release;
 		};
-		9C01BCA51DA3E6810032494C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C75GEDTP26;
-				INFOPLIST_FILE = "$(SRCROOT)/Example-objc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-objc";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		9C01BCA61DA3E6810032494C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C75GEDTP26;
-				INFOPLIST_FILE = "$(SRCROOT)/Example-objc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-objc";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		9C01BCD81DA3E9A80032494C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C75GEDTP26;
-				INFOPLIST_FILE = "$(SRCROOT)/Example-swift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-swift";
@@ -743,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C75GEDTP26;
-				INFOPLIST_FILE = "$(SRCROOT)/Example-swift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.maxep.MXParallaxHeader-swift";
@@ -774,16 +564,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C01BCA41DA3E6810032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader-objc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9C01BCA51DA3E6810032494C /* Debug */,
-				9C01BCA61DA3E6810032494C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9C01BCD71DA3E9A80032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader-swift" */ = {
+		9C01BCD71DA3E9A80032494C /* Build configuration list for PBXNativeTarget "MXParallaxHeader Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C01BCD81DA3E9A80032494C /* Debug */,
