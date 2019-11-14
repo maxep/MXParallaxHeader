@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				9C01BCED1DA3F0C80032494C /* Metadata */,
-				9C01BC7F1DA3E56A0032494C /* MXParallaxHeader */,
+				9C01BC7F1DA3E56A0032494C /* Sources */,
 				9C01BC7A1DA3E54C0032494C /* Framework */,
 				9C01BCC91DA3E9A80032494C /* Example */,
 				9C01BC701DA3E4D40032494C /* Products */,
@@ -130,7 +130,7 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
-		9C01BC7F1DA3E56A0032494C /* MXParallaxHeader */ = {
+		9C01BC7F1DA3E56A0032494C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				9C01BC801DA3E56A0032494C /* MXParallaxHeader.h */,
@@ -140,7 +140,7 @@
 				9C01BC841DA3E56A0032494C /* MXScrollViewController.h */,
 				9C01BC851DA3E56A0032494C /* MXScrollViewController.m */,
 			);
-			path = MXParallaxHeader;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		9C01BCC91DA3E9A80032494C /* Example */ = {
