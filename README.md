@@ -63,6 +63,18 @@ scrollView.parallaxHeader.minimumHeight = 20;
 
 ## Installation
 
+### Swift Package Manager 
+
+You can use  [Swift Package Manager](https://swift.org/package-manager/)  directly within Xcode or add it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/mexp/MXParallaxHeader", .upToNextMajor(from: "1.1.0"))
+]
+```
+
+### CocoaPods
+
 MXParallaxHeader is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
