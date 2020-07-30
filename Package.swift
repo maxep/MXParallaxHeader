@@ -19,6 +19,7 @@ let package = Package(
         .target(
             name: "MXParallaxHeader",
             dependencies: [],
-            path: "Sources")
+            path: "Sources",
+            publicHeadersPath: ".")
     ]
 )
