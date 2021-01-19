@@ -16,6 +16,7 @@ exemptLabels:
   - help wanted
   - enhancement
   - need review
+  - pinned
 
 # Label to use when marking as stale
 staleLabel: stale
