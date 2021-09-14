@@ -22,6 +22,9 @@
 
 #import "MXScrollView.h"
 
+@class MXParallaxHeader;
+@class MXScrollView;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**

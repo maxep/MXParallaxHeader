@@ -21,6 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "MXScrollView.h"
+#import "MXScrollViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
